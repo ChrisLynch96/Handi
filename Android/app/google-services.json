@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "301863112969",
+    "firebase_url": "https://project-1-e25ad.firebaseio.com",
+    "project_id": "project-1-e25ad",
+    "storage_bucket": "project-1-e25ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301863112969:android:1b836613c39c467d",
+        "android_client_info": {
+          "package_name": "com.app.handi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301863112969-68ttu22mu2c4u31s1lh8c8um2rrjg5vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-6vo8cHLfFyRfMMu9rfDsRBZ6OpYV0fM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301863112969:android:73a9248e18aa5204",
+        "android_client_info": {
+          "package_name": "com.app.handi.handi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301863112969-68ttu22mu2c4u31s1lh8c8um2rrjg5vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-6vo8cHLfFyRfMMu9rfDsRBZ6OpYV0fM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
