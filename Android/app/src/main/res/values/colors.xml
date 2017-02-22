@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#EA7D84</color>
+    <color name="colorPrimaryDark">#E47D84</color>
     <color name="colorAccent">#FF4081</color>
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>
@@ -16,4 +16,8 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
+    <color name="textColor">#ffffff</color>
+    <color name="light_pink">#EAA0A3</color>
+    <color name="norm_pink">#E47D84</color>
+    <color name="dark_pink">#DF6066</color>
 </resources>

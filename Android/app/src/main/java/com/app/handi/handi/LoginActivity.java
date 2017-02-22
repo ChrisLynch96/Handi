@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -27,7 +28,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
+        overridePendingTransition(0,0);
+        View container = findViewById(R.id.login_container);
+        container.setAnimation(AnimationUtils.loadAnimation(this,R.anim.fade_in));
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
@@ -37,11 +42,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // set the view now
-        setContentView(R.layout.activity_login);
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -109,5 +109,11 @@ public class LoginActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+
+    public void onClick(View v){
+        if (v.getId() == R.id.btn_login) {
+
+        }
     }
 }

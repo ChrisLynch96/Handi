@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginOrSignup"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="@dimen/logo_w_h"
+        android:layout_height="@dimen/logo_w_h"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="@dimen/logo_top_margin"/>
+
+    <RelativeLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="@dimen/stan_button_width"
+            android:layout_height="@dimen/stan_button_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="75dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:background="@color/norm_pink"
+            android:text="Login"
+            android:textSize="20sp"
+            android:textColor="@color/textColor"
+            android:onClick="onClick"/>
+
+        <Button
+            android:id="@+id/signup_button"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@id/login_button"
+            android:layout_width="@dimen/stan_button_width"
+            android:layout_height="@dimen/stan_button_height"
+            android:text="Signup"
+            android:textSize="20sp"
+            android:background="@color/norm_pink"
+            android:textColor="@color/textColor"
+            android:layout_marginRight="25dp"
+            android:onClick="onClick"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
