@@ -81,8 +81,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dip"
                 android:background="@color/norm_pink"
-                android:text="Login"
-                android:textColor="@android:color/white" />
+                android:text="@string/Login"
+                android:textColor="@android:color/white"
+                android:onClick="onClick"/>
 
             <Button
                 android:id="@+id/btn_reset_password"
@@ -93,7 +94,8 @@
                 android:background="@color/norm_pink"
                 android:text="@string/btn_forgot_password"
                 android:textAllCaps="false"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/textColor"
+                android:onClick="onClick"/>
 
         </RelativeLayout>
     </LinearLayout>
