@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:animateLayoutChanges="true"
-    tools:context=".JobSelectionActivity">
+    tools:context=".Activitys.JobSelectionActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_jobs"

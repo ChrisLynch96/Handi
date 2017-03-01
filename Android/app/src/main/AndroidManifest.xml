@@ -3,6 +3,8 @@
     package="com.app.handi.handi">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera2"
+                                android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -10,18 +12,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Activitys.SplashScreen"/>
+        <activity android:name=".Activitys.SignupActivity"/>
+        <activity android:name=".Activitys.LoginActivity"/>
+        <activity android:name=".Activitys.ResetPasswordActivity" />
+        <activity android:name=".Activitys.MainActivity"/>
+        <activity android:name=".Activitys.LoginOrSignupActivity"/>
+        <activity android:name=".Activitys.HandiManSignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignupActivity"/>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".LoginOrSignup"/>
+        <activity android:name=".Activitys.JobSelectionActivity"/>
     </application>
 
 </manifest>

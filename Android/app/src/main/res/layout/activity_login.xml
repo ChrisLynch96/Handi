@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:fitsSystemWindows="true"
-    tools:context="com.app.handi.handi.LoginActivity">
+    tools:context="com.app.handi.handi.Activitys.LoginActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"

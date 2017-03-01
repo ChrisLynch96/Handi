@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:animateLayoutChanges="true"
-    tools:context="com.app.handi.handi.SignupActivity">
+    tools:context="com.app.handi.handi.Activitys.SignupActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
