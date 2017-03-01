@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/enter_credentials"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:text="Enter Credentials"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/handi_name_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enter_credentials">
+
+        <EditText
+            android:id="@+id/handi_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="name"
+            android:inputType="textPersonName" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/date_of_birth_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/handi_name_container">
+
+        <EditText
+            android:id="@+id/handi_DOB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="date of birth"
+            android:inputType="date" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/mobile_phone_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_of_birth_container">
+
+        <EditText
+            android:id="@+id/handi_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:digits="+0123456789"
+            android:ems="10"
+            android:hint="mobile phone"
+            android:inputType="phone" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/enter_password_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mobile_phone_container">
+
+        <EditText
+            android:id="@+id/handi_password_enter1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="enter password"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/confirm_password_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enter_password_container">
+
+        <EditText
+            android:id="@+id/handi_password_enter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="confirm password"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/profession_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_password_container"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Profession"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/job_choice_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_password_container"
+        android:layout_toRightOf="@id/profession_text_view" />
+
+    <Button
+        android:id="@+id/take_photo_button"
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/job_choice_spinner"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/norm_pink"
+        android:onClick="onClick"
+        android:text="Take profile picture"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/handi_picture_image"
+        android:layout_width="@dimen/logo_w_h"
+        android:layout_height="@dimen/logo_w_h"
+        android:layout_below="@id/job_choice_spinner"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/take_photo_button"
+        android:src="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/sign_up_handi_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/handi_picture_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/norm_pink"
+        android:onClick="onClick"
+        android:text="Signup"
+        android:textColor="@color/white" />
+</RelativeLayout>
