@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="Job Description"
+        android:textColor="@color/black"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/job_description_header"
+        android:layout_weight="0.05"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:layout_below="@id/job_description_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="Put job description here"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:ems="10"
+        android:id="@+id/users_job_description"
+        android:maxLines="24"
+        />
+
+    <Button
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:background="@color/norm_pink"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        />
+</RelativeLayout>
