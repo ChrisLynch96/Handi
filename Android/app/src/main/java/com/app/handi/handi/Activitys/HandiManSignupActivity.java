@@ -44,6 +44,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
     private HandimanData data;
     private FirebaseUser user;
     private DatabaseReference ref;
+    String spin="";
 
     public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -66,12 +67,11 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //// TODO: 28/02/2017 Implement what happens with the selected data -- Database stuff
+        spin = parent.getItemAtPosition(position).toString();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        //// Todo: What happens when nothing selected
     }
 
     public void onClick(View v){
@@ -151,10 +151,10 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                                         Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(HandiManSignupActivity.this, MainActivity.class));
-                                data = new HandimanData(name,email,password,dateofbirth,number,handiProfilePic);
+                                data = new HandimanData(name,email,password,dateofbirth,number,spin,handiProfilePic);
                                 user = FirebaseAuth.getInstance().getCurrentUser();
                                 ref = FirebaseDatabase.getInstance().getReference();
-                                ref.child("HandiMen").child(user.getUid()).setValue(data);
+                                ref.child("HandiMen").child(spin).child(user.getUid()).setValue(data);
                                 finish();
                             }
                         }
