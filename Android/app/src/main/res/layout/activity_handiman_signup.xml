@@ -172,7 +172,7 @@
         android:layout_below="@id/job_choice_spinner"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/take_photo_button"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/handi_h" />
 
     <Button
         android:id="@+id/sign_up_handi_button"

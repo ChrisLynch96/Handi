@@ -17,8 +17,8 @@ public class SignUpChoiceActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
     public void onClick(View v){
-        if (v.getId() == R.id.user_button)
-            startActivity(new Intent(this, SignupActivity.class));
+        if (v.getId() == R.id.activity_sign_up_choice_button_user)
+            startActivity(new Intent(this, UserSignupActivity.class));
         else
             startActivity(new Intent(this, HandiManSignupActivity.class));
     }

@@ -10,8 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
-import com.app.handi.handi.Activitys.LoginActivity;
-import com.app.handi.handi.Activitys.SignupActivity;
 import com.app.handi.handi.R;
 
 

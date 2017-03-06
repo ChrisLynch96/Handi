@@ -5,23 +5,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:animateLayoutChanges="true"
     tools:context=".Activitys.JobSelectionActivity">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_jobs"
+    
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </android.support.v7.widget.RecyclerView>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_handimen"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        
+        <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_below="@id/recycler_view_jobs">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/activity_job_selection_image_view_plumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/job_plumbing"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/activity_job_selection_image_view_electrician"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/job_electrician"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/activity_job_selection_image_view_painter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/job_painter"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/activity_job_selection_image_view_cleaner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/job_duster"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/activity_job_selection_image_view_handiman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/job_handi"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    
+
 
 </RelativeLayout>

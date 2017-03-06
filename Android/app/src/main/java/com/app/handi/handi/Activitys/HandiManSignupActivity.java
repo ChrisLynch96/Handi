@@ -1,8 +1,6 @@
 package com.app.handi.handi.Activitys;
 
-import android.app.Application;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,9 +23,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by christopherlynch on 28/02/2017.
@@ -56,30 +54,35 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
         //Todo check that a phone has a camera. If not disable camera features
         Spinner spinner = (Spinner) findViewById(R.id.job_choice_spinner);
         spinner.setOnItemSelectedListener(this);
-// Create an ArrayAdapter using the string array and a default spinner layout
+// Creating an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.jobs_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+// Specifying the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
     }
 
+    //When an item is selected we get the name of what was selected.
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         spin = parent.getItemAtPosition(position).toString();
     }
 
+    //default to the first element
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+        spin = parent.getItemAtPosition(0).toString();
     }
 
+    /*
+    Determines what was clicked and what should be done
+     */
     public void onClick(View v){
         if (v.getId() == R.id.take_photo_button) {
             dispatchTakePictureIntent();
         }
         else {
-            //startActivity(new Intent(this, MainActivity.class));
             HandiName = (EditText) findViewById(R.id.handi_name);
             HandiDOB = (EditText) findViewById(R.id.handi_DOB);
             HandiEmail = (EditText) findViewById(R.id.handi_email);
@@ -135,7 +138,6 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                 return;
             }
 
-
             progressBar.setVisibility(View.VISIBLE);
             auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(HandiManSignupActivity.this, new OnCompleteListener<AuthResult>() {
@@ -167,6 +169,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //If there is a camera registered to the device then launch it's application.
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
@@ -174,7 +177,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("Hi", "Hi");
+        //Setting the image view that represents the profile pic to the picture that was just taken
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
