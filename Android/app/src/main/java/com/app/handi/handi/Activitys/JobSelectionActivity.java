@@ -4,22 +4,53 @@ package com.app.handi.handi.Activitys;
  * Created by christopherlynch on 27/02/2017.
  */
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
-import com.app.handi.handi.Adapters.ChooseHandimanRowAdapter;
-import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.Adapters.DisplayingHandiAdapter;
 import com.app.handi.handi.R;
-
 import java.util.ArrayList;
 
 public class JobSelectionActivity extends AppCompatActivity {
+
+    ListView listView;
+    Context context;
+    ArrayList progList;
+
+    //Creating a temporary array of android images just to test the list view - Chris
+    private static Integer[] handiProfilePics = {
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher
+    };
+
+    //Creating temporary array of strings for testing list view - Chris
+    private static String[] handiNames = {
+        "David Gregg", "David Gregg", "David Gregg", "David Gregg",
+            "David Gregg", "David Gregg", "David Gregg", "David Gregg",
+            "David Gregg", "David Gregg", "David Gregg", "David Gregg"
+    };
+
+    private static String[] handiEmails = {
+            "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg",
+            "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg",
+            "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg",
+            "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg", "davidGregg@davidgreggfanclub.gregg"
+    };
+
+    private static String[] handiPhoneNumbers = {
+            "0851234567", "0851234567", "0851234567", "0851234567",
+            "0851234567", "0851234567", "0851234567", "0851234567",
+            "0851234567", "0851234567", "0851234567", "0851234567"
+    };
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -32,6 +63,9 @@ public class JobSelectionActivity extends AppCompatActivity {
                 , (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
 
         setJobImageHeights(jobImageViews);
+        DisplayingHandiAdapter dispHandiAdapter = new DisplayingHandiAdapter(this, handiProfilePics, handiNames, handiEmails, handiPhoneNumbers);
+        listView = (ListView) findViewById(R.id.activity_job_selection_ListView_handi_display);
+        listView.setAdapter(dispHandiAdapter);
     }
 
     /*

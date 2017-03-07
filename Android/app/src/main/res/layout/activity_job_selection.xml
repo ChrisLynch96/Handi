@@ -7,8 +7,9 @@
     tools:context=".Activitys.JobSelectionActivity">
     
     <LinearLayout
+        android:id="@+id/activity_job_selection_LinearLayout_job_icons_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="75dp"
         android:orientation="horizontal">
         
         <LinearLayout
@@ -67,7 +68,11 @@
         </LinearLayout>
     </LinearLayout>
 
-    
+    <ListView
+        android:id="@+id/activity_job_selection_ListView_handi_display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/activity_job_selection_LinearLayout_job_icons_container">
 
-
+    </ListView>
 </RelativeLayout>
