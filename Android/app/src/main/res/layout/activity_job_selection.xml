@@ -5,22 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:animateLayoutChanges="true"
     tools:context=".Activitys.JobSelectionActivity">
-    
+
     <LinearLayout
         android:id="@+id/activity_job_selection_LinearLayout_job_icons_container"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:orientation="horizontal"
         android:onClick="onClick">
-        
+
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-            android:layout_weight="1">
+        android:layout_weight="1">
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_plumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:tint="@color/grey"
                 android:src="@drawable/job_plumbing"/>
         </LinearLayout>
 
@@ -32,6 +33,7 @@
                 android:id="@+id/activity_job_selection_image_view_electrician"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+				android:tint="@color/grey"
                 android:src="@drawable/job_electrician"/>
         </LinearLayout>
 
@@ -43,6 +45,7 @@
                 android:id="@+id/activity_job_selection_image_view_painter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:tint="@color/grey"
                 android:src="@drawable/job_painter"/>
         </LinearLayout>
 
@@ -54,6 +57,7 @@
                 android:id="@+id/activity_job_selection_image_view_cleaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:tint="@color/grey"
                 android:src="@drawable/job_duster"/>
         </LinearLayout>
 
@@ -65,6 +69,7 @@
                 android:id="@+id/activity_job_selection_image_view_handiman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:tint="@color/grey"
                 android:src="@drawable/job_handi"/>
         </LinearLayout>
     </LinearLayout>
