@@ -6,6 +6,7 @@ package com.app.handi.handi.Activitys;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -58,10 +59,15 @@ public class JobSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_selection);
 
+        // Icons
+        ImageView cleanerIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner);
+        ImageView electricianIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician);
+        ImageView painterIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_painter);
+        ImageView handimanIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman);
+        ImageView plumberIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber);
+
         //Creating an array containing the job images so I can just iterate through them.
-        ImageView[] jobImageViews = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician)
-                , (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman)
-                , (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
+        ImageView[] jobImageViews = {cleanerIcon, electricianIcon, painterIcon, handimanIcon, plumberIcon};
 
         setJobImageHeights(jobImageViews);
         DisplayingHandiAdapter dispHandiAdapter = new DisplayingHandiAdapter(this, handiProfilePics, handiNames, handiEmails, handiPhoneNumbers);
