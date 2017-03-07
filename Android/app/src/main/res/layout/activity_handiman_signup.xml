@@ -3,6 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/enter_credentials"
         android:layout_width="match_parent"
@@ -61,6 +69,7 @@
         android:layout_marginLeft="20dp">
 
         <EditText
+            android:id="@+id/handi_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -163,7 +172,7 @@
         android:layout_below="@id/job_choice_spinner"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/take_photo_button"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/handi_h" />
 
     <Button
         android:id="@+id/sign_up_handi_button"

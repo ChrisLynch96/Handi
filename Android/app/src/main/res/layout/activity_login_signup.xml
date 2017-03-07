@@ -12,7 +12,7 @@
         android:layout_height="@dimen/logo_w_h"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/handi_h"
         android:layout_marginTop="@dimen/logo_top_margin"/>
 
     <RelativeLayout

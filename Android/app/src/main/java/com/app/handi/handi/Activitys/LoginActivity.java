@@ -23,19 +23,22 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
 
+    //Todo Check if the login is a handi or user so the system knows which screen to go to
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //ignore the default transition
         overridePendingTransition(0,0);
         View container = findViewById(R.id.login_container);
+        //When the activity starts fade in to complement the transition from the previous splash screen
         container.setAnimation(AnimationUtils.loadAnimation(this,R.anim.fade_in));
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, JobSelectionActivity.class));
             finish();
         }
 
@@ -81,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, JobSelectionActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -92,4 +95,5 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
         }
     }
+    //Todo Login with google or facebook
 }

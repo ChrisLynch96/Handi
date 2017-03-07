@@ -11,6 +11,8 @@ import com.app.handi.handi.R;
  * Created by christopherlynch on 02/03/2017.
  */
 
+//Todo Comment your code!!!
+
 public class JobDescriptionActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {

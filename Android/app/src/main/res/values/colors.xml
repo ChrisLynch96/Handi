@@ -21,4 +21,6 @@
     <color name="norm_pink">#E47D84</color>
     <color name="dark_pink">#DF6066</color>
     <color name="black">#000000</color>
+    <color name="grey">#888888</color>
+    <color name="dark_grey">#595959</color>
 </resources>
