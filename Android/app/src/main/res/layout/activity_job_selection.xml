@@ -10,7 +10,8 @@
         android:id="@+id/activity_job_selection_LinearLayout_job_icons_container"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="onClick">
         
         <LinearLayout
         android:layout_width="match_parent"
@@ -73,6 +74,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/activity_job_selection_LinearLayout_job_icons_container">
-
     </ListView>
 </RelativeLayout>

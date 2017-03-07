@@ -5,6 +5,7 @@ package com.app.handi.handi.Activitys;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -82,6 +83,7 @@ public class JobSelectionActivity extends AppCompatActivity {
     }
 
     public void onClick(View view){
-
+        //Temporarly setting a click of the job icons to go to job description for demonstration purposes
+        startActivity(new Intent(JobSelectionActivity.this, JobDescriptionActivity.class));
     }
 }
