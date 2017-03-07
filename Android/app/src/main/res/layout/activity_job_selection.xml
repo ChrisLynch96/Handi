@@ -21,7 +21,7 @@
                 android:id="@+id/activity_job_selection_image_view_plumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tint="@color/grey"
+                android:tint="@color/dark_grey"
                 android:src="@drawable/job_plumbing"/>
         </LinearLayout>
 
@@ -33,7 +33,7 @@
                 android:id="@+id/activity_job_selection_image_view_electrician"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-				android:tint="@color/grey"
+				android:tint="@color/dark_grey"
                 android:src="@drawable/job_electrician"/>
         </LinearLayout>
 
@@ -45,7 +45,7 @@
                 android:id="@+id/activity_job_selection_image_view_painter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tint="@color/grey"
+                android:tint="@color/dark_grey"
                 android:src="@drawable/job_painter"/>
         </LinearLayout>
 
@@ -57,7 +57,7 @@
                 android:id="@+id/activity_job_selection_image_view_cleaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tint="@color/grey"
+                android:tint="@color/dark_grey"
                 android:src="@drawable/job_duster"/>
         </LinearLayout>
 
@@ -69,7 +69,7 @@
                 android:id="@+id/activity_job_selection_image_view_handiman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tint="@color/grey"
+                android:tint="@color/dark_grey"
                 android:src="@drawable/job_handi"/>
         </LinearLayout>
     </LinearLayout>

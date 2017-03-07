@@ -17,7 +17,7 @@
         android:layout_toRightOf="@id/list_item_handi_image_view_handi_profile"
         android:paddingTop="5dp"
         android:text="name will go here"
-        android:textColor="@color/black"
+        android:textColor="@color/dark_grey"
         android:textSize="@dimen/standard_text_size"/>
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_below="@id/list_item_text_view_handi_name"
         android:paddingTop="5dp"
         android:text="email will go here"
-        android:textColor="@color/black"
+        android:textColor="@color/grey"
         android:textSize="@dimen/standard_text_size"/>
 
     <TextView
@@ -39,6 +39,6 @@
         android:layout_below="@id/list_item_text_view_handi_email"
         android:paddingTop="5dp"
         android:text="phone number will go here"
-        android:textColor="@color/black"
+        android:textColor="@color/grey"
         android:textSize="@dimen/standard_text_size"/>
 </RelativeLayout>
