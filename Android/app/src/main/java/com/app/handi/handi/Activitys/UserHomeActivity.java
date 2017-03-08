@@ -3,6 +3,7 @@ package com.app.handi.handi.Activitys;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.app.handi.handi.Fragments.CalendarFragment;
+import com.app.handi.handi.Fragments.PastJobsFragment;
 import com.app.handi.handi.R;
 
 public class UserHomeActivity extends AppCompatActivity
@@ -83,20 +86,27 @@ public class UserHomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.activity_user_home_drawer_item_home) {
             Toast.makeText(this, "gallery", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_gallery) {
-            Toast.makeText(this, "gallery", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_slideshow) {
-            Toast.makeText(this, "slideshow", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.activity_user_home_drawer_item_calendar) {
+            CalendarFragment calendarFragment = new CalendarFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.content_user_home,
+                    calendarFragment,
+                    calendarFragment.getTag()
+            ).commit();
+        } else if (id == R.id.activity_user_home_drawer_item_past_jobs) {
+            PastJobsFragment pastJobsFragment = PastJobsFragment.newInstance("some1", "some2");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.content_user_home,
+                    pastJobsFragment,
+                    pastJobsFragment .getTag()
+            ).commit();
+        } else if (id == R.id.activity_user_home_drawer_item_settings) {
             Toast.makeText(this, "manage", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_share) {
-            Toast.makeText(this, "share", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_send) {
-            Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
