@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.handi.handi.Fragments.PastJobsFragment">
+
+    <Button
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:background="@color/norm_pink"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="This button does nothing"
+        android:textColor="@color/white"
+        />
+</RelativeLayout>

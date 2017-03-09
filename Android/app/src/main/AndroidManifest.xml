@@ -15,21 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activitys.SplashScreen">
+        </activity>
+        <activity android:name=".Activitys.UserSignupActivity" />
+        <activity android:name=".Activitys.LoginActivity" />
+        <activity android:name=".Activitys.ResetPasswordActivity" />
+        <activity android:name=".Activitys.MainActivity" />
+        <activity android:name=".Activitys.LoginOrSignupActivity" />
+        <activity android:name=".Activitys.HandiManSignupActivity" />
+        <activity android:name=".Activitys.JobSelectionActivity" />
+        <activity android:name=".Activitys.JobDescriptionActivity" />
+        <activity android:name=".Activitys.SignUpChoiceActivity" />
+        <activity
+            android:name=".Activitys.UserHomeActivity"
+            android:label="@string/title_activity_user_home"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activitys.UserSignupActivity" />
-        <activity android:name=".Activitys.LoginActivity" />
-        <activity android:name=".Activitys.ResetPasswordActivity" />
-        <activity android:name=".Activitys.MainActivity" />
-        <activity android:name=".Activitys.LoginOrSignupActivity"/>
-        <activity android:name=".Activitys.HandiManSignupActivity" />
-        <activity android:name=".Activitys.JobSelectionActivity" />
-        <activity android:name=".Activitys.JobDescriptionActivity" />
-        <activity android:name=".Activitys.SignUpChoiceActivity"></activity>
+        <activity android:name=".Firebase.HelperHandiMan"></activity>
     </application>
 
 </manifest>
