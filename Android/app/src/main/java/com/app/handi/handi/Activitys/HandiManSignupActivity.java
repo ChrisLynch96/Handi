@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -153,10 +154,12 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                                         Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(HandiManSignupActivity.this, MainActivity.class));
-                                data = new HandimanData(name,email,password,dateofbirth,number,spin,handiProfilePic);
+                                data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic);
                                 user = FirebaseAuth.getInstance().getCurrentUser();
                                 ref = FirebaseDatabase.getInstance().getReference();
-                                ref.child("HandiMen").child(spin).child(user.getUid()).setValue(data);
+                                HelperHandiMan db = new HelperHandiMan(ref);
+                                db.save(data,user);
+                                //ref.child("HandiMen").child(spin).child(user.getUid()).setValue(data);
                                 finish();
                             }
                         }

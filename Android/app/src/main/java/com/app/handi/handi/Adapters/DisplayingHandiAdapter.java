@@ -1,52 +1,74 @@
 package com.app.handi.handi.Adapters;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.R;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 /**
  * Created by christopherlynch on 07/03/2017.
  */
 
-public class DisplayingHandiAdapter extends ArrayAdapter<String> {
+public class DisplayingHandiAdapter extends BaseAdapter {
+    Context c;
+    ArrayList<HandimanData> HandiMen;
 
-    private final Activity context;
-    private final Integer[] handiProfilePics;
-    private final String[] handiNames;
-    private final String[] handiEmails;
-    private final String[] handiPhoneNumbers;
-
-
-    public DisplayingHandiAdapter(Activity context, Integer[] handiProfilePics, String[] handiNames, String[] handiEmails, String[] handiPhoneNumbers){
-        super(context, R.layout.list_item_handi, handiNames);
-        this.context = context;
-        this.handiProfilePics = handiProfilePics;
-        this.handiNames = handiNames;
-        this.handiEmails = handiEmails;
-        this.handiPhoneNumbers = handiPhoneNumbers;
+    public DisplayingHandiAdapter(ArrayList<HandimanData> handimen, Context c) {
+        HandiMen = handimen;
+        this.c = c;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent){
-
-        LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.list_item_handi, null, true);
-        ImageView handiPicture = (ImageView) rowView.findViewById(R.id.list_item_handi_image_view_handi_profile);
-        TextView handiName = (TextView) rowView.findViewById(R.id.list_item_text_view_handi_name);
-        TextView handiEmail = (TextView) rowView.findViewById(R.id.list_item_text_view_handi_email);
-        TextView handiPhone = (TextView) rowView.findViewById(R.id.list_item_text_view_handi_phone);
-
-        handiPicture.setImageResource(handiProfilePics[position]);
-        handiName.setText(handiNames[position]);
-        handiEmail.setText(handiEmails[position]);
-        handiPhone.setText(handiPhoneNumbers[position]);
-
-        return rowView;
+    @Override
+    public int getCount() {
+        return HandiMen.size();
     }
 
+    @Override
+    public Object getItem(int position) {
+        return HandiMen.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = LayoutInflater.from(c).inflate(R.layout.list_item_handi, parent, false);
+        }
+
+        TextView nameTxt = (TextView) convertView.findViewById(R.id.list_item_text_view_handi_name);
+        TextView emailTxt = (TextView) convertView.findViewById(R.id.list_item_text_view_handi_email);
+        TextView numTxt = (TextView) convertView.findViewById(R.id.list_item_text_view_handi_phone);
+
+        final HandimanData h = (HandimanData) this.getItem(position);
+
+        nameTxt.setText(h.getName());
+        emailTxt.setText(h.getEmail());
+        numTxt.setText(h.getNumber());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(c, h.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return convertView;
+    }
 }
