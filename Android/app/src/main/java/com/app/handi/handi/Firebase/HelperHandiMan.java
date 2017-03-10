@@ -2,6 +2,7 @@ package com.app.handi.handi.Firebase;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.app.handi.handi.Activitys.HandiManSignupActivity;
 import com.app.handi.handi.DataTypes.HandimanData;
@@ -30,7 +31,7 @@ public class HelperHandiMan {
             saved = false;
         else{
             try{
-                db.child("HandiMen").child(handimanData.profession).child(user.getUid()).setValue(handimanData);
+                db.child("HandiMen").child(handimanData.getProfession()).child(user.getUid()).setValue(handimanData);
                 saved = true;
             }catch(DatabaseException e){
                 e.printStackTrace();
@@ -43,37 +44,14 @@ public class HelperHandiMan {
     private void fetchData(DataSnapshot dataSnapshot){
         HandiMen.clear();
         Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-//        for(DataSnapshot ds : dataSnapshot.getChildren()){
-//            HandimanData handiman = ds.getValue(HandimanData.class);
-//            HandiMen.add(handiman);
-//        }
         for(DataSnapshot child : children){
             HandimanData handiman = child.getValue(HandimanData.class);
             HandiMen.add(handiman);
+            Log.d("stuff","storing");
         }
     }
     public ArrayList<HandimanData> retrieve(String profession){
         db.child("HandiMen").child(profession).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                fetchData(dataSnapshot);
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//                fetchData(dataSnapshot);
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 fetchData(dataSnapshot);

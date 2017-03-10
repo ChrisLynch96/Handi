@@ -44,6 +44,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
     private FirebaseUser user;
     private DatabaseReference ref;
     String spin="";
+    boolean saved = false;
 
     public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -159,7 +160,13 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                                 user = FirebaseAuth.getInstance().getCurrentUser();
                                 ref = FirebaseDatabase.getInstance().getReference();
                                 HelperHandiMan db = new HelperHandiMan(ref);
-                                db.save(data,user);
+                                saved = db.save(data,user);
+                                if(saved){
+                                    Toast.makeText(HandiManSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    Toast.makeText(HandiManSignupActivity.this,"Not Saved."+task.getException(),Toast.LENGTH_SHORT).show();
+                                }
                                 //ref.child("HandiMen").child(spin).child(user.getUid()).setValue(data);
                                 finish();
                             }
