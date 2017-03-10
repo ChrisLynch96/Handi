@@ -6,7 +6,7 @@
     tools:context="com.app.handi.handi.Fragments.CalendarFragment">
 
     <CalendarView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/calendarView"
         android:layout_centerVertical="true"
