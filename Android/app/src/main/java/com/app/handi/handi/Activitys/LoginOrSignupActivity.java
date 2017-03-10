@@ -11,12 +11,19 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class LoginOrSignupActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginOrSignupActivity.this, UserHomeActivity.class));
+            finish();
+        }
         setContentView(R.layout.activity_login_signup);
 
         overridePendingTransition(0,0);
