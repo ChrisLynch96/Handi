@@ -1,6 +1,7 @@
 package com.app.handi.handi.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.app.handi.handi.Activitys.ChooseHandiActivity;
+import com.app.handi.handi.Activitys.LoginActivity;
+import com.app.handi.handi.Activitys.UserHomeActivity;
+import com.app.handi.handi.Activitys.UserSignupActivity;
 import com.app.handi.handi.R;
 
 /**
@@ -70,8 +75,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         newJobButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
+                startActivity(new Intent(getActivity(), ChooseHandiActivity.class));
             }
         });
         return view;

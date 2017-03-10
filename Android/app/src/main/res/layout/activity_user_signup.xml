@@ -11,7 +11,7 @@
     tools:context="com.app.handi.handi.Activitys.UserSignupActivity">
 
     <ProgressBar
-        android:id="@+id/porgressBar"
+        android:id="@+id/progressBar"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center|bottom"

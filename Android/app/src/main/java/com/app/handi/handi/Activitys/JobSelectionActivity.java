@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -34,52 +35,40 @@ public class JobSelectionActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<HandimanData> d = new ArrayList<HandimanData>();
     ImageView i;
-    String profession = "Plumber";
+    String profession;
+
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_selection);
-//<<<<<<< Updated upstream
-//
-//        // Icons
-//        ImageView cleanerIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner);
-//        ImageView electricianIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician);
-//        ImageView painterIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_painter);
-//        ImageView handimanIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman);
-//        ImageView plumberIcon = (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber);
-//
-//        //Creating an array containing the job images so I can just iterate through them.
-//        ImageView[] jobImageViews = {cleanerIcon, electricianIcon, painterIcon, handimanIcon, plumberIcon};
-//
-//        setJobImageHeights(jobImageViews);
-//        DisplayingHandiAdapter dispHandiAdapter = new DisplayingHandiAdapter(this, handiProfilePics, handiNames, handiEmails, handiPhoneNumbers);
-//=======
-//>>>>>>> Stashed changes
         listView = (ListView) findViewById(R.id.activity_job_selection_ListView_handi_display);
 
         db = FirebaseDatabase.getInstance().getReference();
+//        helper = new HelperHandiMan(db);
+//        adapter = new DisplayingHandiAdapter(helper.retrieve(profession),this);
+//        listView.setAdapter(adapter);
+        Bundle bundle = getIntent().getExtras();
+        profession = bundle.getString("profession");
+        displayList();
+    }
+
+    public void displayList() {
         helper = new HelperHandiMan(db);
-//        HandimanData man = new HandimanData("bob","lano@tcd.ie","1/1/90","09876666","plumber",i);
-//        d.add(man);
-        adapter = new DisplayingHandiAdapter(helper.retrieve(profession),this);
+        adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
         listView.setAdapter(adapter);
     }
 
-    public void onClick(View view){
-        if(view.getId()==R.id.activity_job_selection_image_view_cleaner){
+    public void onClick(View view) {
+        if (view.getId() == R.id.activity_job_selection_image_view_cleaner) {
             profession = "Cleaner";
-        }
-        else if(view.getId()==R.id.activity_job_selection_image_view_electrician){
+        } else if (view.getId() == R.id.activity_job_selection_image_view_electrician) {
             profession = "Electrician";
-        }
-        else if(view.getId()==R.id.activity_job_selection_image_view_painter){
+        } else if (view.getId() == R.id.activity_job_selection_image_view_painter) {
             profession = "Painter";
-        }
-        else if(view.getId()==R.id.activity_job_selection_image_view_plumber){
+        } else if (view.getId() == R.id.activity_job_selection_image_view_plumber) {
             profession = "Plumber";
-        }
-        else if(view.getId()==R.id.activity_job_selection_image_view_handiman){
+        } else if (view.getId() == R.id.activity_job_selection_image_view_handiman) {
             profession = "HandiMan";
         }
     }
