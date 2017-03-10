@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         // Auto sign out
         auth.signOut();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, JobSelectionActivity.class));
+            startActivity(new Intent(LoginActivity.this, UserHomeActivity.class));
             finish();
         }
 
@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                Intent intent = new Intent(LoginActivity.this, JobSelectionActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
