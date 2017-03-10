@@ -6,10 +6,10 @@
             android:id="@+id/activity_user_home_drawer_item_home"
             android:icon="@drawable/ic_menu_home"
             android:title="Home" />
-        <item
+        <!-- <item
             android:id="@+id/activity_user_home_drawer_item_calendar"
             android:icon="@drawable/ic_menu_calender"
-            android:title="Calendar" />
+            android:title="Calendar" /> -->
         <item
             android:id="@+id/activity_user_home_drawer_item_past_jobs"
             android:icon="@drawable/ic_menu_check"
