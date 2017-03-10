@@ -90,6 +90,7 @@ public class UserHomeActivity extends AppCompatActivity
 
         if (id == R.id.activity_user_home_drawer_item_home) {
             Toast.makeText(this, "gallery", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.activity_user_home_drawer_item_calendar) {
             CalendarFragment calendarFragment = new CalendarFragment();
             FragmentManager manager = getSupportFragmentManager();
