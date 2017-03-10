@@ -36,10 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         container.setAnimation(AnimationUtils.loadAnimation(this,R.anim.fade_in));
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, UserHomeActivity.class));
-            finish();
-        }
     }
 
     public void onClick(View v){
