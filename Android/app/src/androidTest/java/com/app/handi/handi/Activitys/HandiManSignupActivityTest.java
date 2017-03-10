@@ -63,19 +63,107 @@ public class HandiManSignupActivityTest {
     @Test
     public void launchOfMainActivityOnSignUp(){
         assertNotNull(mActivity.findViewById(R.id.sign_up_handi_button));
+        // Test empty form - no email address error message
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Enter email address!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        // Test no name error message
         onView(withId(R.id.handi_email))
                 .perform(typeText("johnsmith@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Enter name!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test no DOB error message
         onView(withId(R.id.handi_name))
                 .perform(typeText("John Smith"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Enter date of birth!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test no number error message
         onView(withId(R.id.handi_DOB))
                 .perform(typeText("01/02/89"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Enter number!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test no password error message
         onView(withId(R.id.handi_phone_number))
                 .perform(typeText("0871234567"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Enter password!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test no confirm password error message
         onView(withId(R.id.handi_password_enter1))
-                .perform(typeText("my_password"), closeSoftKeyboard());
+                .perform(typeText("pass"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Confirm password"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test no mismatching passwords error message
         onView(withId(R.id.handi_password_enter2))
-                .perform(typeText("my_password"), closeSoftKeyboard());
+                .perform(typeText("pass2"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Passwords don't match!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test password error message
+        onView(withId(R.id.handi_password_enter2))
+                .perform(clearText(), typeText("pass"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_handi_button)).perform(click());
+        onView(withText("Password too short, enter minimum 6 characters!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.handi_password_enter1))
+                .perform(clearText(), typeText("password"), closeSoftKeyboard());
+        onView(withId(R.id.handi_password_enter2))
+                .perform(clearText(), typeText("password"), closeSoftKeyboard());
 
         Activity MainActivity;
         try {
@@ -83,121 +171,12 @@ public class HandiManSignupActivityTest {
             MainActivity = getInstrumentation().waitForMonitorWithTimeout(monitor,10000);
             assertNotNull(MainActivity);
         } finally {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-            user.delete()
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-
-                            }
-                        }
-                    });
+            removeUserTearDown();
         }
         MainActivity.finish();
     }
 
-//    @Test
-//    public void formErrorMessages(){
-//        assertNotNull(mActivity.findViewById(R.id.sign_up_handi_button));
-//        // Test empty form - no email address error message
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Enter email address!"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
 //
-//        // Test no name error message
-//        onView(withId(R.id.handi_email))
-//                .perform(typeText("johnsmith@gmail.com"), closeSoftKeyboard());
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Enter name!"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Test no DOB error message
-//        onView(withId(R.id.handi_name))
-//                .perform(typeText("John Smith"), closeSoftKeyboard());
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Enter date of birth!"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Test no number error message
-//        onView(withId(R.id.handi_DOB))
-//                .perform(typeText("01/02/89"), closeSoftKeyboard());
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Enter number!"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Test no password error message
-//        onView(withId(R.id.handi_phone_number))
-//                .perform(typeText("0871234567"), closeSoftKeyboard());
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Enter password!"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Test no confirm password error message
-//        onView(withId(R.id.handi_password_enter1))
-//                .perform(typeText("pass"), closeSoftKeyboard());
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Confirm password"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Test no mismatching passwords error message
-//        onView(withId(R.id.handi_password_enter2))
-//                .perform(typeText("pass2"), closeSoftKeyboard());
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Passwords don't match!"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Test password error message
-//        onView(withId(R.id.handi_password_enter2))
-//                .perform(clearText(), typeText("pass"), closeSoftKeyboard());
-//        onView(withId(R.id.sign_up_handi_button)).perform(click());
-//        onView(withText("Password too short, enter minimum 6 characters!"))
-//                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
-//                .check(matches(isDisplayed()));
-//    }
 
     public void removeUserTearDown(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

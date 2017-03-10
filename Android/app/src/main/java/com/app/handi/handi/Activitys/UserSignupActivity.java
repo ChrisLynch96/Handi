@@ -30,7 +30,7 @@ public class UserSignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_signup);
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
@@ -94,9 +94,9 @@ public class UserSignupActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        progressBar.setVisibility(View.GONE);
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        progressBar.setVisibility(View.GONE);
+//    }
 }
