@@ -36,7 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         container.setAnimation(AnimationUtils.loadAnimation(this,R.anim.fade_in));
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-
+        // Auto sign out
+        auth.signOut();
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, JobSelectionActivity.class));
             finish();
