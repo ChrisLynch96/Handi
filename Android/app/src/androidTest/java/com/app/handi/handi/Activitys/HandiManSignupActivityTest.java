@@ -46,8 +46,8 @@ public class HandiManSignupActivityTest {
 
     @Rule
     public ActivityTestRule<HandiManSignupActivity> mActivtyTestRule = new ActivityTestRule<HandiManSignupActivity>(HandiManSignupActivity.class);
-        private HandiManSignupActivity mActivity = null;
-        Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+    private HandiManSignupActivity mActivity = null;
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
 
     @Before
     public void setUp() throws Exception {
