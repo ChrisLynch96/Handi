@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Job Description"
+        android:text="New Job"
         android:textColor="@color/black"
         android:textAllCaps="true"
         android:textStyle="bold"
@@ -14,21 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/job_description_header"
-        android:layout_weight="0.05"
         android:layout_marginTop="20dp"
         android:textAlignment="center" />
-
-    <EditText
-        android:layout_below="@id/job_description_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:hint="Put job description here"
-        android:textAlignment="textStart"
-        android:layout_gravity="start"
-        android:ems="10"
-        android:id="@+id/users_job_description"
-        android:maxLines="24" />
 
     <Button
         android:layout_width="@dimen/stan_button_width"
@@ -41,4 +28,35 @@
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:onClick="onClick" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Job Title"
+        android:ems="10"
+        android:layout_marginTop="51dp"
+        android:id="@+id/editText"
+        android:layout_below="@+id/job_description_header"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        android:layout_centerVertical="false" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="@string/put_job_description_here"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:ems="10"
+        android:id="@+id/users_job_description"
+        android:maxLines="24"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp" />
 </RelativeLayout>
