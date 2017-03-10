@@ -2,10 +2,12 @@ package com.app.handi.handi.Fragments;
 
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.app.handi.handi.R;
@@ -20,6 +22,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    View view;
+    android.support.design.widget.FloatingActionButton newJobButton;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,12 +65,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+        newJobButton = (android.support.design.widget.FloatingActionButton) view.findViewById(R.id.fragment_home_floating_action_button_fab);
+        newJobButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        return view;
     }
 
-    public void onClick(View v) {
-        if (v.getId() == R.id.fragment_home_floating_action_button_fab)
-            Toast.makeText(this.getContext(), "This is working", Toast.LENGTH_LONG);
+    @Override
+    public void onClick(View view) {
+
     }
+
+//    public void onClick(View v) {
+//        if (v.getId() == R.id.fragment_home_floating_action_button_fab)
+//            Toast.makeText(this.getContext(), "This is working", Toast.LENGTH_LONG);
+//    }
 
 }

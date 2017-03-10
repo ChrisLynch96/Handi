@@ -1,5 +1,6 @@
 package com.app.handi.handi.Activitys;
 
+import android.net.Uri;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,15 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.app.handi.handi.Fragments.CalendarFragment;
+import com.app.handi.handi.Fragments.HomeFragment;
 import com.app.handi.handi.Fragments.PastJobsFragment;
+import com.app.handi.handi.Fragments.SettingsFragment;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +31,14 @@ public class UserHomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fragment_home_floating_action_button_fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -48,6 +48,14 @@ public class UserHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        HomeFragment homeFragment = HomeFragment.newInstance("somebody", "once told me");
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(
+                R.id.content_user_home,
+                homeFragment,
+                homeFragment.getTag()
+        ).commit();
     }
 
     @Override
@@ -89,17 +97,15 @@ public class UserHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.activity_user_home_drawer_item_home) {
-            Toast.makeText(this, "gallery", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.activity_user_home_drawer_item_calendar) {
-            CalendarFragment calendarFragment = new CalendarFragment();
+            HomeFragment homeFragment = HomeFragment.newInstance("somebody", "once told me");
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.content_user_home,
-                    calendarFragment,
-                    calendarFragment.getTag()
+                    homeFragment,
+                    homeFragment.getTag()
             ).commit();
-        } else if (id == R.id.activity_user_home_drawer_item_past_jobs) {
+        }
+            else if (id == R.id.activity_user_home_drawer_item_past_jobs) {
             PastJobsFragment pastJobsFragment = PastJobsFragment.newInstance("some1", "some2");
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
@@ -107,8 +113,15 @@ public class UserHomeActivity extends AppCompatActivity
                     pastJobsFragment,
                     pastJobsFragment .getTag()
             ).commit();
-        } else if (id == R.id.activity_user_home_drawer_item_settings) {
-            Toast.makeText(this, "manage", Toast.LENGTH_SHORT).show();
+        }
+        else if (id == R.id.activity_user_home_drawer_item_settings) {
+            SettingsFragment settingsFragment = SettingsFragment.newInstance("settings1", "settings2"); //The arguments are data to be passed in if we so wish
+            FragmentManager manager= getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.content_user_home,
+                    settingsFragment,
+                    settingsFragment.getTag()
+            ).commit();
         } else if(id == R.id.activity_user_home_drawer_logout) {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signOut();
@@ -117,5 +130,11 @@ public class UserHomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //This is where we can find the data returned form fragments
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
