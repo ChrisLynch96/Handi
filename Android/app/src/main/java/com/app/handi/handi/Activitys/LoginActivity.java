@@ -36,15 +36,10 @@ public class LoginActivity extends AppCompatActivity {
         container.setAnimation(AnimationUtils.loadAnimation(this,R.anim.fade_in));
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-        // Auto sign out
-        auth.signOut();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, JobSelectionActivity.class));
+            startActivity(new Intent(LoginActivity.this, UserHomeActivity.class));
             finish();
         }
-
-        //Get Firebase auth instance
-        auth = FirebaseAuth.getInstance();
     }
 
     public void onClick(View v){
@@ -85,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                Intent intent = new Intent(LoginActivity.this, JobSelectionActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
                                 startActivity(intent);
                                 finish();
                             }

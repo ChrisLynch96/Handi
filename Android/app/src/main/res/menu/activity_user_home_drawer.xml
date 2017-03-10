@@ -18,6 +18,10 @@
             android:id="@+id/activity_user_home_drawer_item_settings"
             android:icon="@drawable/ic_menu_manage"
             android:title="Settings" />
+        <item
+            android:id="@+id/activity_user_home_drawer_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="Logout" />
     </group>
 
 </menu>

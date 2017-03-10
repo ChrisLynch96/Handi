@@ -34,7 +34,6 @@
             android:name=".Activitys.UserHomeActivity"
             android:label="@string/title_activity_user_home"
             android:theme="@style/AppTheme">
-
         </activity>
         <activity android:name=".Firebase.HelperHandiMan"></activity>
     </application>

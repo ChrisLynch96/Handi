@@ -1,5 +1,6 @@
 package com.app.handi.handi.Activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.app.handi.handi.Fragments.CalendarFragment;
 import com.app.handi.handi.Fragments.PastJobsFragment;
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class UserHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -88,6 +90,7 @@ public class UserHomeActivity extends AppCompatActivity
 
         if (id == R.id.activity_user_home_drawer_item_home) {
             Toast.makeText(this, "gallery", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.activity_user_home_drawer_item_calendar) {
             CalendarFragment calendarFragment = new CalendarFragment();
             FragmentManager manager = getSupportFragmentManager();
@@ -106,6 +109,10 @@ public class UserHomeActivity extends AppCompatActivity
             ).commit();
         } else if (id == R.id.activity_user_home_drawer_item_settings) {
             Toast.makeText(this, "manage", Toast.LENGTH_SHORT).show();
+        } else if(id == R.id.activity_user_home_drawer_logout) {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            auth.signOut();
+            startActivity(new Intent(UserHomeActivity.this, LoginOrSignupActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
