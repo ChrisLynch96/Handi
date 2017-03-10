@@ -27,7 +27,7 @@ public class UserSignupActivityTest {
 
     @Test
     public void testLaunch(){
-        View view = mActivity.findViewById(R.id.porgressBar);
+        View view = mActivity.findViewById(R.id.progressBar);
         assertNotNull(view);
     }
 
