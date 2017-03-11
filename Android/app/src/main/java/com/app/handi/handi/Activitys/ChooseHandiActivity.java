@@ -19,32 +19,32 @@ public class ChooseHandiActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         if(view.getId()==R.id.activity_job_selection_LinearLayout_cleaner){
-            profession = "cleaner";
+            profession = "Cleaner";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
             Log.d("prof",profession);
             startActivity(intent);
         }
         else if(view.getId()==R.id.activity_job_selection_LinearLayout_electrician){
-            profession = "electrcian";
+            profession = "Electrician";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
             startActivity(intent);
         }
         else if(view.getId()==R.id.activity_job_selection_LinearLayout_plumber){
-            profession = "plumber";
+            profession = "Plumber";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
             startActivity(intent);
         }
         else if(view.getId()==R.id.activity_job_selection_LinearLayout_painter){
-            profession = "painter";
+            profession = "Painter";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
             startActivity(intent);
         }
         else {
-            profession = "handiman";
+            profession = "HandiMan";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
             startActivity(intent);

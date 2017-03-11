@@ -22,6 +22,8 @@ import com.app.handi.handi.Adapters.DisplayingHandiAdapter;
 import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,6 +32,7 @@ import java.util.ArrayList;
 public class JobSelectionActivity extends AppCompatActivity {
 
     DatabaseReference db;
+    FirebaseUser user;
     HelperHandiMan helper;
     DisplayingHandiAdapter adapter;
     ListView listView;
@@ -45,17 +48,19 @@ public class JobSelectionActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.activity_job_selection_ListView_handi_display);
 
         db = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 //        helper = new HelperHandiMan(db);
 //        adapter = new DisplayingHandiAdapter(helper.retrieve(profession),this);
 //        listView.setAdapter(adapter);
         Bundle bundle = getIntent().getExtras();
         profession = bundle.getString("profession");
+        Log.d("prof",profession);
         displayList();
     }
 
     public void displayList() {
         helper = new HelperHandiMan(db);
-        adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
+        adapter = new DisplayingHandiAdapter(helper.retrieve(profession,user), this);
         listView.setAdapter(adapter);
     }
 
