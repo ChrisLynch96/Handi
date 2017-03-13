@@ -21,7 +21,7 @@ public class LoginOrSignupActivity extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginOrSignupActivity.this, ChooseHandiActivity.class));
+            startActivity(new Intent(LoginOrSignupActivity.this, UserHomeActivity.class));
             finish();
         }
         setContentView(R.layout.activity_login_signup);
