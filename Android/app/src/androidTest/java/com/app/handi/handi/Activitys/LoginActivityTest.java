@@ -28,7 +28,7 @@ import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 
 /**
@@ -39,7 +39,8 @@ public class LoginActivityTest {
     @Rule
     public ActivityTestRule<LoginActivity> mActivtyTestRule = new ActivityTestRule<LoginActivity>(LoginActivity.class);
     private LoginActivity mActivity = null;
-    Instrumentation.ActivityMonitor monitorLogin = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+    Instrumentation.ActivityMonitor monitorLogin = getInstrumentation().addMonitor(UserHomeActivity.class.getName(),null,false);
+    Instrumentation.ActivityMonitor monitorResetPW= getInstrumentation().addMonitor(ResetPasswordActivity.class.getName(),null,false);
 
     @Before
     public void setUp() throws Exception {
@@ -55,11 +56,10 @@ public class LoginActivityTest {
     @Test
     public void testLoginActivity() {
         assertNotNull(mActivity.findViewById(R.id.btn_login));
-
         // Test empty form - no email address error message
         onView(withId(R.id.btn_login)).perform(click());
         onView(withText("Enter email address!"))
-                .inRoot(withDecorView(Matchers.not(mActivity.getWindow().getDecorView())))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
         try {
             Thread.sleep(1000);
@@ -69,7 +69,7 @@ public class LoginActivityTest {
 
         // Test no password error message
         onView(withId(R.id.email))
-                .perform(typeText("bobthebuilder@gmail.com"), closeSoftKeyboard());
+                .perform(typeText("richie_n@live.ie"), closeSoftKeyboard());
         onView(withId(R.id.btn_login)).perform(click());
         onView(withText("Enter password!"))
                 .inRoot(withDecorView(Matchers.not(mActivity.getWindow().getDecorView())))
@@ -80,18 +80,31 @@ public class LoginActivityTest {
             e.printStackTrace();
         }
 
-        Activity MainActivity;
+        //types in correct password so login is successful
+        onView(withId(R.id.password))
+                .perform(typeText("pineapple"), closeSoftKeyboard());
 
         try {
-            //Test login button on click if it goes to correct activity
-            onView(withId(R.id.btn_login)).perform(click());
-            MainActivity = getInstrumentation().waitForMonitorWithTimeout(monitorLogin, 10000);
-            assertNotNull(MainActivity);
-
-        } finally {
-            removeUserTearDown();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        MainActivity.finish();
+
+            //On Complete login form, click on login button and test if activity launch is correct
+        Activity UserHomeActivity;
+        onView(withId(R.id.btn_login)).perform(click());
+        UserHomeActivity = getInstrumentation().waitForMonitorWithTimeout(monitorLogin, 10000);
+        assertNotNull(UserHomeActivity);
+        UserHomeActivity.finish();
+    }
+
+    @Test
+    public void testResetPW(){
+        Activity ResetPWActivity;
+        onView(withId(R.id.btn_reset_password)).perform(click());
+        ResetPWActivity = getInstrumentation().waitForMonitorWithTimeout(monitorLogin, 10000);
+        assertNotNull(ResetPWActivity);
+        ResetPWActivity.finish();
     }
 
     public void removeUserTearDown(){
