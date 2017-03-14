@@ -50,11 +50,12 @@ public class HelperHandiMan {
             Log.d("stuff","storing");
         }
     }
-    public ArrayList<HandimanData> retrieve(String profession){
+    public ArrayList<HandimanData> retrieve(String profession,FirebaseUser user){
         db.child("HandiMen").child(profession).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 fetchData(dataSnapshot);
+                Log.d("called","inside");
             }
 
             @Override
