@@ -35,7 +35,7 @@
             android:label="@string/title_activity_user_home"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".Activitys.ChooseHandiActivity"/>
+        <activity android:name=".Activitys.ChooseHandiTypeActivity"/>
     </application>
 
 </manifest>

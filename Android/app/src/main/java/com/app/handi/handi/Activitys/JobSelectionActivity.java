@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+//Todo Killian Fix this it doens't work
 public class JobSelectionActivity extends AppCompatActivity {
 
     DatabaseReference db;
