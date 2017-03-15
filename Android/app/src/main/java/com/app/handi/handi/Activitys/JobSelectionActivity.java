@@ -33,7 +33,6 @@ import java.util.ArrayList;
 public class JobSelectionActivity extends AppCompatActivity {
 
     DatabaseReference db;
-    FirebaseUser user;
     HelperHandiMan helper;
     DisplayingHandiAdapter adapter;
     ListView listView;
@@ -49,7 +48,6 @@ public class JobSelectionActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.activity_job_selection_ListView_handi_display);
 
         db = FirebaseDatabase.getInstance().getReference();
-        user = FirebaseAuth.getInstance().getCurrentUser();
 //        helper = new HelperHandiMan(db);
 //        adapter = new DisplayingHandiAdapter(helper.retrieve(profession),this);
 //        listView.setAdapter(adapter);
@@ -61,7 +59,12 @@ public class JobSelectionActivity extends AppCompatActivity {
 
     public void displayList() {
         helper = new HelperHandiMan(db);
-        adapter = new DisplayingHandiAdapter(helper.retrieve(profession,user), this);
+        adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         listView.setAdapter(adapter);
 
         ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
