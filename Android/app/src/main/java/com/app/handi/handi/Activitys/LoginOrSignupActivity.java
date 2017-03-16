@@ -52,17 +52,20 @@ public class LoginOrSignupActivity extends AppCompatActivity {
                         id.add(Id);
                         Log.d("String", Id);
                     }
-                    for (int i = 0; i < id.size(); i++)
+                    for (int i = 0; i < id.size(); i++) {
                         Log.d("Stuff", id.get(i));
-                    if (id.size() > 0)
-                        isHandiMan = true;
+                        if(user.getUid().equals(id.get(i)))
+                            isHandiMan=true;
+                    }
+//                    if (id.size() > 0)
+//                        isHandiMan = true;
                     String siz = Integer.toString(id.size());
                     Log.d("size", siz);
                     if (!isHandiMan) {
                         startActivity(new Intent(LoginOrSignupActivity.this, UserHomeActivity.class));
                     }
                     else {
-                        startActivity(new Intent(LoginOrSignupActivity.this, ChooseHandiTypeActivity.class));
+                        startActivity(new Intent(LoginOrSignupActivity.this, HandiHomeActivity.class));
                     }
                     finish();
                 }

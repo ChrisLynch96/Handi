@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -16,12 +17,24 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
+    FirebaseUser user;
     private ProgressBar progressBar;
+    boolean isHandiMan = false;
+    ArrayList<String> id = new ArrayList<>();
+    DatabaseReference db;
 
     //Todo Check if the login is a handi or user so the system knows which screen to go to
     @Override
@@ -36,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         container.setAnimation(AnimationUtils.loadAnimation(this,R.anim.fade_in));
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        db = FirebaseDatabase.getInstance().getReference();
     }
 
     public void onClick(View v){
@@ -76,8 +90,58 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
-                                startActivity(intent);
+                                db.child("HandiMen").addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                        Log.d("cool", "cool");
+                                        id.clear();
+                                        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                                        for (DataSnapshot child : children) {
+                                            String Id = child.getKey();
+                                            id.add(Id);
+                                            Log.d("String", Id);
+                                        }
+                                        user = auth.getCurrentUser();
+                                        for (int i = 0; i < id.size(); i++) {
+                                            Log.d("Stuff", id.get(i));
+                                            if(user.getUid().equals(id.get(i)))
+                                                isHandiMan = true;
+                                        }
+//                                        if (id.size() > 0)
+//                                            isHandiMan = true;
+                                        String siz = Integer.toString(id.size());
+                                        Log.d("size", siz);
+                                        if (!isHandiMan) {
+                                            startActivity(new Intent(LoginActivity.this, UserHomeActivity.class));
+                                        }
+                                        else {
+                                            startActivity(new Intent(LoginActivity.this, HandiHomeActivity.class));
+                                        }
+                                        finish();
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+//                                Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
+//                                startActivity(intent);
                                 finish();
                             }
                         }
