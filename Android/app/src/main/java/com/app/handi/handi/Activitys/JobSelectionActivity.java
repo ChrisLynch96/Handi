@@ -29,10 +29,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+//Todo Killian Fix this it doens't work
 public class JobSelectionActivity extends AppCompatActivity {
 
     DatabaseReference db;
-    FirebaseUser user;
     HelperHandiMan helper;
     DisplayingHandiAdapter adapter;
     ListView listView;
@@ -48,7 +48,6 @@ public class JobSelectionActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.activity_job_selection_ListView_handi_display);
 
         db = FirebaseDatabase.getInstance().getReference();
-        user = FirebaseAuth.getInstance().getCurrentUser();
 //        helper = new HelperHandiMan(db);
 //        adapter = new DisplayingHandiAdapter(helper.retrieve(profession),this);
 //        listView.setAdapter(adapter);
@@ -60,8 +59,18 @@ public class JobSelectionActivity extends AppCompatActivity {
 
     public void displayList() {
         helper = new HelperHandiMan(db);
-        adapter = new DisplayingHandiAdapter(helper.retrieve(profession,user), this);
+        adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         listView.setAdapter(adapter);
+
+        ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
+                (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
+
+        setJobImageHeights(images);
     }
 
     public void onClick(View view) {
@@ -76,5 +85,14 @@ public class JobSelectionActivity extends AppCompatActivity {
         } else if (view.getId() == R.id.activity_job_selection_image_view_handiman) {
             profession = "HandiMan";
         }
+    }
+
+    public void setJobImageHeights(ImageView[] jobImageViews){
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x/5;
+        for (int i = 0; i < jobImageViews.length; i++)
+            jobImageViews[i].getLayoutParams().height = width;
     }
 }

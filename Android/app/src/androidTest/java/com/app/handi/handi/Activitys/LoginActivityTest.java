@@ -90,7 +90,7 @@ public class LoginActivityTest {
             e.printStackTrace();
         }
 
-            //On Complete login form, click on login button and test if activity launch is correct
+        //On Complete login form, click on login button and test if activity launch is correct
         Activity UserHomeActivity;
         onView(withId(R.id.btn_login)).perform(click());
         UserHomeActivity = getInstrumentation().waitForMonitorWithTimeout(monitorLogin, 10000);
@@ -102,7 +102,7 @@ public class LoginActivityTest {
     public void testResetPW(){
         Activity ResetPWActivity;
         onView(withId(R.id.btn_reset_password)).perform(click());
-        ResetPWActivity = getInstrumentation().waitForMonitorWithTimeout(monitorLogin, 10000);
+        ResetPWActivity = getInstrumentation().waitForMonitorWithTimeout(monitorResetPW, 10000);
         assertNotNull(ResetPWActivity);
         ResetPWActivity.finish();
     }
@@ -125,5 +125,4 @@ public class LoginActivityTest {
     public void tearDown() throws Exception {
         mActivity = null;
     }
-
 }

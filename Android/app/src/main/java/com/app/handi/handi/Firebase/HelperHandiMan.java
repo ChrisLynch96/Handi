@@ -14,12 +14,15 @@ import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class HelperHandiMan {
     DatabaseReference db;
     Boolean saved;
     ArrayList<HandimanData> HandiMen = new ArrayList<>();
+    ArrayList<String> Id = new ArrayList<>();
 
     public HelperHandiMan(){}
     public HelperHandiMan(DatabaseReference db){
@@ -40,7 +43,10 @@ public class HelperHandiMan {
         }
         return saved;
     }
-
+    public ArrayList<String> getList(){
+        Log.d("ok","greatSuccess");
+        return Id;
+    }
     private void fetchData(DataSnapshot dataSnapshot){
         HandiMen.clear();
         Iterable<DataSnapshot> children = dataSnapshot.getChildren();
@@ -50,7 +56,7 @@ public class HelperHandiMan {
             Log.d("stuff","storing");
         }
     }
-    public ArrayList<HandimanData> retrieve(String profession,FirebaseUser user){
+    public ArrayList<HandimanData> retrieve(String profession){
         db.child("HandiMen").child(profession).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

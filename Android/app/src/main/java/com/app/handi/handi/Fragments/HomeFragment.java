@@ -3,18 +3,12 @@ package com.app.handi.handi.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.app.handi.handi.Activitys.ChooseHandiActivity;
-import com.app.handi.handi.Activitys.LoginActivity;
-import com.app.handi.handi.Activitys.UserHomeActivity;
-import com.app.handi.handi.Activitys.UserSignupActivity;
+import com.app.handi.handi.Activitys.ChooseHandiTypeActivity;
 import com.app.handi.handi.R;
 
 /**
@@ -77,7 +71,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onClick(View view){
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //        .setAction("Action", null).show();
-                startActivity(new Intent(getActivity(), ChooseHandiActivity.class));
+                startActivity(new Intent(getActivity(), ChooseHandiTypeActivity.class));
             }
         });
         return view;
@@ -87,10 +81,5 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
 
     }
-
-//    public void onClick(View v) {
-//        if (v.getId() == R.id.fragment_home_floating_action_button_fab)
-//            Toast.makeText(this.getContext(), "This is working", Toast.LENGTH_LONG);
-//    }
 
 }

@@ -21,6 +21,6 @@ public class JobDescriptionActivity extends AppCompatActivity {
     }
 
     public void onClick(View v){
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, JobSelectionActivity.class));
     }
 }
