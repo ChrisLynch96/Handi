@@ -1,5 +1,6 @@
 package com.app.handi.handi.Activitys;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,7 @@ import com.app.handi.handi.Fragments.HandiHomeFragment;
 import com.app.handi.handi.Fragments.HandiSettingsFragment;
 import com.app.handi.handi.Fragments.HandiViewProfileFragment;
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HandiHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HandiHomeFragment.OnFragmentInteractionListener, HandiSettingsFragment.OnFragmentInteractionListener {
@@ -109,6 +111,11 @@ public class HandiHomeActivity extends AppCompatActivity
                     handiSettingsFragment,
                     handiSettingsFragment.getTag()
             ).commit();
+        }
+        else if (id == R.id.activity_handi_home_drawer_item_logout) {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            auth.signOut();
+            startActivity(new Intent(HandiHomeActivity.this, LoginOrSignupActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
