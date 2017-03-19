@@ -155,7 +155,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                                 Toast.makeText(HandiManSignupActivity.this, "Authentication failed." + task.getException(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(HandiManSignupActivity.this, MainActivity.class));
+                                startActivity(new Intent(HandiManSignupActivity.this, HandiHomeActivity.class));
                                 data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic);
                                 user = FirebaseAuth.getInstance().getCurrentUser();
                                 ref = FirebaseDatabase.getInstance().getReference();
