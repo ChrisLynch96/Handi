@@ -12,8 +12,9 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_handi_h"
+        android:src="@mipmap/handi_h"
         />
 
 </LinearLayout>
