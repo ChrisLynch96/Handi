@@ -15,11 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activitys.SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Activitys.UserSignupActivity" />
         <activity android:name=".Activitys.LoginActivity" />
@@ -28,7 +24,13 @@
         <activity android:name=".Activitys.LoginOrSignupActivity" />
         <activity android:name=".Activitys.HandiManSignupActivity" />
         <activity android:name=".Activitys.JobSelectionActivity" />
-        <activity android:name=".Activitys.JobDescriptionActivity" />
+        <activity android:name=".Activitys.JobDescriptionActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activitys.SignUpChoiceActivity" />
         <activity
             android:name=".Activitys.UserHomeActivity"
