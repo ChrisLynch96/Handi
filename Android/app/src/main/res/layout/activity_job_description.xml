@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="first name"
+            android:hint="First name"
             android:ems="10"
             android:maxLength="47"
             />
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="second name"
+            android:hint="Last name"
             android:ems="10"
             android:maxLength="47"
             />
@@ -74,7 +74,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/activity_job_description_job_description_container"
+        android:id="@+id/activity_job_description_address_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_job_description_second_name_container"
@@ -83,8 +83,27 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:hint="Address"
+            android:ems="10"
+            android:id="@+id/activity_job_description_edit_text_users_address"
+            android:maxLines="5"
+            android:maxLength="140"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_job_description_job_description_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_job_description_address_container"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:hint="Put job description here"
+            android:hint="Put Job Description Here"
             android:textAlignment="textStart"
             android:layout_gravity="start"
             android:ems="10"

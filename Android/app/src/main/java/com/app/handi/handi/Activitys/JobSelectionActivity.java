@@ -15,8 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.app.handi.handi.Adapters.DisplayingHandiAdapter;
 import com.app.handi.handi.DataTypes.HandimanData;
@@ -29,7 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-//Todo Killian Fix this it doens't work
 public class JobSelectionActivity extends AppCompatActivity {
 
     DatabaseReference db;
@@ -53,7 +54,7 @@ public class JobSelectionActivity extends AppCompatActivity {
 //        listView.setAdapter(adapter);
         Bundle bundle = getIntent().getExtras();
         profession = bundle.getString("profession");
-        Log.d("prof",profession);
+        Log.d("prof2",profession);
         displayList();
     }
 
@@ -66,7 +67,12 @@ public class JobSelectionActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         listView.setAdapter(adapter);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(JobSelectionActivity.this,"popo",Toast.LENGTH_SHORT).show();
+            }
+        });
         ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
                 (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
 
