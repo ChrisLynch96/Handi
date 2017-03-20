@@ -55,7 +55,26 @@ public class JobSelectionActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         profession = bundle.getString("profession");
         Log.d("prof2",profession);
-        displayList();
+        //displayList();
+        helper = new HelperHandiMan(db);
+        adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(JobSelectionActivity.this,"popo",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(JobSelectionActivity.this,JobDescriptionActivity.class));
+            }
+        });
+        ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
+                (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
+
+        setJobImageHeights(images);
     }
 
     public void displayList() {

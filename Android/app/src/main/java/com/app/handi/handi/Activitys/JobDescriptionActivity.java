@@ -56,12 +56,9 @@ public class JobDescriptionActivity extends AppCompatActivity {
         //inputFirstName.setText("alrite alrite alrite");
         inputLastName = (EditText) findViewById(R.id.activity_job_description_edit_text_second_name);
         //inputLastName.setText("okokokok");
-        inputTitle = (EditText) findViewById(R.id.activity_job_description_text_view_title);
+        inputTitle = (EditText) findViewById(R.id.activity_job_description_edit_text_title);
         inputAddress = (EditText) findViewById(R.id.activity_job_description_edit_text_users_address);
         inputDescription = (EditText) findViewById(R.id.activity_job_description_edit_text_users_job_description);
-        Bundle bundle = getIntent().getExtras();
-        profession = bundle.getString("profession");
-        Log.d("prof",profession);
     }
 
     public void onClick(View v){

@@ -64,12 +64,12 @@ public class DisplayingHandiAdapter extends BaseAdapter {
         emailTxt.setText(h.getEmail());
         numTxt.setText(h.getNumber());
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(c, h.getName(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        convertView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(c, h.getName(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return convertView;
     }
