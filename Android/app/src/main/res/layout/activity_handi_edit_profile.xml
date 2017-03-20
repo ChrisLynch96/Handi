@@ -20,13 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
             android:text="Your Profile"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/stan_header_text_size"
             android:textStyle="bold" />
 
         <android.support.design.widget.TextInputLayout
@@ -37,7 +36,7 @@
 
             <EditText
                 android:id="@+id/activity_handi_edit_profile_text_view_handi_first_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
@@ -167,6 +166,7 @@
             android:background="@color/norm_pink"
             android:onClick="onClick"
             android:text="Take profile picture"
+            android:textSize="@dimen/stan_text_size"
             android:textColor="@color/white" />
 
         <ImageView
@@ -184,6 +184,7 @@
             android:layout_height="@dimen/stan_button_height"
             android:background="@color/norm_pink"
             android:text="update profile"
+            android:textSize="@dimen/stan_text_size"
             android:textColor="@color/white"
             android:layout_below="@+id/activity_handi_edit_profile_handi_picture_image"
             android:layout_centerHorizontal="true"

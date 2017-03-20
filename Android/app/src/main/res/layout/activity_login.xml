@@ -82,6 +82,8 @@
                 android:layout_marginTop="20dip"
                 android:background="@color/norm_pink"
                 android:text="@string/Login"
+                android:textAllCaps="false"
+                android:textSize="@dimen/stan_header_text_size"
                 android:textColor="@android:color/white"
                 android:onClick="onClick"/>
 
@@ -90,9 +92,10 @@
                 android:layout_below="@id/btn_login"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
+                android:layout_marginTop="20dp"
                 android:background="@color/norm_pink"
                 android:text="@string/btn_forgot_password"
+                android:textSize="@dimen/stan_header_text_size"
                 android:textAllCaps="false"
                 android:textColor="@color/textColor"
                 android:onClick="onClick"/>

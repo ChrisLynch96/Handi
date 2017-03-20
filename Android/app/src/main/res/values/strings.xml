@@ -31,6 +31,8 @@
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">Enter your email below and we will send you reset instructions</string>
     <string name="handiman_name">Name</string>
+    <string name="Signup">Signup</string>
+    <string name="Signup_text">Chose below to register as either a Handi or an User!</string>
     <string-array name="jobs_array">
         <item>Plumber</item>
         <item>Electrician</item>
