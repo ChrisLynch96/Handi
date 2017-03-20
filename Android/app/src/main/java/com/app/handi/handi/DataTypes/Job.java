@@ -8,14 +8,26 @@ public class Job {
     private String Description;
     private String Status;
     private boolean isAccepted;
+    private String Title;
+    private String Address;
+    private String FirstName;
+    private String LastName;
 
     public Job(){}
-    public Job(String Description,String status,boolean isAccepted){
+    public Job(String Description,String status,boolean isAccepted,String Title,String Address,String FirstName,String LastName){
+        this.Title = Title;
+        this.Address = Address;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
         this.Description = Description;
         this.Status = status;
         this.isAccepted = isAccepted;
     }
 
+    public String getTitle(){return this.Title;}
+    public String getAddress(){return this.Address;}
+    public String getFirstName(){return this.FirstName;}
+    public String getLastName(){return this.LastName;}
     public String getDescription(){
         return this.Description;
     }
