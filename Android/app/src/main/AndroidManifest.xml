@@ -28,18 +28,20 @@
         <activity android:name=".Activitys.LoginOrSignupActivity" />
         <activity android:name=".Activitys.HandiManSignupActivity" />
         <activity android:name=".Activitys.JobSelectionActivity" />
-        <activity android:name=".Activitys.JobDescriptionActivity" />
+        <activity android:name=".Activitys.JobDescriptionActivity" >
+        </activity>
         <activity android:name=".Activitys.SignUpChoiceActivity" />
         <activity
             android:name=".Activitys.UserHomeActivity"
             android:label="@string/title_activity_user_home"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".Activitys.ChooseHandiTypeActivity" />
         <activity
             android:name=".Activitys.HandiHomeActivity"
             android:label="@string/title_activity_handi_home"
-            android:theme="@style/AppTheme">
-
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Activitys.AdminActivity"></activity>
+        <activity android:name=".Activitys.HandiEditProfileActivity">
         </activity>
     </application>
 

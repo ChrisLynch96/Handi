@@ -2,12 +2,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.app.handi.handi.Fragments.HandiHomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Killian insert jobs offered into list view -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is the handi home fragment"/>
+    <ListView
+        android:id="@+id/fragment_handi_home_list_view_jobs_status"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+    </ListView>
 
 </FrameLayout>

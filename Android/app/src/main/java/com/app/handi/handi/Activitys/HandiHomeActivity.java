@@ -1,10 +1,9 @@
 package com.app.handi.handi.Activitys;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
+import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,12 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.app.handi.handi.Fragments.HandiHomeFragment;
+import com.app.handi.handi.Fragments.HandiSettingsFragment;
+import com.app.handi.handi.Fragments.HandiViewProfileFragment;
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HandiHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HandiHomeFragment.OnFragmentInteractionListener, HandiSettingsFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +28,6 @@ public class HandiHomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_handi_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -44,6 +37,14 @@ public class HandiHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("hello", "it's me");
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(
+                R.id.content_handi_home,
+                handiHomeFragment,
+                handiHomeFragment.getTag()
+        ).commit();
     }
 
     @Override
@@ -71,9 +72,9 @@ public class HandiHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -85,15 +86,44 @@ public class HandiHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.activity_handi_home_drawer_item_home) {
-            Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.activity_handi_home_drawer_item_profile) {
-            Toast.makeText(this, "profile", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.activity_handi_home_drawer_item_settings) {
-            Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show();
+            HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("somebody", "once told me");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.content_handi_home,
+                    handiHomeFragment,
+                    handiHomeFragment.getTag()
+            ).commit();
         }
-
+        else if (id == R.id.activity_handi_home_drawer_item_profile) {
+            HandiViewProfileFragment handiViewProfileFragment = new HandiViewProfileFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(
+                    R.id.content_handi_home,
+                    handiViewProfileFragment,
+                    handiViewProfileFragment.getTag()
+            ).commit();
+        }
+        else if (id == R.id.activity_handi_home_drawer_item_settings) {
+            HandiSettingsFragment handiSettingsFragment = HandiSettingsFragment.newInstance("I ain't", "The sharpest tool");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.content_handi_home,
+                    handiSettingsFragment,
+                    handiSettingsFragment.getTag()
+            ).commit();
+        }
+        else if (id == R.id.activity_handi_home_drawer_item_logout) {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            auth.signOut();
+            startActivity(new Intent(HandiHomeActivity.this, LoginOrSignupActivity.class));
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

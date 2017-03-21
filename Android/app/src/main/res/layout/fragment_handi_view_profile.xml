@@ -1,0 +1,112 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.handi.handi.Fragments.HandiViewProfileFragment">
+
+    <!-- TODO: Killian pull handi data from database and display -->
+
+
+    <TextView
+        android:id="@+id/fragment_handi_view_profile_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Your Profile"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fragment_handi_view_profile_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_handi_view_profile_header"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/fragment_handi_view_profile_text_view_spacing"
+        android:text="First name: John"
+        android:ems="10"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/fragment_handi_view_profile_second_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_handi_view_profile_first_name"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/fragment_handi_view_profile_text_view_spacing"
+        android:textSize="20sp"
+        android:text="Second name: Doe"/>
+
+    <TextView
+        android:id="@+id/fragment_handi_view_profile_text_view_DOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_handi_view_profile_second_name"
+        android:text="D.O.B: 06/10/1996"
+        android:layout_marginLeft="20dp"
+        android:textSize="20sp"
+        android:layout_marginTop="@dimen/fragment_handi_view_profile_text_view_spacing"
+        />
+
+    <TextView
+        android:id="@+id/fragment_handi_view_profile_text_view_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_handi_view_profile_text_view_DOB"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/fragment_handi_view_profile_text_view_spacing"
+        android:text="Email: test@test.com"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/fragment_handi_view_profile_text_view_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_handi_view_profile_text_view_email"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/fragment_handi_view_profile_text_view_spacing"
+        android:text="Mobile: 0856969696"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/fragment_handi_view_profile_text_view_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_handi_view_profile_text_view_mobile"
+        android:layout_marginTop="@dimen/fragment_handi_view_profile_text_view_spacing"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:text="Profile picture:"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_handi_view_profile_text_view_mobile"
+        android:layout_toRightOf="@id/fragment_handi_view_profile_text_view_picture"
+        android:layout_marginTop="@dimen/fragment_handi_view_profile_text_view_spacing"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <Button
+        android:id="@+id/fragment_handi_view_profile_button_edit_profile"
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@color/norm_pink"
+        android:text="Edit Details"
+        android:textColor="@color/white"
+        android:textStyle="normal"
+        android:textAllCaps="false" />
+
+</RelativeLayout>

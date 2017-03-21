@@ -14,7 +14,10 @@
     <dimen name="logo_top_margin">125dp</dimen>
     <dimen name="standard_text_size">20sp</dimen>
     <dimen name="square_button">30dp</dimen>
+    <dimen name="fragment_handi_view_profile_text_view_spacing">15dp</dimen>
+    <dimen name="stan_text_size">15sp</dimen>
+    <dimen name="stan_header_text_size">20sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">25dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
 </resources>

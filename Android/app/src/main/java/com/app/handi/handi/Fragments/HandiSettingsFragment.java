@@ -1,6 +1,5 @@
 package com.app.handi.handi.Fragments;
 
-import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,24 +7,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.app.handi.handi.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HandiHomeFragment.OnFragmentInteractionListener} interface
+ * {@link HandiSettingsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link HandiHomeFragment#newInstance} factory method to
+ * Use the {@link HandiSettingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HandiHomeFragment extends Fragment {
+public class HandiSettingsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    ListView listView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -33,7 +30,7 @@ public class HandiHomeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public HandiHomeFragment() {
+    public HandiSettingsFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +40,11 @@ public class HandiHomeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HandiHomeFragment.
+     * @return A new instance of fragment HandiSettingsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HandiHomeFragment newInstance(String param1, String param2) {
-        HandiHomeFragment fragment = new HandiHomeFragment();
+    public static HandiSettingsFragment newInstance(String param1, String param2) {
+        HandiSettingsFragment fragment = new HandiSettingsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,14 +59,13 @@ public class HandiHomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        listView = (ListView) getActivity().findViewById(R.id.fragment_handi_home_list_view_jobs_status);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_handi_home, container, false);
+        return inflater.inflate(R.layout.fragment_handi_settings, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

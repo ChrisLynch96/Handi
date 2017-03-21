@@ -16,13 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
         android:text="Enter Credentials"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/stan_header_text_size"
         android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
@@ -163,6 +162,7 @@
         android:background="@color/norm_pink"
         android:onClick="onClick"
         android:text="Take profile picture"
+        android:textSize="@dimen/stan_text_size"
         android:textColor="@color/white" />
 
     <ImageView
@@ -176,14 +176,15 @@
 
     <Button
         android:id="@+id/sign_up_handi_button"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/stan_button_width"
         android:layout_height="wrap_content"
         android:layout_below="@id/handi_picture_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@color/norm_pink"
         android:onClick="onClick"
-        android:text="Signup"
+        android:text="@string/Signup"
+        android:textSize="@dimen/stan_text_size"
         android:textColor="@color/white" />
 
 </RelativeLayout>

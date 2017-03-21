@@ -9,14 +9,4 @@
     tools:context="com.app.handi.handi.Activitys.UserHomeActivity"
     tools:showIn="@layout/app_bar_user_home">
 
-    <!--Work in progress: will display current jobs to user-->
-    <ListView
-        android:layout_width="@dimen/content_user_home_list_view_height"
-        android:layout_height="@dimen/content_user_home_list_view_width"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp">
-
-
-    </ListView>
-
 </RelativeLayout>

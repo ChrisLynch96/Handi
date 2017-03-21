@@ -11,20 +11,29 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.DataTypes.User;
+import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class UserSignupActivity extends AppCompatActivity {
 
-    private EditText inputEmail, inputPassword;
+    private EditText inputEmail, inputPassword, inputFirstName, inputLastName;
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private FirebaseUser user;
+    private DatabaseReference ref;
+    private User users;
+    boolean saved = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,8 @@ public class UserSignupActivity extends AppCompatActivity {
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
+        inputFirstName = (EditText) findViewById(R.id.firstName);
+        inputLastName = (EditText) findViewById(R.id.lastName);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +64,8 @@ public class UserSignupActivity extends AppCompatActivity {
 
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
+                final String firstName = inputFirstName.getText().toString().trim();
+                final String lastName = inputLastName.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -61,6 +74,16 @@ public class UserSignupActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(TextUtils.isEmpty(firstName)) {
+                    Toast.makeText(getApplicationContext(), "Enter first name!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(TextUtils.isEmpty(lastName)) {
+                    Toast.makeText(getApplicationContext(), "Enter last name!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -85,6 +108,17 @@ public class UserSignupActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     startActivity(new Intent(UserSignupActivity.this, UserHomeActivity.class));
+                                    users = new User(firstName,lastName);
+                                    user = FirebaseAuth.getInstance().getCurrentUser();
+                                    ref = FirebaseDatabase.getInstance().getReference();
+                                    HelperUser db = new HelperUser(ref);
+                                    saved = db.save(users,user);
+                                    if(saved){
+                                        Toast.makeText(UserSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
+                                    }
+                                    else{
+                                        Toast.makeText(UserSignupActivity.this,"Not Saved."+task.getException(),Toast.LENGTH_SHORT).show();
+                                    }
                                     finish();
                                 }
                             }
