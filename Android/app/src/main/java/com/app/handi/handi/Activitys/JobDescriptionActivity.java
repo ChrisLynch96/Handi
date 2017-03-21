@@ -95,8 +95,6 @@ public class JobDescriptionActivity extends AppCompatActivity {
         Job job = new Job(Description,"Incomplete",false,title,address,firstName,lastName);
         HelperJob hjob = new HelperJob(db);
         hjob.save(job,user);
-        Intent intent = new Intent(this, JobSelectionActivity.class);
-        intent.putExtra("profession",profession);
-        startActivity(intent);
+        startActivity(new Intent(JobDescriptionActivity.this, UserHomeActivity.class));
     }
 }
