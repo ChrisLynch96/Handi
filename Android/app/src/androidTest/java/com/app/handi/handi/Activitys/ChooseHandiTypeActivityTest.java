@@ -32,8 +32,10 @@ public class ChooseHandiTypeActivityTest {
         mActivity = mActivtyTestRule.getActivity();
     }
 
+    //TODO launch to specific screens in the class
     @Test
     public void testCleanerLaunch (){
+        //tests cleaner image is present and that it launches the correct activity
         assertNotNull(mActivity.findViewById(R.id.activity_job_selection_LinearLayout_cleaner));
         onView(withId(R.id.activity_job_selection_LinearLayout_cleaner)).perform(click());
         Activity cleanerLaunch;

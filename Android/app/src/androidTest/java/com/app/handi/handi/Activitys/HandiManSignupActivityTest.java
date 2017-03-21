@@ -171,6 +171,11 @@ public class HandiManSignupActivityTest {
             MainActivity = getInstrumentation().waitForMonitorWithTimeout(monitor,10000);
             assertNotNull(MainActivity);
         } finally {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             removeUserTearDown();
         }
         MainActivity.finish();
