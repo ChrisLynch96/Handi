@@ -59,7 +59,7 @@ public class JobSelectionActivity extends AppCompatActivity {
         helper = new HelperHandiMan(db);
         adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
         try {
-            Thread.sleep(100);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -67,8 +67,18 @@ public class JobSelectionActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(JobSelectionActivity.this,"popo",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(JobSelectionActivity.this,JobDescriptionActivity.class));
+                HandimanData h = (HandimanData) view.getTag();
+                if(h==null)
+                    Log.d("m","notok");
+                else {
+                    Toast.makeText(getBaseContext(), h.getName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(JobSelectionActivity.this, HandiProfileView.class);
+                    intent.putExtra("HandiName", h.getName());
+                    intent.putExtra("HandiPhone",h.getNumber());
+                    intent.putExtra("HandiEmail",h.getEmail());
+                    startActivity(intent);
+                }
+                //startActivity(new Intent(JobSelectionActivity.this,JobDescriptionActivity.class));
             }
         });
         ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),

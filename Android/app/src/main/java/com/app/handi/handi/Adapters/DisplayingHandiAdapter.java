@@ -64,6 +64,7 @@ public class DisplayingHandiAdapter extends BaseAdapter {
         emailTxt.setText(h.getEmail());
         numTxt.setText(h.getNumber());
 
+        convertView.setTag(h);
 //        convertView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

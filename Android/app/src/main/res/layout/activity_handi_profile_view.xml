@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.handi.handi.Activitys.HandiProfileView">
+
+    <TextView
+        android:id="@+id/handi_view_profile_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/stan_header_text_size"
+        android:textStyle="bold"
+        android:text="Hello World"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:text="Hello World"
+        android:id="@+id/handi_view_profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/handi_view_profile_header"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/handi_view_profile_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/handi_view_profile_name"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Hello World"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/handi_view_profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/handi_view_profile_number"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Hello World"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/handi_view_profile_button_offer_job"
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@color/norm_pink"
+        android:text="Offer Job"
+        android:textColor="@color/white"
+        android:textStyle="normal"
+        android:textAllCaps="false" />
+
+</RelativeLayout>
