@@ -31,12 +31,11 @@
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">Enter your email below and we will send you reset instructions</string>
     <string name="handiman_name">Name</string>
-<<<<<<< HEAD
     <string name="card_number">Card Number</string>
-=======
+
     <string name="Signup">Signup</string>
     <string name="Signup_text">Chose below to register as either a Handi or an User!</string>
->>>>>>> 7137f87b6f9b89f14f11a1ba6a9ece1f3482cf42
+
     <string-array name="jobs_array">
         <item>Plumber</item>
         <item>Electrician</item>

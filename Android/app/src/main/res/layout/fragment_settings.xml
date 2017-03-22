@@ -1,12 +1,163 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.app.handi.handi.Fragments.SettingsFragment">
-
+<!--
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/temporary_settings_text"
         />
-</FrameLayout>
+-->
+    <TextView
+        android:id="@+id/card_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Card Details"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/stan_header_text_size"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/card_number_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your card number:"
+        android:layout_below="@+id/card_details"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:ems="10"
+        android:textSize="16dp"/>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_number_label">
+
+        <EditText
+            android:id="@+id/cardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif"
+            android:ems="10"
+            android:hint="4545 5656 6767 7878 "
+            android:inputType="number"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/expiry_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your expiry date:"
+        android:layout_below="@+id/card_number"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:textSize="16dp"
+        android:ems="10"/>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/month_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expiry_date_label">
+
+        <EditText
+            android:id="@+id/month"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:fontFamily="sans-serif"
+            android:ems="10"
+            android:hint="MM"
+            android:layout_marginLeft="20dp" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/year_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expiry_date_label"
+        android:layout_toRightOf="@+id/forward_slash">
+
+        <EditText
+            android:id="@+id/year"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:fontFamily="sans-serif"
+            android:ems="10"
+            android:hint="YY" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/forward_slash"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="/"
+        android:layout_alignBottom="@+id/month_container"
+        android:layout_toRightOf="@+id/month_container" />
+
+    <TextView
+        android:id="@+id/cvc_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your cvc number:"
+        android:layout_below="@+id/month_container"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:textSize="16dp"
+        android:ems="10"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/cvc_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cvc_label">
+
+        <EditText
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/cvc"
+            android:hint="cvc"
+            android:fontFamily="sans-serif"
+            android:ems="10"
+            android:inputType="number"
+            android:layout_marginLeft="20dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cvc_container">
+        <!-- android:layout_toRightOf="@+id/date_container"> -->
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK!"
+            android:id="@+id/okButton"
+            android:onClick="submitCard"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+</RelativeLayout>
