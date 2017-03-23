@@ -12,9 +12,10 @@ public class Job {
     private String Address;
     private String FirstName;
     private String LastName;
+    private String id;
 
     public Job(){}
-    public Job(String Description,String status,boolean isAccepted,String Title,String Address,String FirstName,String LastName){
+    public Job(String Description,String status,boolean isAccepted,String Title,String Address,String FirstName,String LastName,String id){
         this.Title = Title;
         this.Address = Address;
         this.FirstName = FirstName;
@@ -22,6 +23,7 @@ public class Job {
         this.Description = Description;
         this.Status = status;
         this.isAccepted = isAccepted;
+        this.id = id;
     }
 
     public String getTitle(){return this.Title;}
@@ -34,4 +36,5 @@ public class Job {
     public String getStatus(){
         return this.Status;
     }
+    public String getId() {return this.id;}
 }

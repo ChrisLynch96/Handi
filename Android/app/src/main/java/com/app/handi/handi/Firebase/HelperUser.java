@@ -3,6 +3,7 @@ package com.app.handi.handi.Firebase;
 import android.util.Log;
 
 import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.DataTypes.User;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,12 +28,26 @@ public class HelperUser {
         this.db = db;
     }
 
-    public Boolean save(User users, FirebaseUser user){
+    public Boolean saveInfo(User users, FirebaseUser user){
         if(users==null)
             saved = false;
         else{
             try{
-                db.child("Users").child(user.getUid()).setValue(users);
+                db.child("Users").child(user.getUid()).child("Info").setValue(users);
+                saved = true;
+            }catch(DatabaseException e){
+                e.printStackTrace();
+                saved = false;
+            }
+        }
+        return saved;
+    }
+    public Boolean saveJob(Job job, FirebaseUser user,String id){
+        if(job==null)
+            saved = false;
+        else{
+            try{
+                db.child("Users").child(user.getUid()).child("Jobs").child(id).setValue(job);
                 saved = true;
             }catch(DatabaseException e){
                 e.printStackTrace();

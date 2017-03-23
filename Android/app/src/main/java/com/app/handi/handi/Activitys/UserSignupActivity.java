@@ -62,7 +62,7 @@ public class UserSignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email = inputEmail.getText().toString().trim();
+                final String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
                 final String firstName = inputFirstName.getText().toString().trim();
                 final String lastName = inputLastName.getText().toString().trim();
@@ -108,11 +108,12 @@ public class UserSignupActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     startActivity(new Intent(UserSignupActivity.this, UserHomeActivity.class));
-                                    users = new User(firstName,lastName);
                                     user = FirebaseAuth.getInstance().getCurrentUser();
+                                    assert user != null;
+                                    users = new User(firstName,lastName,email,user.getUid());
                                     ref = FirebaseDatabase.getInstance().getReference();
                                     HelperUser db = new HelperUser(ref);
-                                    saved = db.save(users,user);
+                                    saved = db.saveInfo(users,user);
                                     if(saved){
                                         Toast.makeText(UserSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
                                     }

@@ -156,11 +156,12 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                                         Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(HandiManSignupActivity.this, HandiHomeActivity.class));
-                                data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic);
                                 user = FirebaseAuth.getInstance().getCurrentUser();
+                                assert user != null;
+                                data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic,user.getUid());
                                 ref = FirebaseDatabase.getInstance().getReference();
                                 HelperHandiMan db = new HelperHandiMan(ref);
-                                saved = db.save(data,user);
+                                saved = db.saveInfo(data,user);
                                 if(saved){
                                     Toast.makeText(HandiManSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
                                 }
