@@ -8,14 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.app.handi.handi.Activitys.LoginActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -100,6 +92,18 @@
                 android:textColor="@color/textColor"
                 android:onClick="onClick"/>
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="@dimen/progress_bar_width_height"
+                android:layout_height="@dimen/progress_bar_width_height"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                android:layout_below="@id/btn_reset_password"
+                android:layout_centerHorizontal="true"/>
+
         </RelativeLayout>
+
+
+
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
-                            progressBar.setVisibility(View.GONE);
                             if (!task.isSuccessful()) {
                                 // there was an error
                                 if (password.length() < 6) {
@@ -140,8 +139,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
-//                                Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
-//                                startActivity(intent);
                                 finish();
                             }
                         }

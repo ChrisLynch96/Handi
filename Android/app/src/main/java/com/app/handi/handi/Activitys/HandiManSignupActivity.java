@@ -92,7 +92,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
             HandiNo = (EditText) findViewById(R.id.handi_phone_number);
             HandiPassword = (EditText) findViewById(R.id.handi_password_enter1);
             HandiConPassword = (EditText) findViewById(R.id.handi_password_enter2);
-            progressBar = (ProgressBar) findViewById(R.id.progressBar);
+            progressBar = (ProgressBar) findViewById(R.id.activity_handiman_signup_progress_bar_pBar);
 
             final String email = HandiEmail.getText().toString().trim();
             final String password = HandiPassword.getText().toString().trim();

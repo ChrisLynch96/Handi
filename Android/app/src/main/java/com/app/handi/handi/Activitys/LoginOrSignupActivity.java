@@ -36,11 +36,13 @@ public class LoginOrSignupActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_signup);
         db = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.activity_login_signup_progress_bar_pBar);
         if (user != null) {
+            progressBar.setVisibility(View.VISIBLE);
             db.child("HandiMen").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -57,8 +59,6 @@ public class LoginOrSignupActivity extends AppCompatActivity {
                         if(user.getUid().equals(id.get(i)))
                             isHandiMan=true;
                     }
-//                    if (id.size() > 0)
-//                        isHandiMan = true;
                     String siz = Integer.toString(id.size());
                     Log.d("size", siz);
                     if (!isHandiMan) {
@@ -92,7 +92,6 @@ public class LoginOrSignupActivity extends AppCompatActivity {
             });
         }
         else {
-            setContentView(R.layout.activity_login_signup);
             overridePendingTransition(0,0);
             View container = findViewById(R.id.buttons_container);
             container.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
@@ -101,8 +100,8 @@ public class LoginOrSignupActivity extends AppCompatActivity {
     }
     public void onClick(View v){
         if (v.getId() == R.id.login_button)
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(LoginOrSignupActivity.this, LoginActivity.class));
         else
-            startActivity(new Intent(this, SignUpChoiceActivity.class));
+            startActivity(new Intent(LoginOrSignupActivity.this, SignUpChoiceActivity.class));
     }
 }
