@@ -41,6 +41,11 @@ public class LoginOrSignupActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         progressBar = (ProgressBar) findViewById(R.id.activity_login_signup_progress_bar_pBar);
+
+        overridePendingTransition(0,0);
+        View container = findViewById(R.id.buttons_container);
+        container.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
+
         if (user != null) {
             progressBar.setVisibility(View.VISIBLE);
             db.child("HandiMen").addChildEventListener(new ChildEventListener() {
@@ -90,11 +95,6 @@ public class LoginOrSignupActivity extends AppCompatActivity {
 
                 }
             });
-        }
-        else {
-            overridePendingTransition(0,0);
-            View container = findViewById(R.id.buttons_container);
-            container.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
         }
 
     }
