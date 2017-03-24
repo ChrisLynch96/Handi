@@ -96,7 +96,7 @@ public class HomeFragment extends ListFragment implements View.OnClickListener {
         HelperUser helperUser = new HelperUser(db);
         user = FirebaseAuth.getInstance().getCurrentUser();
         job=helperUser.retrieve(user);
-        DisplayJobAdapter adapter = new DisplayJobAdapter(helperUser.retrieve(user),getActivity());
+        DisplayJobAdapter adapter = new DisplayJobAdapter(job,getActivity());
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
