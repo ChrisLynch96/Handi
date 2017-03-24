@@ -41,7 +41,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="first name"
+                android:hint="name"
                 android:inputType="textPersonName" />
 
         </android.support.design.widget.TextInputLayout>
@@ -51,16 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/activity_handi_edit_profile_handi_first_name_container">
-
-            <EditText
-                android:id="@+id/activity_handi_edit_profile_text_view_handi_second_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="second name"
-                android:inputType="textPersonName" />
 
         </android.support.design.widget.TextInputLayout>
 

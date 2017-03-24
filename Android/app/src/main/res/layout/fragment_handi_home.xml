@@ -1,24 +1,52 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.app.handi.handi.Fragments.HandiHomeFragment">
 
-    <!-- TODO: Killian insert jobs offered into list view -->
+
+    <ListView
+        android:id="@+id/fragment_handi_home_list_view_jobs"
+        android:layout_width="wrap_content"
+        android:layout_height="204dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </ListView>
+
+    <TextView
+        android:id="@+id/textView_Jobs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Jobs"
+        android:textSize="20sp"
+        android:textColor="@color/dark_pink"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="37dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is the handi home fragment"/>
+        android:id="@+id/textview_Offers"
+        android:text="@string/Offers"
+        android:textSize="20sp"
+        android:textColor="@color/dark_pink"
+        android:layout_above="@+id/fragment_handi_home_list_view_jobs_offers"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <ListView
-        android:id="@+id/fragment_handi_home_list_view_jobs_status"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/fragment_handi_home_list_view_jobs_offers"
+        android:layout_width="wrap_content"
+        android:layout_height="204dp"
+        android:layout_below="@+id/fragment_handi_home_list_view_jobs"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
     </ListView>
-
-</FrameLayout>
+</RelativeLayout>

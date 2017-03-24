@@ -95,10 +95,8 @@ public class HomeFragment extends ListFragment implements View.OnClickListener {
         stuff.add("hi");
         HelperUser helperUser = new HelperUser(db);
         user = FirebaseAuth.getInstance().getCurrentUser();
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-//                android.R.layout.simple_list_item_1, values);
         job=helperUser.retrieve(user);
-        DisplayJobAdapter adapter = new DisplayJobAdapter(helperUser.retrieve(user),getActivity());
+        DisplayJobAdapter adapter = new DisplayJobAdapter(job,getActivity());
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
