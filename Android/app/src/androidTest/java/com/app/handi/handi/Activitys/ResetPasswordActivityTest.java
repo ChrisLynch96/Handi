@@ -60,8 +60,13 @@ public class ResetPasswordActivityTest {
         }
 
         //On click with correct email
-        onView(withId(R.id.email)).perform(typeText("bobthebuilder@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText("richie_n@live.ie"), closeSoftKeyboard());
         onView(withId(R.id.btn_reset_password)).perform(click());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         onView(withText("We have sent you instructions to reset your password!"))
                 .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
@@ -75,6 +80,7 @@ public class ResetPasswordActivityTest {
         //On Click with incorrect email
         onView(withId(R.id.email)).perform(typeText("richieliveie"), closeSoftKeyboard());
         onView(withId(R.id.btn_reset_password)).perform(click());
+
         onView(withText("Failed to send reset email!"))
                 .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
