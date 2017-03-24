@@ -27,9 +27,10 @@ public class LoginOrSignupActivityTest {
     public ActivityTestRule<LoginOrSignupActivity> mActivtyTestRule = new ActivityTestRule<LoginOrSignupActivity>(LoginOrSignupActivity.class);
     private LoginOrSignupActivity mActivity = null;
     Instrumentation.ActivityMonitor LogInMonitor = getInstrumentation().addMonitor(LoginActivity.class.getName(),null,false);
-    Instrumentation.ActivityMonitor SignUpMonitor = getInstrumentation().addMonitor(LoginActivity.class.getName(),null,false);
+    Instrumentation.ActivityMonitor SignUpMonitor = getInstrumentation().addMonitor(SignUpChoiceActivity.class.getName(),null,false);
     @Before
     public void setUp() throws Exception {
+
         mActivity = mActivtyTestRule.getActivity();
     }
 
