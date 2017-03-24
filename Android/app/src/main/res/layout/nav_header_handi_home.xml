@@ -12,9 +12,11 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingTop="@dimen/nav_header_title_padding_top"
+        android:paddingBottom="@dimen/nav_header_title_padding_bottom"
+        android:paddingLeft="@dimen/nav_header_title_padding_left"
         android:scaleType="fitXY"
-        android:src="@mipmap/handi_h"
+        android:src="@drawable/ic_handi_text"
         />
 
 </LinearLayout>
