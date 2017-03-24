@@ -1,5 +1,7 @@
 package com.app.handi.handi.DataTypes;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by Killian on 16/03/2017.
  */
@@ -26,6 +28,7 @@ public class Job {
         this.id = id;
     }
 
+
     public String getTitle(){return this.Title;}
     public String getAddress(){return this.Address;}
     public String getFirstName(){return this.FirstName;}
@@ -37,4 +40,41 @@ public class Job {
         return this.Status;
     }
     public String getId() {return this.id;}
+
+    public void setAccepted(boolean accepted) {
+        isAccepted = accepted;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public boolean isAccepted() {
+        return isAccepted;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
+    }
+
 }
