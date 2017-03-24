@@ -38,7 +38,7 @@ public class UserSignupActivityTest {
     @Rule
     public ActivityTestRule<UserSignupActivity> mActivtyTestRule = new ActivityTestRule<UserSignupActivity>(UserSignupActivity.class);
     private UserSignupActivity mActivity = null;
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(UserHomeActivity.class.getName(),null,false);
 
     @Before
     public void setUp() throws Exception {
@@ -52,7 +52,7 @@ public class UserSignupActivityTest {
     }
 
     @Test
-    public void launchOfMainActivityOnSignUp(){
+    public void launchOfUserHomeActivityOnSignUp(){
         assertNotNull(mActivity.findViewById(R.id.sign_up_button));
         // Test empty form - no email address error message
         onView(withId(R.id.sign_up_button)).perform(click());
@@ -78,9 +78,35 @@ public class UserSignupActivityTest {
             e.printStackTrace();
         }
 
-        // Test password too short error message
+        // Test no first name message
         onView(withId(R.id.password))
                 .perform(typeText("pass"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_button)).perform(click());
+        onView(withText("Enter first name!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test no first name message
+        onView(withId(R.id.firstName))
+                .perform(typeText("John"), closeSoftKeyboard());
+        onView(withId(R.id.sign_up_button)).perform(click());
+        onView(withText("Enter last name!"))
+                .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Test password too short message
+        onView(withId(R.id.lastName))
+                .perform(typeText("Smith"), closeSoftKeyboard());
         onView(withId(R.id.sign_up_button)).perform(click());
         onView(withText("Password too short, enter minimum 6 characters!"))
                 .inRoot(withDecorView(not(mActivity.getWindow().getDecorView())))
@@ -95,15 +121,20 @@ public class UserSignupActivityTest {
         onView(withId(R.id.password))
                 .perform(clearText(), typeText("password"), closeSoftKeyboard());
 
-        Activity MainActivity;
+        Activity UserHomeActivity;
         try {
             onView(withId(R.id.sign_up_button)).perform(click());
-            MainActivity = getInstrumentation().waitForMonitorWithTimeout(monitor,10000);
-            assertNotNull(MainActivity);
+            UserHomeActivity = getInstrumentation().waitForMonitorWithTimeout(monitor,10000);
+            assertNotNull(UserHomeActivity);
         } finally {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             removeUserTearDown();
         }
-        MainActivity.finish();
+        UserHomeActivity.finish();
     }
 
     public void removeUserTearDown(){
@@ -114,7 +145,7 @@ public class UserSignupActivityTest {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-
+                            System.out.println("User deleted");
                         }
                     }
                 });
