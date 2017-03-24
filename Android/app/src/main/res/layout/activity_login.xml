@@ -97,7 +97,7 @@
                 android:id="@+id/progressBar"
                 android:layout_width="@dimen/progress_bar_width_height"
                 android:layout_height="@dimen/progress_bar_width_height"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="40dp"
                 android:visibility="gone"
                 android:layout_below="@id/btn_reset_password"
                 android:layout_centerHorizontal="true"/>
