@@ -23,5 +23,6 @@
     <color name="black">#000000</color>
     <color name="grey">#888888</color>
     <color name="dark_grey">#595959</color>
+    <color name="darker_gray">#333333</color>
     <color name="job_status_green">#00ff00</color>
 </resources>

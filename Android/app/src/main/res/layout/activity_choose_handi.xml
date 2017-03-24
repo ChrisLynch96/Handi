@@ -11,15 +11,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.app.handi.handi.Activitys.ChooseHandiTypeActivity">
 
+
     <RelativeLayout
-        android:id="@+id/activity_job_selection_LinearLayout_cleaner"
+        android:id="@+id/activity_job_selection_relative_layout_cleaner"
         android:layout_width="100dp"
         android:layout_height="130dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="50dp"
-        android:onClick="onClick">
+        android:layout_marginTop="60dp"
+        android:onClick="onClick"
+        >
         <ImageView
             android:id="@+id/activity_job_selection_image_box_cleaner"
             android:layout_width="100dp"
@@ -48,10 +50,10 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/activity_job_selection_LinearLayout_electrician"
+        android:id="@+id/activity_job_selection_relative_layout_electrician"
         android:layout_width="100dp"
         android:layout_height="130dp"
-        android:layout_alignTop="@+id/activity_job_selection_LinearLayout_cleaner"
+        android:layout_alignTop="@+id/activity_job_selection_relative_layout_cleaner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="40dp"
@@ -84,7 +86,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/activity_job_selection_LinearLayout_painter"
+        android:id="@+id/activity_job_selection_relative_layout_painter"
         android:layout_width="100dp"
         android:layout_height="130dp"
         android:layout_alignParentRight="true"
@@ -123,7 +125,7 @@
         android:id="@+id/activity_job_selection_LinearLayout_plumber"
         android:layout_width="100dp"
         android:layout_height="130dp"
-        android:layout_alignTop="@+id/activity_job_selection_LinearLayout_painter"
+        android:layout_alignTop="@+id/activity_job_selection_relative_layout_painter"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="40dp"

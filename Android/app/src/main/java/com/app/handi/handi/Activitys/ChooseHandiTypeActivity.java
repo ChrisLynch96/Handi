@@ -42,14 +42,14 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        if(view.getId()==R.id.activity_job_selection_LinearLayout_cleaner){
+        if(view.getId()==R.id.activity_job_selection_relative_layout_cleaner){
             profession = "Cleaner";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
             Log.d("prof",profession);
             startActivity(intent);
         }
-        else if(view.getId()==R.id.activity_job_selection_LinearLayout_electrician){
+        else if(view.getId()==R.id.activity_job_selection_relative_layout_electrician){
             profession = "Electrician";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
@@ -61,7 +61,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             intent.putExtra("profession",profession);
             startActivity(intent);
         }
-        else if(view.getId()==R.id.activity_job_selection_LinearLayout_painter){
+        else if(view.getId()==R.id.activity_job_selection_relative_layout_painter){
             profession = "Painter";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
