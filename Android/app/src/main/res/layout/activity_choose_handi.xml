@@ -14,7 +14,7 @@
     <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_cleaner"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="40dp"
@@ -36,12 +36,21 @@
             android:tint="@color/white"
             android:src="@drawable/ic_cleaner"
             android:contentDescription="@null" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_cleaner"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="CLEANER"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_electrician"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_alignTop="@+id/activity_job_selection_LinearLayout_cleaner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -63,12 +72,21 @@
             android:tint="@color/white"
             android:src="@drawable/ic_electrician"
             android:contentDescription="@null" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_electrician"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="ELECTRICIAN"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_painter"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="40dp"
@@ -90,12 +108,21 @@
             android:tint="@color/white"
             android:src="@drawable/ic_painter"
             android:contentDescription="@null" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_painter"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="PAINTER"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_plumber"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_alignTop="@+id/activity_job_selection_LinearLayout_painter"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -117,12 +144,21 @@
             android:tint="@color/white"
             android:src="@drawable/ic_plumber"
             android:contentDescription="@null" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_plumber"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="PLUMBER"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_handiman"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="350dp"
         android:onClick="onClick">
@@ -143,5 +179,14 @@
             android:src="@drawable/ic_tradesman"
             android:layout_weight="1"
             android:contentDescription="@null" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_handiman"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="HANDIMAN"
+            />
     </RelativeLayout>
 </RelativeLayout>
