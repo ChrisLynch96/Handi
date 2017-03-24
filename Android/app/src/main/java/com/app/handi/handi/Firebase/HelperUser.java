@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class HelperUser {
     DatabaseReference db;
     Boolean saved;
-    ArrayList<User> user = new ArrayList<>();
+    ArrayList<Job> user = new ArrayList<>();
 
     public HelperUser(){}
     public HelperUser(DatabaseReference db){
@@ -60,14 +60,14 @@ public class HelperUser {
         user.clear();
         Iterable<DataSnapshot> children = dataSnapshot.getChildren();
         for(DataSnapshot child : children){
-             User users  = child.getValue(User.class);
-            user.add(users);
+             Job job  = child.getValue(Job.class);
+            user.add(job);
             Log.d("stuff","storing");
         }
 
     }
-    public ArrayList<User> retrieve(){
-        db.child("Users").addValueEventListener(new ValueEventListener() {
+    public ArrayList<Job> retrieve(FirebaseUser users){
+        db.child("Users").child(users.getUid()).child("Jobs").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 fetchData(dataSnapshot);
