@@ -21,6 +21,8 @@ import static org.junit.Assert.*;
  */
 public class JobSelectionActivityTest {
 
+
+    //TODO: Check if job selection goes to the right profile with correct details and such and so forth
     @Rule
     public ActivityTestRule<JobSelectionActivity> mActivtyTestRule = new ActivityTestRule<JobSelectionActivity>(JobSelectionActivity.class);
     private JobSelectionActivity mActivity = null;

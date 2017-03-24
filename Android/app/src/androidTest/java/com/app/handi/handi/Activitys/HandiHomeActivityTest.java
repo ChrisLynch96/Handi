@@ -23,6 +23,7 @@ public class HandiHomeActivityTest {
     private HandiHomeActivity mActivity = null;
     //Instrumentation.ActivityMonitor monitorChooseHandi = getInstrumentation().addMonitor(JobSelectionActivity.class.getName(),null,false);
 
+    //TODO: Check if each fragment displays correctly and if backPressed works correctly
 
     @Before
     public void setUp() throws Exception {
@@ -38,7 +39,6 @@ public class HandiHomeActivityTest {
     public void backPressed(){
         //test if drawer correctly closes/opens
     }
-
     @Test
     public void toastMessages (){
         //test if toast messages are displayed correctly

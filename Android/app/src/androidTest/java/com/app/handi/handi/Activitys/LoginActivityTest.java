@@ -36,6 +36,8 @@ import static org.junit.Assert.*;
  */
 public class LoginActivityTest {
 
+
+    //TODO: Test if login goes to user or handi NB
     @Rule
     public ActivityTestRule<LoginActivity> mActivtyTestRule = new ActivityTestRule<LoginActivity>(LoginActivity.class);
     private LoginActivity mActivity = null;

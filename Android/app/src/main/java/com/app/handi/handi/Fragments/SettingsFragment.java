@@ -6,7 +6,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.stripe.android.TokenCallback;
+import com.stripe.android.exception.AuthenticationException;
+import com.stripe.android.model.Card;
+import com.stripe.android.Stripe;
+import com.stripe.android.model.Token;
 
 import com.app.handi.handi.R;
 
@@ -18,12 +28,17 @@ import com.app.handi.handi.R;
  * Use the {@link SettingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class  SettingsFragment extends Fragment {
+public class  SettingsFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private EditText cardNumber, cardExpMonth, cardExpYear, cardCVC;
+    private Button okButton;
+    private int cardExpMonthInt;
+    private int cardExpYearInt;
+    Context mContext;
+    View view;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -59,20 +74,75 @@ public class  SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        mContext = getActivity();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
-    }
+        view = inflater.inflate(R.layout.fragment_settings, container, false);
+        okButton = (Button) view.findViewById(R.id.ok_button);
+        okButton.setOnClickListener(new OnClickListener(){
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+            @Override
+            public void onClick(View view) {
+               // if (mListener != null) {
+                 //   mListener.onFragmentInteraction(view);
+               // }
+                cardNumber = (EditText) view.findViewById(R.id.card_number);
+                cardExpMonth = (EditText) view.findViewById(R.id.card_exp_month);
+                cardExpYear = (EditText) view.findViewById(R.id.card_exp_year);
+                cardCVC = (EditText) view.findViewById(R.id.card_cvc);
+                cardExpMonthInt = Integer.parseInt(cardExpMonth.toString());
+                cardExpYearInt = Integer.parseInt(cardExpYear.toString());
+
+                if(cardNumber.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity().getApplicationContext(), "Please enter your card number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(cardExpMonth.getText().toString().isEmpty() || cardExpYear.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity().getApplicationContext(), "Please enter your expiry date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(cardCVC.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity().getApplicationContext(), "Please enter your CVC number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //get card and check if all entries are valid entries
+                Card cardTest = new Card(cardNumber.getText().toString(), cardExpMonthInt, cardExpYearInt,
+                        cardCVC.getText().toString());
+                if(!cardTest.validateCard()){
+                    Toast.makeText(getActivity().getApplicationContext(), "dis ain't right", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //if card passes validation, pass card info as stripe token
+                try{
+                    Card card = new Card(cardNumber.getText().toString(), cardExpMonthInt, cardExpYearInt,
+                            cardCVC.getText().toString());
+                    Stripe stripe = new Stripe(mContext, "ca_AJS48q4Dsogw47bBPoG61DWz7RspXFSB");
+                    stripe.createToken(
+                            card,
+                            new TokenCallback() {
+                                public void onSuccess(Token token) {
+                                    // Send token to your server
+                                }
+                                public void onError(Exception error) {
+                                    Toast.makeText(getActivity().getApplicationContext(), "Your card details are incorrect",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                    );
+                }catch (AuthenticationException e){
+                    Toast.makeText(getActivity().getApplicationContext(), "Your card is invalid",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        return view;
     }
 
     @Override
@@ -91,6 +161,12 @@ public class  SettingsFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this

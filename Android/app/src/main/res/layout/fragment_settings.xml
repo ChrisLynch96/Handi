@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
-        android:text="Card Details"
+        android:text="Set Up Card Details"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="@dimen/stan_header_text_size"
@@ -38,19 +38,19 @@
 
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/card_number"
+        android:id="@+id/card_number_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/card_number_label">
 
         <EditText
-            android:id="@+id/cardNumber"
+            android:id="@+id/card_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:fontFamily="sans-serif"
             android:ems="10"
-            android:hint="4545 5656 6767 7878 "
+            android:hint="Totally Not a scam"
             android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter your expiry date:"
-        android:layout_below="@+id/card_number"
+        android:layout_below="@+id/card_number_container"
         android:layout_marginLeft="20dp"
         android:textColor="@color/black"
         android:layout_marginTop="30dp"
@@ -74,7 +74,7 @@
         android:layout_below="@+id/expiry_date_label">
 
         <EditText
-            android:id="@+id/month"
+            android:id="@+id/card_exp_month"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -84,7 +84,6 @@
             android:layout_marginLeft="20dp" />
     </android.support.design.widget.TextInputLayout>
 
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/year_container"
         android:layout_width="wrap_content"
@@ -93,7 +92,7 @@
         android:layout_toRightOf="@+id/forward_slash">
 
         <EditText
-            android:id="@+id/year"
+            android:id="@+id/card_exp_year"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -131,9 +130,9 @@
         android:layout_below="@+id/cvc_label">
 
         <EditText
+            android:id="@+id/card_cvc"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cvc"
             android:hint="cvc"
             android:fontFamily="sans-serif"
             android:ems="10"
@@ -150,10 +149,10 @@
         <!-- android:layout_toRightOf="@+id/date_container"> -->
 
         <Button
+            android:id="@+id/ok_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OK!"
-            android:id="@+id/okButton"
             android:onClick="submitCard"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"/>

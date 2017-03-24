@@ -32,7 +32,7 @@ public class ChooseHandiTypeActivityTest {
         mActivity = mActivtyTestRule.getActivity();
     }
 
-    //TODO launch to specific screens in the class
+    //TODO launch to specific screens in the class, only launches generic screen
     @Test
     public void testCleanerLaunch (){
         //tests cleaner image is present and that it launches the correct activity
