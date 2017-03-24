@@ -14,19 +14,21 @@ public class HandimanData {
 
     public String name;
     public String email;
+    public String uid;
     private String dateofbirth;
     private String number;
-    public String profession;
+    private String profession;
     private ImageView profilePicture;
 
     public HandimanData(){}
-    public HandimanData(String name,String email, String dateofbirth, String Number, String profession, ImageView profilePicture){
+    public HandimanData(String name,String email, String dateofbirth, String Number, String profession, ImageView profilePicture,String uid){
         this.name = name;
         this.email = email;
         this.dateofbirth = dateofbirth;
         this.number = Number;
         this.profession = profession;
         this.profilePicture = profilePicture;
+        this.uid = uid;
     }
 
     public String getName(){
@@ -41,7 +43,7 @@ public class HandimanData {
 
     public String getProfession(){ return this.profession;}
 
-    public ImageView getProfilePicture(){
-        return this.profilePicture;
-    }
+    public ImageView getProfilePicture(){return this.profilePicture;}
+
+    public String getUid(){return this.uid;}
 }

@@ -8,10 +8,11 @@
     android:background="@color/white">
 
     <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
+        android:id="@+id/activity_login_signup_progress_bar_pBar"
+        android:layout_width="@dimen/progress_bar_width_height"
+        android:layout_height="@dimen/progress_bar_width_height"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="20dp"
         android:visibility="gone" />
 
@@ -20,7 +21,7 @@
         android:layout_height="@dimen/logo_w_h"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:src="@mipmap/handi_h"
+        android:src="@drawable/ic_handi"
         android:layout_marginTop="@dimen/logo_top_margin"/>
 
     <RelativeLayout

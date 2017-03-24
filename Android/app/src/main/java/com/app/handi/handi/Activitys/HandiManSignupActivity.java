@@ -92,7 +92,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
             HandiNo = (EditText) findViewById(R.id.handi_phone_number);
             HandiPassword = (EditText) findViewById(R.id.handi_password_enter1);
             HandiConPassword = (EditText) findViewById(R.id.handi_password_enter2);
-            progressBar = (ProgressBar) findViewById(R.id.progressBar);
+            progressBar = (ProgressBar) findViewById(R.id.activity_handiman_signup_progress_bar_pBar);
 
             final String email = HandiEmail.getText().toString().trim();
             final String password = HandiPassword.getText().toString().trim();
@@ -156,11 +156,12 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                                         Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(HandiManSignupActivity.this, HandiHomeActivity.class));
-                                data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic);
                                 user = FirebaseAuth.getInstance().getCurrentUser();
+                                assert user != null;
+                                data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic,user.getUid());
                                 ref = FirebaseDatabase.getInstance().getReference();
                                 HelperHandiMan db = new HelperHandiMan(ref);
-                                saved = db.save(data,user);
+                                saved = db.saveInfo(data,user);
                                 if(saved){
                                     Toast.makeText(HandiManSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
                                 }

@@ -4,13 +4,9 @@ package com.app.handi.handi.Activitys;
  * Created by christopherlynch on 27/02/2017.
  */
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -24,8 +20,6 @@ import com.app.handi.handi.Adapters.DisplayingHandiAdapter;
 import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -37,7 +31,7 @@ public class JobSelectionActivity extends AppCompatActivity {
     HelperHandiMan helper;
     DisplayingHandiAdapter adapter;
     ListView listView;
-    ArrayList<HandimanData> d = new ArrayList<HandimanData>();
+    ArrayList<HandimanData> data = new ArrayList<>();
     ImageView i;
     String profession;
 
@@ -76,6 +70,8 @@ public class JobSelectionActivity extends AppCompatActivity {
                     intent.putExtra("HandiName", h.getName());
                     intent.putExtra("HandiPhone",h.getNumber());
                     intent.putExtra("HandiEmail",h.getEmail());
+                    intent.putExtra("HandiUid",h.getUid());
+                    intent.putExtra("HandiProf",h.getProfession());
                     startActivity(intent);
                 }
                 //startActivity(new Intent(JobSelectionActivity.this,JobDescriptionActivity.class));
@@ -87,26 +83,26 @@ public class JobSelectionActivity extends AppCompatActivity {
         setJobImageHeights(images);
     }
 
-    public void displayList() {
-        helper = new HelperHandiMan(db);
-        adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(JobSelectionActivity.this,"popo",Toast.LENGTH_SHORT).show();
-            }
-        });
-        ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
-                (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
-
-        setJobImageHeights(images);
-    }
+//    public void displayList() {
+//        helper = new HelperHandiMan(db);
+//        adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
+//        try {
+//            Thread.sleep(100);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        listView.setAdapter(adapter);
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(JobSelectionActivity.this,"popo",Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
+//                (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
+//
+//        setJobImageHeights(images);
+//    }
 
     public void onClick(View view) {
         if (view.getId() == R.id.activity_job_selection_image_view_cleaner) {

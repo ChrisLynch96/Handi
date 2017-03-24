@@ -1,22 +1,17 @@
 package com.app.handi.handi.Firebase;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 
-import com.app.handi.handi.Activitys.HandiManSignupActivity;
 import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.DataTypes.Job;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class HelperHandiMan {
     DatabaseReference db;
@@ -29,12 +24,26 @@ public class HelperHandiMan {
         this.db =  db;
     }
 
-    public Boolean save(HandimanData handimanData, FirebaseUser user){
+    public Boolean saveInfo(HandimanData handimanData, FirebaseUser user){
         if(handimanData==null)
             saved = false;
         else{
             try{
-                db.child("HandiMen").child(handimanData.getProfession()).child(user.getUid()).setValue(handimanData);
+                db.child("HandiMen").child(handimanData.getProfession()).child(user.getUid()).child("Info").setValue(handimanData);
+                saved = true;
+            }catch(DatabaseException e){
+                e.printStackTrace();
+                saved = false;
+            }
+        }
+        return saved;
+    }
+    public Boolean saveJob(Job job,String uid,String prof,String id){
+        if(job==null)
+            saved = false;
+        else{
+            try{
+                db.child("HandiMen").child(prof).child(uid).child("Jobs").child(id).setValue(job);
                 saved = true;
             }catch(DatabaseException e){
                 e.printStackTrace();
@@ -51,7 +60,7 @@ public class HelperHandiMan {
         HandiMen.clear();
         Iterable<DataSnapshot> children = dataSnapshot.getChildren();
         for(DataSnapshot child : children){
-            HandimanData handiman = child.getValue(HandimanData.class);
+            HandimanData handiman = child.child("Info").getValue(HandimanData.class);
             HandiMen.add(handiman);
             Log.d("stuff","storing");
         }

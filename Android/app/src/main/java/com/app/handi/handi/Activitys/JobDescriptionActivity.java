@@ -9,22 +9,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.DataTypes.User;
-import com.app.handi.handi.Firebase.HelperJob;
+import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by christopherlynch on 02/03/2017.
@@ -37,7 +33,8 @@ public class JobDescriptionActivity extends AppCompatActivity {
     DatabaseReference db;
     FirebaseUser user;
     ArrayList<User> users = new ArrayList<>();
-    String profession;
+    String uid;
+    String prof;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_description);
@@ -45,22 +42,26 @@ public class JobDescriptionActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         HelperUser ref = new HelperUser(db);
         Log.d("id",user.getUid());
-//        users = ref.retrieve();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//                e.printStackTrace();
-//        }
-//        User u = users.get(0);
+        Bundle bundle = getIntent().getExtras();
+        uid = bundle.getString("HandiUid");
+        prof = bundle.getString("HandiProf");
         inputFirstName = (EditText) findViewById(R.id.activity_job_description_edit_text_first_name);
-        //inputFirstName.setText("alrite alrite alrite");
         inputLastName = (EditText) findViewById(R.id.activity_job_description_edit_text_second_name);
-        //inputLastName.setText("okokokok");
         inputTitle = (EditText) findViewById(R.id.activity_job_description_edit_text_title);
         inputAddress = (EditText) findViewById(R.id.activity_job_description_edit_text_users_address);
         inputDescription = (EditText) findViewById(R.id.activity_job_description_edit_text_users_job_description);
     }
+    protected String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) {
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        return salt.toString();
 
+    }
     public void onClick(View v){
         String firstName = inputFirstName.getText().toString().trim();
         String lastName = inputLastName.getText().toString().trim();
@@ -92,9 +93,11 @@ public class JobDescriptionActivity extends AppCompatActivity {
             return;
         }
 
-        Job job = new Job(Description,"Incomplete",false,title,address,firstName,lastName);
-        HelperJob hjob = new HelperJob(db);
-        hjob.save(job,user);
+        Job job = new Job(Description,"Incomplete",false,title,address,firstName,lastName,getSaltString());
+        HelperUser helperUser = new HelperUser(db);
+        HelperHandiMan helperHandiMan = new HelperHandiMan(db);
+        helperUser.saveJob(job,user,job.getId());
+        helperHandiMan.saveJob(job,uid,prof,job.getId());
         startActivity(new Intent(JobDescriptionActivity.this, UserHomeActivity.class));
     }
 }

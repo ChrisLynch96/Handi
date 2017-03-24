@@ -4,11 +4,12 @@
     android:layout_height="wrap_content">
 
     <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/activity_handiman_signup_progress_bar_pBar"
+        android:layout_width="@dimen/progress_bar_width_height"
+        android:layout_height="@dimen/progress_bar_width_height"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
         android:visibility="gone" />
 
     <TextView
@@ -172,7 +173,7 @@
         android:layout_below="@id/job_choice_spinner"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/take_photo_button"
-        android:src="@mipmap/handi_h" />
+        android:src="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/sign_up_handi_button"

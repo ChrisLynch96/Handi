@@ -20,6 +20,8 @@ public class HandiProfileView extends AppCompatActivity {
         String name = bundle.getString("HandiName");
         String number = bundle.getString("HandiPhone");
         String email = bundle.getString("HandiEmail");
+        final String uid = bundle.getString("HandiUid");
+        final String prof = bundle.getString("HandiProf");
         title = (TextView) findViewById(R.id.handi_view_profile_header);
         Name = (TextView) findViewById(R.id.handi_view_profile_name);
         Number = (TextView) findViewById(R.id.handi_view_profile_number);
@@ -33,7 +35,10 @@ public class HandiProfileView extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HandiProfileView.this,JobDescriptionActivity.class));
+                Intent intent = new Intent(HandiProfileView.this,JobDescriptionActivity.class);
+                intent.putExtra("HandiUid",uid);
+                intent.putExtra("HandiProf",prof);
+                startActivity(intent);
             }
         });
     }
