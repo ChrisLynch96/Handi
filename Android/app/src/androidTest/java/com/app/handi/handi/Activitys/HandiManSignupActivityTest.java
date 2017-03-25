@@ -46,8 +46,6 @@ import static org.junit.Assert.*;
  */
 public class HandiManSignupActivityTest {
 
-    //TODO: Everything tested xoxo gossip girl
-
     @Rule
     public ActivityTestRule<HandiManSignupActivity> mActivtyTestRule = new ActivityTestRule<HandiManSignupActivity>(HandiManSignupActivity.class);
     private HandiManSignupActivity mActivity = null;

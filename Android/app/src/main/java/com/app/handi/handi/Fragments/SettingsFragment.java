@@ -118,8 +118,19 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
 
                 //get card and check if all entries are valid entries
                 Card cardTest = new Card(number, cardExpMonthInt, cardExpYearInt, cvc);
-                if(!cardTest.validateCard()){
-                    Toast.makeText(getActivity().getApplicationContext(), "dis ain't right", Toast.LENGTH_SHORT).show();
+
+                if(!cardTest.validateNumber()){
+                    Toast.makeText(getActivity().getApplicationContext(), "The card number is invalid", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(!cardTest.validateExpiryDate()){
+                    Toast.makeText(getActivity().getApplicationContext(), "The expiry date is invalid", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(!cardTest.validateCVC()){
+                    Toast.makeText(getActivity().getApplicationContext(), "The CVC number is invalid", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -131,9 +142,13 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
                             card,
                             new TokenCallback() {
                                 public void onSuccess(Token token) {
-                                    Toast.makeText(getActivity().getApplicationContext(), "Sent to server!",
+                                    /* send token to server
+                                     *
+                                     *
+                                     *
+                                     */
+                                    Toast.makeText(getActivity().getApplicationContext(), "Success! Your card details have now been securely saved",
                                             Toast.LENGTH_SHORT).show();
-                                    // Send token to your server
                                 }
                                 public void onError(Exception error) {
                                     Toast.makeText(getActivity().getApplicationContext(), "Your card details are incorrect",
