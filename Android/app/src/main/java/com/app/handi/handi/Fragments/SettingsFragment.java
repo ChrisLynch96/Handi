@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -74,7 +75,6 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        mContext = getActivity();
     }
 
     @Override
@@ -83,51 +83,56 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_settings, container, false);
         okButton = (Button) view.findViewById(R.id.ok_button);
-        okButton.setOnClickListener(new OnClickListener(){
+        cardNumber = (EditText) view.findViewById(R.id.card_number);
+        cardExpMonth = (EditText) view.findViewById(R.id.card_exp_month);
+        cardExpYear = (EditText) view.findViewById(R.id.card_exp_year);
+        cardCVC = (EditText) view.findViewById(R.id.card_cvc);
+        mContext = getActivity();
+        okButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-               // if (mListener != null) {
-                 //   mListener.onFragmentInteraction(view);
-               // }
-                cardNumber = (EditText) view.findViewById(R.id.card_number);
-                cardExpMonth = (EditText) view.findViewById(R.id.card_exp_month);
-                cardExpYear = (EditText) view.findViewById(R.id.card_exp_year);
-                cardCVC = (EditText) view.findViewById(R.id.card_cvc);
-                cardExpMonthInt = Integer.parseInt(cardExpMonth.toString());
-                cardExpYearInt = Integer.parseInt(cardExpYear.toString());
 
-                if(cardNumber.getText().toString().isEmpty()){
+                final String number = cardNumber.getText().toString().trim();
+                final String month = cardExpMonth.getText().toString().trim();
+                final String year = cardExpYear.getText().toString().trim();
+                final String cvc = cardCVC.getText().toString().trim();
+                // Month and year needed to be converted to ints to be passed to card object
+                cardExpMonthInt = Integer.parseInt(month);
+                cardExpYearInt = Integer.parseInt(year);
+
+                if(TextUtils.isEmpty(number)){
                     Toast.makeText(getActivity().getApplicationContext(), "Please enter your card number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(cardExpMonth.getText().toString().isEmpty() || cardExpYear.getText().toString().isEmpty()){
+                if(TextUtils.isEmpty(month) || TextUtils.isEmpty(year)){
                     Toast.makeText(getActivity().getApplicationContext(), "Please enter your expiry date", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(cardCVC.getText().toString().isEmpty()){
+                if(TextUtils.isEmpty(cvc)){
                     Toast.makeText(getActivity().getApplicationContext(), "Please enter your CVC number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 //get card and check if all entries are valid entries
-                Card cardTest = new Card(cardNumber.getText().toString(), cardExpMonthInt, cardExpYearInt,
-                        cardCVC.getText().toString());
+                Card cardTest = new Card(number, cardExpMonthInt, cardExpYearInt, cvc);
                 if(!cardTest.validateCard()){
                     Toast.makeText(getActivity().getApplicationContext(), "dis ain't right", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //if card passes validation, pass card info as stripe token
                 try{
-                    Card card = new Card(cardNumber.getText().toString(), cardExpMonthInt, cardExpYearInt,
-                            cardCVC.getText().toString());
+                    Card card = new Card(number, cardExpMonthInt, cardExpYearInt, cvc);
                     Stripe stripe = new Stripe(mContext, "ca_AJS48q4Dsogw47bBPoG61DWz7RspXFSB");
                     stripe.createToken(
                             card,
                             new TokenCallback() {
                                 public void onSuccess(Token token) {
+                                    Toast.makeText(getActivity().getApplicationContext(), "Sent to server!",
+                                            Toast.LENGTH_SHORT).show();
                                     // Send token to your server
                                 }
                                 public void onError(Exception error) {

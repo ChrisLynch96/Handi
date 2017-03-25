@@ -1,15 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.app.handi.handi.Fragments.SettingsFragment">
-<!--
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/temporary_settings_text"
-        />
--->
+
     <TextView
         android:id="@+id/card_details"
         android:layout_width="match_parent"
@@ -75,7 +70,7 @@
 
         <EditText
             android:id="@+id/card_exp_month"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:fontFamily="sans-serif"
@@ -93,12 +88,12 @@
 
         <EditText
             android:id="@+id/card_exp_year"
-            android:layout_width="30dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:fontFamily="sans-serif"
             android:ems="10"
-            android:hint="YY" />
+            android:hint="YYYY" />
     </android.support.design.widget.TextInputLayout>
 
 
@@ -152,7 +147,7 @@
             android:id="@+id/ok_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK!"
+            android:text="Save"
             android:onClick="submitCard"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"/>
