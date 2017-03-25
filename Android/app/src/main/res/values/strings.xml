@@ -60,6 +60,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Pending_Jobs">Pending Jobs</string>
+    <string name="Jobs">Jobs</string>
+    <string name="Offers">Job Offers</string>
     <string name="put_job_description_here">Put job description here</string>
     <string name="title_activity_handi_home">Handi Home</string>
 

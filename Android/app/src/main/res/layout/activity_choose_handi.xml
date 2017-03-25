@@ -11,97 +11,204 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.app.handi.handi.Activitys.ChooseHandiTypeActivity">
 
-    <LinearLayout
-        android:id="@+id/activity_job_selection_LinearLayout_cleaner"
+    <TextView
+        android:id="@+id/activity_choose_handi_text_view_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:text="Choose your Handi!"
+        android:textSize="@dimen/stan_header_text_size"
+        android:textStyle="bold"
+        android:textColor="@color/dark_grey"
+        />
+
+    <RelativeLayout
+        android:id="@+id/activity_job_selection_relative_layout_cleaner"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="50dp"
-        android:onClick="onClick">
-      <ImageView
-          android:id="@+id/activity_job_selection_image_view_cleaner"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          android:tint="@color/dark_grey"
-          android:src="@drawable/job_duster"
-          android:contentDescription="@null" />
+        android:layout_marginTop="65dp"
+        android:onClick="onClick"
+        >
         <TextView
+            android:id="@+id/activity_job_selection_image_text_cleaner"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="CLEANER"
+            />
+
+        <ImageView
+            android:id="@+id/activity_job_selection_image_box_cleaner"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:tint="@color/norm_pink"
+            android:src="@drawable/ic_box"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+        <ImageView
+            android:id="@+id/activity_job_selection_image_view_cleaner"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:tint="@color/white"
+            android:src="@drawable/ic_cleaner"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_job_selection_relative_layout_electrician"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/activity_job_selection_relative_layout_cleaner"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:onClick="onClick">
+        <ImageView
+            android:id="@+id/activity_job_selection_image_box_electrician"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:tint="@color/norm_pink"
+            android:src="@drawable/ic_box"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat"
+            android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:id="@+id/activity_job_selection_image_view_electrician"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:tint="@color/white"
+            android:src="@drawable/ic_electrician"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_electrician"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_job_selection_text_view_cleaner"
+            android:layout_marginTop="110dp"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="ELECTRICIAN"
             />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/activity_job_selection_LinearLayout_electrician"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignTop="@+id/activity_job_selection_LinearLayout_cleaner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="40dp"
-        android:onClick="onClick">
-      <ImageView
-          android:id="@+id/activity_job_selection_image_view_electrician"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          android:tint="@color/dark_grey"
-          android:src="@drawable/job_electrician"
-          android:contentDescription="@null" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activity_job_selection_LinearLayout_painter"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <RelativeLayout
+        android:id="@+id/activity_job_selection_relative_layout_painter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="200dp"
+        android:layout_below="@id/activity_job_selection_relative_layout_cleaner"
+        android:layout_marginTop="40dp"
         android:onClick="onClick">
-      <ImageView
-          android:id="@+id/activity_job_selection_image_view_painter"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          android:tint="@color/dark_grey"
-          android:src="@drawable/job_painter"
-          android:contentDescription="@null" />
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/activity_job_selection_image_box_painter"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:tint="@color/norm_pink"
+            android:src="@drawable/ic_box"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+        <ImageView
+            android:id="@+id/activity_job_selection_image_view_painter"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:tint="@color/white"
+            android:src="@drawable/ic_painter"
+            android:contentDescription="@null" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_painter"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="PAINTER"
+            />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_plumber"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignTop="@+id/activity_job_selection_LinearLayout_painter"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_alignTop="@+id/activity_job_selection_relative_layout_painter"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="40dp"
         android:onClick="onClick">
-      <ImageView
-          android:id="@+id/activity_job_selection_image_view_plumber"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          android:tint="@color/dark_grey"
-          android:src="@drawable/job_plumbing"
-          android:contentDescription="@null" />
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/activity_job_selection_image_box_plumber"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:tint="@color/norm_pink"
+            android:src="@drawable/ic_box"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+        <ImageView
+            android:id="@+id/activity_job_selection_image_view_plumber"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:tint="@color/white"
+            android:src="@drawable/ic_plumber"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_plumber"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="PLUMBER"
+            />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_handiman"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
+        android:layout_below="@id/activity_job_selection_relative_layout_painter"
+        android:layout_marginTop="30dp"
         android:onClick="onClick">
-      <ImageView
-          android:id="@+id/activity_job_selection_image_view_handiman"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          android:tint="@color/dark_grey"
-          android:src="@drawable/job_handi"
-          android:layout_weight="1"
-          android:contentDescription="@null" />
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/activity_job_selection_image_box_handiman"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:tint="@color/norm_pink"
+            android:src="@drawable/ic_box"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+        <ImageView
+            android:id="@+id/activity_job_selection_image_view_handiman"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:tint="@color/white"
+            android:src="@drawable/ic_tradesman"
+            android:layout_weight="1"
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
+        <TextView
+            android:id="@+id/activity_job_selection_image_text_handiman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/stan_header_text_size"
+            android:text="HANDIMAN"
+            />
+    </RelativeLayout>
 </RelativeLayout>

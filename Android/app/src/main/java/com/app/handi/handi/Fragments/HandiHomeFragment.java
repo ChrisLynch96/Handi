@@ -5,12 +5,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.app.handi.handi.Adapters.DisplayJobAdapter;
+import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import static android.R.id.list;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,10 +36,14 @@ public class HandiHomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     ListView listView;
+    ListView list2;
+    View view;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    DatabaseReference db;
+    FirebaseUser user;
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,18 +72,34 @@ public class HandiHomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseDatabase.getInstance().getReference();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        listView = (ListView) getActivity().findViewById(R.id.fragment_handi_home_list_view_jobs_status);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_handi_home, container, false);
+        view =  inflater.inflate(R.layout.fragment_handi_home, container, false);
+        listView = (ListView) view.findViewById(R.id.fragment_handi_home_list_view_jobs);
+        list2 = (ListView) view.findViewById(R.id.fragment_handi_home_list_view_jobs_offers);
+        String[] values = new String[]{ "Message1", "Message2", "Message3","Message1", "Message2", "Message3"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, values);
+        HelperUser helperUser = new HelperUser(db);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //DisplayJobAdapter adapter = new DisplayJobAdapter(helperUser.retrieve(user),getActivity());
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        listView.setAdapter(adapter);
+        list2.setAdapter(adapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

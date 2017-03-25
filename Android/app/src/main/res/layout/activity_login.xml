@@ -23,8 +23,9 @@
             android:layout_width="@dimen/logo_w_h"
             android:layout_height="@dimen/logo_w_h"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/image_header_top_margin"
-            android:src="@drawable/ic_handi" />
+            android:layout_marginTop="62dp"
+            android:src="@drawable/ic_handi"
+            tools:ignore="VectorDrawableCompat" />
 
         <RelativeLayout
             android:id="@+id/login_container"
@@ -96,7 +97,7 @@
                 android:id="@+id/progressBar"
                 android:layout_width="@dimen/progress_bar_width_height"
                 android:layout_height="@dimen/progress_bar_width_height"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="40dp"
                 android:visibility="gone"
                 android:layout_below="@id/btn_reset_password"
                 android:layout_centerHorizontal="true"/>

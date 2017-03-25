@@ -2,15 +2,22 @@ package com.app.handi.handi.Activitys;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
+import android.widget.Toast;
 
+import com.app.handi.handi.DataTypes.User;
+import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.hamcrest.Matchers;
 import org.junit.After;
@@ -47,12 +54,6 @@ public class LoginActivityTest {
     @Before
     public void setUp() throws Exception {
         mActivity = mActivtyTestRule.getActivity();
-    }
-
-    @Test
-    public void testLaunch() {
-        View view = mActivity.findViewById(R.id.progressBar);
-        assertNotNull(view);
     }
 
     @Test
@@ -98,6 +99,7 @@ public class LoginActivityTest {
         UserHomeActivity = getInstrumentation().waitForMonitorWithTimeout(monitorLogin, 10000);
         assertNotNull(UserHomeActivity);
         UserHomeActivity.finish();
+        FirebaseAuth.getInstance().signOut();
     }
 
     @Test

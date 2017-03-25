@@ -32,7 +32,7 @@ public class UserSignupActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser user;
     private DatabaseReference ref;
-    private User users;
+    private User userdb;
     boolean saved = false;
 
     @Override
@@ -110,10 +110,10 @@ public class UserSignupActivity extends AppCompatActivity {
                                     startActivity(new Intent(UserSignupActivity.this, UserHomeActivity.class));
                                     user = FirebaseAuth.getInstance().getCurrentUser();
                                     assert user != null;
-                                    users = new User(firstName,lastName,email,user.getUid());
+                                    userdb = new User(firstName,lastName,email,user.getUid());
                                     ref = FirebaseDatabase.getInstance().getReference();
                                     HelperUser db = new HelperUser(ref);
-                                    saved = db.saveInfo(users,user);
+                                    saved = db.saveInfo(userdb,user);
                                     if(saved){
                                         Toast.makeText(UserSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
                                     }

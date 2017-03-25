@@ -36,6 +36,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static org.junit.Assert.*;
 
@@ -49,7 +51,7 @@ public class HandiManSignupActivityTest {
     @Rule
     public ActivityTestRule<HandiManSignupActivity> mActivtyTestRule = new ActivityTestRule<HandiManSignupActivity>(HandiManSignupActivity.class);
     private HandiManSignupActivity mActivity = null;
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(HandiHomeActivity.class.getName(),null,false);
 
     @Before
     public void setUp() throws Exception {
@@ -63,7 +65,7 @@ public class HandiManSignupActivityTest {
     }
 
     @Test
-    public void launchOfMainActivityOnSignUp(){
+    public void launchOfHandiHomeActivityOnSignUp(){
         assertNotNull(mActivity.findViewById(R.id.sign_up_handi_button));
         // Test empty form - no email address error message
         onView(withId(R.id.sign_up_handi_button)).perform(click());
@@ -167,28 +169,30 @@ public class HandiManSignupActivityTest {
         onView(withId(R.id.handi_password_enter2))
                 .perform(clearText(), typeText("password"), closeSoftKeyboard());
 
-        Activity MainActivity;
+        Activity HandiHomeActivity;
         try {
             onView(withId(R.id.sign_up_handi_button)).perform(click());
-            MainActivity = getInstrumentation().waitForMonitorWithTimeout(monitor,10000);
-            assertNotNull(MainActivity);
+            HandiHomeActivity = getInstrumentation().waitForMonitorWithTimeout(monitor,30000);
+            assertNotNull(HandiHomeActivity);
         } finally {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(5000);
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             removeUserTearDown();
         }
-        MainActivity.finish();
+        HandiHomeActivity.finish();
     }
 
 //
 
     public void removeUserTearDown(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        user.delete()
+        String uid = user.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        ref.child("HandiMen").child("Plumber").child(uid).removeValue();user.delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -197,6 +201,7 @@ public class HandiManSignupActivityTest {
                         }
                     }
                 });
+
     }
 
     @After

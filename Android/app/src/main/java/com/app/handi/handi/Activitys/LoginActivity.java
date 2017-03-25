@@ -116,7 +116,6 @@ public class LoginActivity extends AppCompatActivity {
                                         else {
                                             startActivity(new Intent(LoginActivity.this, HandiHomeActivity.class));
                                         }
-                                        finish();
                                     }
 
                                     @Override
@@ -139,7 +138,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
-                                finish();
                             }
                         }
                     });
