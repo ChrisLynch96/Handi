@@ -1,18 +1,18 @@
 package com.app.handi.handi.Fragments;
 
-import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.app.handi.handi.Adapters.DisplayJobAdapter;
+import com.app.handi.handi.Adapters.DisplayHandiJobsAdapter;
+import com.app.handi.handi.Adapters.DisplayHandiOffersAdapter;
+import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static android.R.id.list;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,8 +42,9 @@ public class HandiHomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    DatabaseReference db;
-    FirebaseUser user;
+    private static ArrayList<Job> job = new ArrayList<>();
+    DisplayHandiJobsAdapter adapter;
+    DisplayHandiOffersAdapter adapter2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -60,11 +61,12 @@ public class HandiHomeFragment extends Fragment {
      * @return A new instance of fragment HandiHomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HandiHomeFragment newInstance(String param1, String param2) {
+    public static HandiHomeFragment newInstance(String param1, String param2, ArrayList<Job> jobs) {
         HandiHomeFragment fragment = new HandiHomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        job=jobs;
         fragment.setArguments(args);
         return fragment;
     }
@@ -72,7 +74,6 @@ public class HandiHomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = FirebaseDatabase.getInstance().getReference();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -87,11 +88,9 @@ public class HandiHomeFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.fragment_handi_home_list_view_jobs);
         list2 = (ListView) view.findViewById(R.id.fragment_handi_home_list_view_jobs_offers);
         String[] values = new String[]{ "Message1", "Message2", "Message3","Message1", "Message2", "Message3"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, values);
-        HelperUser helperUser = new HelperUser(db);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        //DisplayJobAdapter adapter = new DisplayJobAdapter(helperUser.retrieve(user),getActivity());
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+//                android.R.layout.simple_list_item_1, values);
+        adapter = new DisplayHandiJobsAdapter(job,getActivity());
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
