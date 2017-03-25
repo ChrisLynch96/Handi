@@ -1,7 +1,6 @@
 package com.app.handi.handi.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +13,14 @@ import com.app.handi.handi.R;
 import java.util.ArrayList;
 
 /**
- * Created by Killian on 23/03/2017.
+ * Created by Killian on 25/03/2017.
  */
 
-public class DisplayJobAdapter extends BaseAdapter{
+public class DisplayHandiOffersAdapter extends BaseAdapter {
     Context c;
     ArrayList<Job> jobs;
 
-    public DisplayJobAdapter(ArrayList<Job> jobs, Context c){
+    public DisplayHandiOffersAdapter(ArrayList<Job> jobs, Context c){
         this.c = c;
         this.jobs = jobs;
     }
@@ -50,15 +49,12 @@ public class DisplayJobAdapter extends BaseAdapter{
         TextView title = (TextView) convertView.findViewById(R.id.list_item_text_view_job_title);
         TextView status = (TextView) convertView.findViewById(R.id.list_item_text_view_job_status);
 
+
         final Job job = (Job) this.getItem(position);
 
-        if(job!=null) {
+        if (!job.isAccepted()) {
             title.setText(job.getTitle());
             status.setText(job.getStatus());
-        }
-        else{
-            title.setText("No Jobs :(");
-            title.setText("");
         }
         return convertView;
     }

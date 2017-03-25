@@ -10,21 +10,36 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.app.handi.handi.DataTypes.Job;
+import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.Fragments.HandiHomeFragment;
 import com.app.handi.handi.Fragments.HandiSettingsFragment;
 import com.app.handi.handi.Fragments.HandiViewProfileFragment;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class HandiHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HandiHomeFragment.OnFragmentInteractionListener, HandiSettingsFragment.OnFragmentInteractionListener {
-
+    DatabaseReference db;
+    FirebaseUser user;
+    HelperHandiMan helperHandiMan;
+    ArrayList<Job> job = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        helperHandiMan = new HelperHandiMan(db);
+        job = helperHandiMan.retrieveJob(user);
         setContentView(R.layout.activity_handi_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,8 +52,8 @@ public class HandiHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("hello", "it's me");
+        Log.d("size2",Integer.toString(job.size()));
+        HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("hello", "it's me",job);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(
                 R.id.content_handi_home,
@@ -49,6 +64,7 @@ public class HandiHomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        Log.d("size2",Integer.toString(job.size()));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -86,7 +102,8 @@ public class HandiHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.activity_handi_home_drawer_item_home) {
-            HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("somebody", "once told me");
+            Log.d("size2",Integer.toString(job.size()));
+            HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("somebody", "once told me",job);
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.content_handi_home,
