@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        list = (ListView) view.findViewById(R.id.listView_frag_home);
+        list = (ListView) view.findViewById(R.id.fragment_home_list_view_user_jobs);
         newJobButton = (android.support.design.widget.FloatingActionButton) view.findViewById(R.id.fragment_home_floating_action_button_fab);
         newJobButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
         if(job.size()==0){
-            TextView title = (TextView) view.findViewById(R.id.textview_home_frag_no_jobs);
+            TextView title = (TextView) view.findViewById(R.id.fragment_home_text_view_no_jobs);
             final String nj = "No Jobs :(";
             title.setText(nj);
         }

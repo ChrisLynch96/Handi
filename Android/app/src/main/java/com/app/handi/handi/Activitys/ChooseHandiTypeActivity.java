@@ -20,6 +20,7 @@ import java.util.Locale;
 public class ChooseHandiTypeActivity extends AppCompatActivity {
     String profession;
     Intent intent;
+    ImageView imageBackground;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

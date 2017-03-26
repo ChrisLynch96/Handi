@@ -36,8 +36,8 @@ public class ChooseHandiTypeActivityTest {
     @Test
     public void testCleanerLaunch (){
         //tests cleaner image is present and that it launches the correct activity
-        assertNotNull(mActivity.findViewById(R.id.activity_job_selection_LinearLayout_cleaner));
-        onView(withId(R.id.activity_job_selection_LinearLayout_cleaner)).perform(click());
+        assertNotNull(mActivity.findViewById(R.id.activity_job_selection_relative_layout_cleaner));
+        onView(withId(R.id.activity_job_selection_relative_layout_cleaner)).perform(click());
         Activity cleanerLaunch;
         cleanerLaunch = getInstrumentation().waitForMonitorWithTimeout(monitorChooseHandi, 10000);
         assertNotNull(cleanerLaunch);
@@ -46,8 +46,8 @@ public class ChooseHandiTypeActivityTest {
 
     @Test
     public void testElectricianLaunch(){
-        assertNotNull(mActivity.findViewById(R.id.activity_job_selection_LinearLayout_electrician));
-        onView(withId(R.id.activity_job_selection_LinearLayout_electrician)).perform(click());
+        assertNotNull(mActivity.findViewById(R.id.activity_job_selection_relative_layout_electrician));
+        onView(withId(R.id.activity_job_selection_relative_layout_electrician)).perform(click());
         Activity electrianLaunch;
         electrianLaunch = getInstrumentation().waitForMonitorWithTimeout(monitorChooseHandi, 10000);
         assertNotNull(electrianLaunch);
@@ -66,8 +66,8 @@ public class ChooseHandiTypeActivityTest {
 
     @Test
     public void testPainterLaunch(){
-        assertNotNull(mActivity.findViewById(R.id.activity_job_selection_LinearLayout_painter));
-        onView(withId(R.id.activity_job_selection_LinearLayout_painter)).perform(click());
+        assertNotNull(mActivity.findViewById(R.id.activity_job_selection_relative_layout_painter));
+        onView(withId(R.id.activity_job_selection_relative_layout_painter)).perform(click());
         Activity painterLaunch;
         painterLaunch = getInstrumentation().waitForMonitorWithTimeout(monitorChooseHandi, 10000);
         assertNotNull(painterLaunch);

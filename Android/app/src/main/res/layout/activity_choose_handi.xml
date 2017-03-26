@@ -124,7 +124,8 @@
             android:layout_marginTop="10dp"
             android:tint="@color/white"
             android:src="@drawable/ic_painter"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            tools:ignore="VectorDrawableCompat" />
         <TextView
             android:id="@+id/activity_job_selection_image_text_painter"
             android:layout_width="100dp"
