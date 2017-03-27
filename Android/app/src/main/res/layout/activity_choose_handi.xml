@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
-        android:text="Choose your Handi!"
+        android:text="CHOOSE YOUR HANDI!"
         android:textSize="@dimen/stan_header_text_size"
         android:textStyle="bold"
         android:textColor="@color/dark_grey"
@@ -33,7 +33,7 @@
         android:onClick="onClick"
         >
         <TextView
-            android:id="@+id/activity_job_selection_image_text_cleaner"
+            android:id="@+id/activity_choose_handi_text_view_cleaner"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginTop="110dp"
@@ -90,7 +90,7 @@
             android:contentDescription="@null"
             tools:ignore="VectorDrawableCompat" />
         <TextView
-            android:id="@+id/activity_job_selection_image_text_electrician"
+            android:id="@+id/activity_choose_handi_text_view_electrician"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
@@ -127,7 +127,7 @@
             android:contentDescription="@null"
             tools:ignore="VectorDrawableCompat" />
         <TextView
-            android:id="@+id/activity_job_selection_image_text_painter"
+            android:id="@+id/activity_choose_handi_text_view_painter"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
@@ -165,7 +165,7 @@
             android:contentDescription="@null"
             tools:ignore="VectorDrawableCompat" />
         <TextView
-            android:id="@+id/activity_job_selection_image_text_plumber"
+            android:id="@+id/activity_choose_handi_text_view_plumber"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
@@ -203,7 +203,7 @@
             android:contentDescription="@null"
             tools:ignore="VectorDrawableCompat" />
         <TextView
-            android:id="@+id/activity_job_selection_image_text_handiman"
+            android:id="@+id/activity_choose_handi_text_view_handiman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
