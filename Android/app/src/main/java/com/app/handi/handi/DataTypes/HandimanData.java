@@ -46,4 +46,28 @@ public class HandimanData {
     public ImageView getProfilePicture(){return this.profilePicture;}
 
     public String getUid(){return this.uid;}
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public void setProfilePicture(ImageView profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 }

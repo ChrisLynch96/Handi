@@ -69,7 +69,7 @@ public class UserHomeActivity extends AppCompatActivity
     }
     @Override
     public void onBackPressed() {
-        Log.d("size2",Integer.toString(job.size()));
+//        Log.d("size2",Integer.toString(job.size()));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);

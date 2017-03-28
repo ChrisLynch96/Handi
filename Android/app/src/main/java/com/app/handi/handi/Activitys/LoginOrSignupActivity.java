@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 
+import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +33,9 @@ public class LoginOrSignupActivity extends AppCompatActivity {
     HelperHandiMan helper;
     boolean isHandiMan = false;
     ArrayList<String> id = new ArrayList<>();
+    ArrayList<HandimanData> HandiMen = new ArrayList<>();
     private ProgressBar progressBar;
+    String profession;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -48,46 +51,24 @@ public class LoginOrSignupActivity extends AppCompatActivity {
 
         if (user != null) {
             progressBar.setVisibility(View.VISIBLE);
-            db.child("HandiMen").addChildEventListener(new ChildEventListener() {
+            db.child("HandiMen").addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    Log.d("cool", "cool");
-                    id.clear();
+                public void onDataChange(DataSnapshot dataSnapshot) {
                     Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                     for (DataSnapshot child : children) {
                         String Id = child.getKey();
-                        id.add(Id);
+                        if(Id.equals(user.getUid())) {
+                            isHandiMan = true;
+                        }
                         Log.d("String", Id);
                     }
-                    for (int i = 0; i < id.size(); i++) {
-                        Log.d("Stuff", id.get(i));
-                        if(user.getUid().equals(id.get(i)))
-                            isHandiMan=true;
-                    }
-                    String siz = Integer.toString(id.size());
-                    Log.d("size", siz);
                     if (!isHandiMan) {
                         startActivity(new Intent(LoginOrSignupActivity.this, UserHomeActivity.class));
                     }
                     else {
-                        startActivity(new Intent(LoginOrSignupActivity.this, HandiHomeActivity.class));
+                        startActivity(new Intent(LoginOrSignupActivity.this,HandiHomeActivity.class));
                     }
                     finish();
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
                 }
 
                 @Override

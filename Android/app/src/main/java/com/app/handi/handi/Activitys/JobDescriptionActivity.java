@@ -97,7 +97,7 @@ public class JobDescriptionActivity extends AppCompatActivity {
         HelperUser helperUser = new HelperUser(db);
         HelperHandiMan helperHandiMan = new HelperHandiMan(db);
         helperUser.saveJob(job,user,job.getId());
-        helperHandiMan.saveJob(job,uid,prof,job.getId());
+        helperHandiMan.saveJob(job,uid,job.getId());
         startActivity(new Intent(JobDescriptionActivity.this, UserHomeActivity.class));
     }
 }

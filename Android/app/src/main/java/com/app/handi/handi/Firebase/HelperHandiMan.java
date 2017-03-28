@@ -30,7 +30,7 @@ public class HelperHandiMan {
             saved = false;
         else{
             try{
-                db.child("HandiMen").child(handimanData.getProfession()).child(user.getUid()).child("Info").setValue(handimanData);
+                db.child("HandiMen").child(user.getUid()).child("Info").setValue(handimanData);
                 saved = true;
             }catch(DatabaseException e){
                 e.printStackTrace();
@@ -39,12 +39,12 @@ public class HelperHandiMan {
         }
         return saved;
     }
-    public Boolean saveJob(Job job,String uid,String prof,String id){
+    public Boolean saveJob(Job job,String uid,String id){
         if(job==null)
             saved = false;
         else{
             try{
-                db.child("HandiMen").child(prof).child(uid).child("Jobs").child(id).setValue(job);
+                db.child("HandiMen").child(uid).child("Jobs").child(id).setValue(job);
                 saved = true;
             }catch(DatabaseException e){
                 e.printStackTrace();
@@ -53,20 +53,21 @@ public class HelperHandiMan {
         }
         return saved;
     }
-    private void fetchData(DataSnapshot dataSnapshot){
+    private void fetchData(DataSnapshot dataSnapshot,String profession){
         HandiMen.clear();
         Iterable<DataSnapshot> children = dataSnapshot.getChildren();
         for(DataSnapshot child : children){
             HandimanData handiman = child.child("Info").getValue(HandimanData.class);
-            HandiMen.add(handiman);
+            if(profession.equals(handiman.getProfession()))
+                HandiMen.add(handiman);
             Log.d("stuff","storing");
         }
     }
-    public ArrayList<HandimanData> retrieve(String profession){
-        db.child("HandiMen").child(profession).addValueEventListener(new ValueEventListener() {
+    public ArrayList<HandimanData> retrieve(final String profession){
+        db.child("HandiMen").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                fetchData(dataSnapshot);
+                fetchData(dataSnapshot,profession);
                 Log.d("called","inside");
             }
 
@@ -77,57 +78,28 @@ public class HelperHandiMan {
         });
         return HandiMen;
     }
-    private void fetchDataJob(DataSnapshot dataSnapshot,FirebaseUser user){
+    private void fetchDataJob(DataSnapshot dataSnapshot){
         jobs.clear();
         Iterable<DataSnapshot> children = dataSnapshot.getChildren();
         for(DataSnapshot child : children){
             String key = child.getKey();
-            if(key.equals(user.getUid())) {
-                String st =child.child("Jobs").getKey();
-                Log.d("stuff","storing");
-                Log.d("lol",st);
-                Iterable<DataSnapshot> children2 = child.getChildren();
-                for(DataSnapshot child2 : children2){
-                    Job job = child2.child("Jobs").getValue(Job.class);
-                    //Log.d("lol",key2);
-//                    if(key.equals(user.getUid())) {
-//                        String st2 =child.getKey();
-//                        //Log.d("stuff","storing");
-//                        Log.d("lol",st2);
-//                    }
-                }
-            }
-            //Job job = child.child(user.getUid()).child("Jobs").getValue(Job.class);
-            //jobs.add(job);
+            Log.d("yo",key);
+            Job job = child.getValue(Job.class);
+            jobs.add(job);
         }
     }
-    public ArrayList<Job> retrieveJob(final FirebaseUser user){
-       db.child("HandiMen").addChildEventListener(new ChildEventListener() {
-           @Override
-           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               fetchDataJob(dataSnapshot,user);
-           }
+    public ArrayList<Job> retrieveJob(FirebaseUser user){
+      db.child("HandiMen").child(user.getUid()).child("Jobs").addValueEventListener(new ValueEventListener() {
+          @Override
+          public void onDataChange(DataSnapshot dataSnapshot) {
+              fetchDataJob(dataSnapshot);
+          }
 
-           @Override
-           public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+          @Override
+          public void onCancelled(DatabaseError databaseError) {
 
-           }
-
-           @Override
-           public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-           }
-
-           @Override
-           public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-           }
-
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
-           }
-       });
+          }
+      });
         return jobs;
     }
 }

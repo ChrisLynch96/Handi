@@ -89,16 +89,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //job=helperUser.retrieve(user);
         adapter = new DisplayUserJobsAdapter(job,getActivity());
         try {
-            Thread.sleep(200);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if(job.size()==0){
-            TextView title = (TextView) view.findViewById(R.id.fragment_home_text_view_no_jobs);
-            final String nj = "No Jobs :(";
-            title.setText(nj);
-        }
-
         //Log.d("size",Integer.toString(job.size()));
         list.setAdapter(adapter);
         return view;

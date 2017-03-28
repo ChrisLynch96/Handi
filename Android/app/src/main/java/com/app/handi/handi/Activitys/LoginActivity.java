@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -89,48 +90,24 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                db.child("HandiMen").addChildEventListener(new ChildEventListener() {
+                                user = auth.getCurrentUser();
+                                db.child("HandiMen").addValueEventListener(new ValueEventListener() {
                                     @Override
-                                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
                                         Log.d("cool", "cool");
-                                        id.clear();
                                         Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                                         for (DataSnapshot child : children) {
                                             String Id = child.getKey();
-                                            id.add(Id);
+                                            if(Id.equals(user.getUid()))
+                                                isHandiMan=true;
                                             Log.d("String", Id);
                                         }
-                                        user = auth.getCurrentUser();
-                                        for (int i = 0; i < id.size(); i++) {
-                                            Log.d("Stuff", id.get(i));
-                                            if(user.getUid().equals(id.get(i)))
-                                                isHandiMan = true;
-                                        }
-//                                        if (id.size() > 0)
-//                                            isHandiMan = true;
-                                        String siz = Integer.toString(id.size());
-                                        Log.d("size", siz);
                                         if (!isHandiMan) {
                                             startActivity(new Intent(LoginActivity.this, UserHomeActivity.class));
                                         }
                                         else {
                                             startActivity(new Intent(LoginActivity.this, HandiHomeActivity.class));
                                         }
-                                    }
-
-                                    @Override
-                                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                                    }
-
-                                    @Override
-                                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                                    }
-
-                                    @Override
-                                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
                                     }
 
                                     @Override
