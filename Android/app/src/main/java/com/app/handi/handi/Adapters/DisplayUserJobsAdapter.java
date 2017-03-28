@@ -53,7 +53,7 @@ public class DisplayUserJobsAdapter extends BaseAdapter{
 
         final Job job = (Job) this.getItem(position);
         final String a = "Accepted";
-        final String Na = "Not Accpeted";
+        final String Na = "Not Accepted";
 
         Log.d("t",job.getTitle());
         title.setText(job.getTitle());
@@ -62,6 +62,7 @@ public class DisplayUserJobsAdapter extends BaseAdapter{
             accepted.setText(a);
         else
             accepted.setText(Na);
+        convertView.setTag(job);
         return convertView;
     }
 }

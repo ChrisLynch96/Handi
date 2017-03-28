@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.handi.handi.Activitys.ChooseHandiTypeActivity;
+import com.app.handi.handi.Activitys.ViewJobDescriptionActivity;
 import com.app.handi.handi.Adapters.DisplayUserJobsAdapter;
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.R;
@@ -85,8 +87,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), ChooseHandiTypeActivity.class));
             }
         });
-        String[] values = new String[] { "Message1", "Message2", "Message3","Message1", "Message2", "Message3"};
-        //job=helperUser.retrieve(user);
         adapter = new DisplayUserJobsAdapter(job,getActivity());
         try {
             Thread.sleep(500);
@@ -95,6 +95,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
         //Log.d("size",Integer.toString(job.size()));
         list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Job job = (Job) view.getTag();
+                Intent intent = new Intent(getActivity(), ViewJobDescriptionActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("LeJob",job);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

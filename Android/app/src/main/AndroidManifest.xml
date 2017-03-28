@@ -68,6 +68,14 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".Activitys.HandiProfileView">
         </activity>
+        <activity android:name=".Activitys.ViewJobDescriptionActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Activitys.AcceptJobDescriptionActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

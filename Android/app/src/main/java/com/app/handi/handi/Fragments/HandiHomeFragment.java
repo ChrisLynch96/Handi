@@ -1,15 +1,19 @@
 package com.app.handi.handi.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.app.handi.handi.Activitys.AcceptJobDescriptionActivity;
+import com.app.handi.handi.Activitys.ViewJobDescriptionActivity;
 import com.app.handi.handi.Adapters.DisplayHandiJobsAdapter;
 import com.app.handi.handi.Adapters.DisplayHandiOffersAdapter;
 import com.app.handi.handi.DataTypes.Job;
@@ -43,6 +47,8 @@ public class HandiHomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private static ArrayList<Job> job = new ArrayList<>();
+    private ArrayList<Job> jobs = new ArrayList<>();
+    private ArrayList<Job> jobs2 = new ArrayList<>();
     DisplayHandiJobsAdapter adapter;
     DisplayHandiOffersAdapter adapter2;
 
@@ -81,23 +87,50 @@ public class HandiHomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_handi_home, container, false);
         listView = (ListView) view.findViewById(R.id.fragment_handi_home_list_view_jobs);
         list2 = (ListView) view.findViewById(R.id.fragment_handi_home_list_view_jobs_offers);
-        String[] values = new String[]{ "Message1", "Message2", "Message3","Message1", "Message2", "Message3"};
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-//                android.R.layout.simple_list_item_1, values);
-        adapter = new DisplayHandiJobsAdapter(job,getActivity());
+        for(int i=0;i<job.size();i++){
+            if(job.get(i).isAccepted())
+                jobs.add(job.get(i));
+            else
+                jobs2.add(job.get(i));
+        }
+        adapter = new DisplayHandiJobsAdapter(jobs,getActivity());
+        adapter2 = new DisplayHandiOffersAdapter(jobs2,getActivity());
         try {
-            Thread.sleep(200);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         listView.setAdapter(adapter);
-        list2.setAdapter(adapter);
+        list2.setAdapter(adapter2);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Job job = (Job) view.getTag();
+                Intent intent = new Intent(getActivity(), ViewJobDescriptionActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("LeJob",job);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        list2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Job job = (Job) view.getTag();
+                Intent intent = new Intent(getActivity(), AcceptJobDescriptionActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("LeJobOffer",job);
+                intent.putExtras(bundle);
+                intent.putExtra("Jobs",jobs);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

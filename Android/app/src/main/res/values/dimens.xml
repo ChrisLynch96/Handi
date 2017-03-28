@@ -23,8 +23,8 @@
     <dimen name="nav_header_title_padding_left">15dp</dimen>
     <dimen name="activity_choose_handi_image_spaceing">10dp</dimen>
     <dimen name="activity_choose_handi_image_width_height">100dp</dimen>
-    <dimen name="list_view_width_user_handi_home">250dp</dimen>
-    <dimen name="linear_layout_user_handi_home_border">260dp</dimen>
+    <dimen name="list_view_width_user_handi_home">365dp</dimen>
+    <dimen name="linear_layout_user_handi_home_border">375dp</dimen>
     <dimen name="standard_spacing">15dp</dimen>
     <dimen name="standard_margin_left">20dp</dimen>
     <dimen name="standard_margin_button_bottom">30dp</dimen>
