@@ -23,7 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:tint="@color/dark_grey"
-                android:src="@drawable/ic_plumber"/>
+                android:src="@drawable/ic_plumber"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
 
         <LinearLayout
@@ -36,7 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_electrician"
-                android:tint="@color/dark_grey" />
+                android:tint="@color/dark_grey"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
 
         <LinearLayout
@@ -48,7 +50,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:tint="@color/dark_grey"
-                android:src="@drawable/ic_painter"/>
+                android:src="@drawable/ic_painter"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
 
         <LinearLayout
@@ -60,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:tint="@color/dark_grey"
-                android:src="@drawable/ic_cleaner"/>
+                android:src="@drawable/ic_cleaner"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,7 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:tint="@color/dark_grey"
-                android:src="@drawable/ic_tradesman"/>
+                android:src="@drawable/ic_tradesman"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
     </LinearLayout>
 
