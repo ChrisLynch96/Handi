@@ -51,24 +51,32 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             profession = "Electrician";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
+            imageBackground = (ImageView) findViewById(R.id.activity_choose_handi_image_box_electrician);
+            imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
         else if(view.getId()==R.id.activity_job_selection_LinearLayout_plumber){
             profession = "Plumber";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
+            imageBackground = (ImageView) findViewById(R.id.activity_choose_handi_image_box_plumber);
+            imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
         else if(view.getId()==R.id.activity_job_selection_relative_layout_painter){
             profession = "Painter";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
+            imageBackground = (ImageView) findViewById(R.id.activity_choose_handi_image_box_painter);
+            imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
         else {
             profession = "HandiMan";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
+            imageBackground = (ImageView) findViewById(R.id.activity_choose_handi_image_box_handiman);
+            imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
     }
