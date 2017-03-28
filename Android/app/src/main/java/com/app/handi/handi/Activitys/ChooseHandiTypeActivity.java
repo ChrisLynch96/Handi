@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
 
         // Loading Font Face
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/LT.ttf");
-        // Loading TextViews into an arrat
+        // Loading TextViews into an array
         TextView[] textViews = {(TextView) findViewById(R.id.activity_choose_handi_text_view_header), (TextView) findViewById(R.id.activity_choose_handi_text_view_cleaner),
                 (TextView) findViewById(R.id.activity_choose_handi_text_view_plumber), (TextView) findViewById(R.id.activity_choose_handi_text_view_electrician),
                 (TextView) findViewById(R.id.activity_choose_handi_text_view_handiman), (TextView) findViewById(R.id.activity_choose_handi_text_view_painter)};
@@ -41,8 +42,10 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             profession = "Cleaner";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
-            Log.d("prof",profession);
+            imageBackground = (ImageView) findViewById(R.id.activity_choose_handi_image_box_cleaner);
+            imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
+            //imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.norm_pink));
         }
         else if(view.getId()==R.id.activity_job_selection_relative_layout_electrician){
             profession = "Electrician";

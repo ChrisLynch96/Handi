@@ -145,12 +145,15 @@
 
         <Button
             android:id="@+id/ok_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/stan_button_width"
+            android:layout_height="@dimen/stan_button_height"
             android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/stan_header_text_size"
             android:onClick="submitCard"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@color/norm_pink"/>
 
     </android.support.design.widget.TextInputLayout>
 

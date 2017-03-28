@@ -30,9 +30,6 @@
         <activity android:name=".Activitys.ResetPasswordActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Activitys.MainActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
         <activity android:name=".Activitys.LoginOrSignupActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
