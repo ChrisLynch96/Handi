@@ -49,7 +49,7 @@
             android:layout_marginLeft="20dp"
             android:fontFamily="sans-serif"
             android:ems="10"
-            android:hint="Totally Not a scam"
+            android:hint="xxxx xxxx xxxx xxxx"
             android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
