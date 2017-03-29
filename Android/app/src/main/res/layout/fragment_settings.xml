@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stripe="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.app.handi.handi.Fragments.SettingsFragment">
+
+
 
     <TextView
         android:id="@+id/card_details"
@@ -45,8 +48,7 @@
             android:layout_marginLeft="20dp"
             android:fontFamily="sans-serif"
             android:ems="10"
-            android:hint="Totally Not a scam"
-            android:inputType="number"/>
+            android:hint="xxxx xxxx xxxx xxxx" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView

@@ -20,6 +20,7 @@ import com.stripe.android.Stripe;
 import com.stripe.android.model.Token;
 
 import com.app.handi.handi.R;
+import com.stripe.android.view.CardInputWidget;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,7 +39,7 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
     private Button okButton;
     private int cardExpMonthInt;
     private int cardExpYearInt;
-    Context mContext;
+    Context mContext = getActivity();
     View view;
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -80,8 +81,10 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        // Inflate the layout for this fragment
+
         okButton = (Button) view.findViewById(R.id.ok_button);
         cardNumber = (EditText) view.findViewById(R.id.card_number);
         cardExpMonth = (EditText) view.findViewById(R.id.card_exp_month);
@@ -93,10 +96,11 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
             @Override
             public void onClick(View view) {
 
-                final String number = cardNumber.getText().toString().trim();
+                final String number = cardNumber.getText().toString();
                 final String month = cardExpMonth.getText().toString().trim();
                 final String year = cardExpYear.getText().toString().trim();
                 final String cvc = cardCVC.getText().toString().trim();
+
                 // Month and year needed to be converted to ints to be passed to card object
                 cardExpMonthInt = Integer.parseInt(month);
                 cardExpYearInt = Integer.parseInt(year);
@@ -163,7 +167,9 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
             }
         });
         return view;
+
     }
+
 
     @Override
     public void onAttach(Context context) {
