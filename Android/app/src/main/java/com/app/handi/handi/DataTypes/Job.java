@@ -2,11 +2,13 @@ package com.app.handi.handi.DataTypes;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
+
 /**
  * Created by Killian on 16/03/2017.
  */
 
-public class Job {
+public class Job implements Serializable {
     private String Description;
     private String Status;
     private boolean isAccepted;

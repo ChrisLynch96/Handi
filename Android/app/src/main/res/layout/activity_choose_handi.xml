@@ -43,7 +43,7 @@
             />
 
         <ImageView
-            android:id="@+id/activity_job_selection_image_box_cleaner"
+            android:id="@+id/activity_choose_handi_image_box_cleaner"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:tint="@color/norm_pink"
@@ -66,12 +66,12 @@
         android:id="@+id/activity_job_selection_relative_layout_electrician"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/activity_job_selection_relative_layout_cleaner"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
-        android:onClick="onClick">
+        android:onClick="onClick"
+        android:layout_above="@+id/activity_job_selection_relative_layout_painter"
+        android:layout_alignLeft="@+id/activity_job_selection_LinearLayout_plumber"
+        android:layout_alignStart="@+id/activity_job_selection_LinearLayout_plumber">
         <ImageView
-            android:id="@+id/activity_job_selection_image_box_electrician"
+            android:id="@+id/activity_choose_handi_image_box_electrician"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:tint="@color/norm_pink"
@@ -109,7 +109,7 @@
         android:layout_marginTop="40dp"
         android:onClick="onClick">
         <ImageView
-            android:id="@+id/activity_job_selection_image_box_painter"
+            android:id="@+id/activity_choose_handi_image_box_painter"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:tint="@color/norm_pink"
@@ -147,7 +147,7 @@
         android:layout_marginLeft="40dp"
         android:onClick="onClick">
         <ImageView
-            android:id="@+id/activity_job_selection_image_box_plumber"
+            android:id="@+id/activity_choose_handi_image_box_plumber"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:tint="@color/norm_pink"
@@ -158,12 +158,13 @@
             android:id="@+id/activity_job_selection_image_view_plumber"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:tint="@color/white"
             android:src="@drawable/ic_plumber"
             android:contentDescription="@null"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"
+            android:layout_marginBottom="10dp"
+            android:layout_alignBottom="@+id/activity_choose_handi_image_box_plumber"
+            android:layout_centerHorizontal="true" />
         <TextView
             android:id="@+id/activity_choose_handi_text_view_plumber"
             android:layout_width="100dp"
@@ -184,7 +185,7 @@
         android:layout_marginTop="30dp"
         android:onClick="onClick">
         <ImageView
-            android:id="@+id/activity_job_selection_image_box_handiman"
+            android:id="@+id/activity_choose_handi_image_box_handiman"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:tint="@color/norm_pink"

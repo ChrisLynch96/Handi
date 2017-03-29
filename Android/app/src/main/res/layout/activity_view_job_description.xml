@@ -60,4 +60,24 @@
         android:text="Description"
         android:textSize="@dimen/stan_header_text_size"
         android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/activity_view_job_description_text_view_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_view_job_description_text_view_description"
+        android:layout_marginLeft="@dimen/standard_margin_left"
+        android:layout_marginTop="@dimen/standard_spacing"
+        android:text="Status"
+        android:textSize="@dimen/stan_header_text_size"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/activity_view_job_description_text_view_accepted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_view_job_description_text_view_status"
+        android:layout_marginLeft="@dimen/standard_margin_left"
+        android:layout_marginTop="@dimen/standard_spacing"
+        android:text="Accepted"
+        android:textSize="@dimen/stan_header_text_size"
+        android:textStyle="bold"/>
 </RelativeLayout>

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Richard Noonan-->
+<!--Layout changes Christopher Lynch-->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:stripe="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -140,19 +144,24 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/button_container"
+        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cvc_container">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/standard_margin_button_bottom">
         <!-- android:layout_toRightOf="@+id/date_container"> -->
 
         <Button
             android:id="@+id/ok_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/stan_button_width"
+            android:layout_height="@dimen/stan_button_height"
             android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/stan_header_text_size"
             android:onClick="submitCard"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@color/norm_pink"/>
 
     </android.support.design.widget.TextInputLayout>
 
