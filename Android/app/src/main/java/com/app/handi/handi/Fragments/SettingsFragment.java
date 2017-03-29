@@ -138,10 +138,16 @@ public class  SettingsFragment extends Fragment implements View.OnClickListener 
                     return;
                 }
 
-                //if card passes validation, pass card info as stripe token
+
+
+                //NB: when testing card you have to use stripes test card numbers for visa its : 4242 4242 4242 4242,
+                // any expiry and cvc
                 try{
                     Card card = new Card(number, cardExpMonthInt, cardExpYearInt, cvc);
-                    Stripe stripe = new Stripe(mContext, "ca_AJS48q4Dsogw47bBPoG61DWz7RspXFSB");
+                    // this is the publishable test key api stripe provides, will be changed when (if?) app goes live
+                    //to live api key
+                    Stripe stripe = new Stripe(mContext, "pk_test_cQrIAXnFoHuNLlRCLBen5FTD  ");
+                    //if card passes validation, pass card info as stripe token
                     stripe.createToken(
                             card,
                             new TokenCallback() {
