@@ -80,4 +80,16 @@
         android:text="Accepted"
         android:textSize="@dimen/stan_header_text_size"
         android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/activity_view_job_description_button_job_done"
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/standard_margin_button_bottom"
+        android:background="@color/norm_pink"
+        android:text="Job Complete"
+        android:textColor="@color/white"
+        android:onClick="onClick"/>
 </RelativeLayout>

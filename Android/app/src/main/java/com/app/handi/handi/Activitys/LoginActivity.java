@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //ignore the default transition
         overridePendingTransition(0,0);
-        View container = findViewById(R.id.login_container);
+        View container = findViewById(R.id.activity_login_relative_layout_text_button_container);
         //When the activity starts fade in to complement the transition from the previous splash screen
         container.setAnimation(AnimationUtils.loadAnimation(this,R.anim.fade_in));
         //Get Firebase auth instance
@@ -102,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 isHandiMan=true;
                                             Log.d("String", Id);
                                         }
+                                        progressBar.setVisibility(View.GONE);
                                         if (!isHandiMan) {
                                             startActivity(new Intent(LoginActivity.this, UserHomeActivity.class));
                                         }

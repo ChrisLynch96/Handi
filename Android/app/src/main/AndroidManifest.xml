@@ -41,7 +41,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Activitys.JobDescriptionActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:noHistory="true">>
             </activity>
         <activity android:name=".Activitys.SignUpChoiceActivity"
             android:configChanges="orientation"
