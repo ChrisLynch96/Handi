@@ -17,9 +17,10 @@ public class Job implements Serializable {
     private String FirstName;
     private String LastName;
     private String id;
+    private String userUid;
 
     public Job(){}
-    public Job(String Description,String status,boolean isAccepted,String Title,String Address,String FirstName,String LastName,String id){
+    public Job(String Description,String status,boolean isAccepted,String Title,String Address,String FirstName,String LastName,String id,String userUid){
         this.Title = Title;
         this.Address = Address;
         this.FirstName = FirstName;
@@ -28,6 +29,7 @@ public class Job implements Serializable {
         this.Status = status;
         this.isAccepted = isAccepted;
         this.id = id;
+        this.userUid = userUid;
     }
 
 
@@ -42,6 +44,10 @@ public class Job implements Serializable {
         return this.Status;
     }
     public String getId() {return this.id;}
+
+    public String getUserUid() {
+        return userUid;
+    }
 
     public void setAccepted(boolean accepted) {
         isAccepted = accepted;
@@ -79,4 +85,7 @@ public class Job implements Serializable {
         Title = title;
     }
 
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
+    }
 }

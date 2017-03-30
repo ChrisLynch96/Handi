@@ -56,6 +56,7 @@ public class AcceptJobDescriptionActivity extends AppCompatActivity implements H
     public void onClick(View view) {
         job.setAccepted(true);
         reference.child("HandiMen").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
+        reference.child("Users").child(job.getUserUid()).child("Jobs").child(job.getId()).setValue(job);
         for(int i=0;i<jobs.size();i++){
             if(jobs.get(i).getId().equals(job.getId()))
                 jobs.remove(i);
