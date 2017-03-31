@@ -15,8 +15,10 @@
         android:onClick="onClick">
 
         <LinearLayout
+        android:id="@+id/activity_job_selection_LinearLayout_click_plumber"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="onClick"
         android:layout_weight="1">
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_plumber"
@@ -28,8 +30,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/activity_job_selection_LinearLayout_click_electrician"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="onClick"
             android:layout_weight="1">
 
             <ImageView
@@ -42,8 +46,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/activity_job_selection_LinearLayout_click_painter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="onClick"
             android:layout_weight="1">
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_painter"
@@ -55,8 +61,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/activity_job_selection_LinearLayout_click_cleaner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="onClick"
             android:layout_weight="1">
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_cleaner"
@@ -68,8 +76,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/activity_job_selection_LinearLayout_click_handiman"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="onClick"
             android:layout_weight="1">
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_handiman"

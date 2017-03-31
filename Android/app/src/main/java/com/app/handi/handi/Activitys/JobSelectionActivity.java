@@ -34,7 +34,7 @@ public class JobSelectionActivity extends AppCompatActivity {
     ArrayList<HandimanData> data = new ArrayList<>();
     ImageView i;
     String profession;
-
+    Intent intent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,16 +84,36 @@ public class JobSelectionActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        if (view.getId() == R.id.activity_job_selection_image_view_cleaner) {
+        if (view.getId() == R.id.activity_job_selection_LinearLayout_click_cleaner) {
             profession = "Cleaner";
-        } else if (view.getId() == R.id.activity_job_selection_image_view_electrician) {
+            Log.d("works",profession);
+            intent = new Intent(this,JobSelectionActivity.class);
+            intent.putExtra("profession",profession);
+            startActivity(intent);
+        } else if (view.getId() == R.id.activity_job_selection_LinearLayout_click_electrician) {
             profession = "Electrician";
-        } else if (view.getId() == R.id.activity_job_selection_image_view_painter) {
+            Log.d("works",profession);
+            intent = new Intent(this,JobSelectionActivity.class);
+            intent.putExtra("profession",profession);
+            startActivity(intent);
+        } else if (view.getId() == R.id.activity_job_selection_LinearLayout_click_painter) {
             profession = "Painter";
-        } else if (view.getId() == R.id.activity_job_selection_image_view_plumber) {
+            Log.d("works",profession);
+            intent = new Intent(this,JobSelectionActivity.class);
+            intent.putExtra("profession",profession);
+            startActivity(intent);
+        } else if (view.getId() == R.id.activity_job_selection_LinearLayout_click_plumber) {
             profession = "Plumber";
-        } else if (view.getId() == R.id.activity_job_selection_image_view_handiman) {
+            Log.d("works",profession);
+            intent = new Intent(this,JobSelectionActivity.class);
+            intent.putExtra("profession",profession);
+            startActivity(intent);
+        } else if (view.getId() == R.id.activity_job_selection_LinearLayout_click_handiman) {
             profession = "HandiMan";
+            Log.d("works",profession);
+            intent = new Intent(this,JobSelectionActivity.class);
+            intent.putExtra("profession",profession);
+            startActivity(intent);
         }
     }
 

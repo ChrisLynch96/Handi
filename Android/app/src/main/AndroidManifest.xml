@@ -44,7 +44,9 @@
         <activity
             android:name=".Activitys.JobSelectionActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:noHistory="true"
+            />
         <activity
             android:name=".Activitys.JobDescriptionActivity"
             android:configChanges="orientation"
