@@ -21,62 +21,75 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activitys.UserSignupActivity"
+        <activity
+            android:name=".Activitys.UserSignupActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activitys.LoginActivity"
+        <activity
+            android:name=".Activitys.LoginActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activitys.ResetPasswordActivity"
+        <activity
+            android:name=".Activitys.ResetPasswordActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activitys.LoginOrSignupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activitys.LoginOrSignupActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activitys.HandiManSignupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activitys.HandiManSignupActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activitys.JobSelectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activitys.JobSelectionActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activitys.JobDescriptionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activitys.JobDescriptionActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:noHistory="true">>
-            </activity>
-        <activity android:name=".Activitys.SignUpChoiceActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
+            >
+        </activity>
+        <activity
+            android:name=".Activitys.SignUpChoiceActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.UserHomeActivity"
-            android:label="@string/title_activity_user_home"
-            android:theme="@style/AppTheme"
-            android:configChanges="orientation" android:screenOrientation="portrait"/>
-        <activity android:name=".Activitys.ChooseHandiTypeActivity"
             android:configChanges="orientation"
+            android:label="@string/title_activity_user_home"
             android:screenOrientation="portrait"
-            android:noHistory="true">
-        </activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activitys.ChooseHandiTypeActivity"
+            android:configChanges="orientation"
+            android:noHistory="true"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Activitys.HandiHomeActivity"
             android:label="@string/title_activity_handi_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activitys.AdminActivity"
+        <activity
+            android:name=".Activitys.AdminActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activitys.HandiEditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activitys.HandiEditProfileActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activitys.HandiProfileView"></activity>
+        <activity
+            android:name=".Activitys.ViewJobDescriptionActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Activitys.HandiProfileView">
-        </activity>
-        <activity android:name=".Activitys.ViewJobDescriptionActivity"
+        <activity
+            android:name=".Activitys.AcceptJobDescriptionActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Activitys.AcceptJobDescriptionActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activitys.RatingsPopUpWindow"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
     </application>
 
 </manifest>

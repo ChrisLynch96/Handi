@@ -93,7 +93,7 @@ public class JobDescriptionActivity extends AppCompatActivity {
             return;
         }
 
-        Job job = new Job(Description,"Incomplete",false,title,address,firstName,lastName,getSaltString(),user.getUid());
+        Job job = new Job(Description,"Incomplete",false,title,address,firstName,lastName,getSaltString(),user.getUid(),uid);
         HelperUser helperUser = new HelperUser(db);
         HelperHandiMan helperHandiMan = new HelperHandiMan(db);
         helperUser.saveJob(job,user,job.getId());

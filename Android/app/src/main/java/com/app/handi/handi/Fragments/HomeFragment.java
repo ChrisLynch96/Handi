@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM2 = "param2";
     View view;
     ListView list;
+    int jobState;
     android.support.design.widget.FloatingActionButton newJobButton;
 
     // TODO: Rename and change types of parameters
@@ -41,6 +42,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private String mParam2;
     DisplayUserJobsAdapter adapter;
     private static ArrayList<Job> job = new ArrayList<>();
+    private ArrayList<Job> jobs = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -80,6 +82,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         list = (ListView) view.findViewById(R.id.fragment_home_list_view_user_jobs);
+        for(int i=0;i<job.size();i++){
+            if(job.get(i).getStatus().equals("Incomplete"))
+                jobs.add(job.get(i));
+        }
         newJobButton = (android.support.design.widget.FloatingActionButton) view.findViewById(R.id.fragment_home_floating_action_button_fab);
         newJobButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -87,7 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), ChooseHandiTypeActivity.class));
             }
         });
-        adapter = new DisplayUserJobsAdapter(job,getActivity());
+        adapter = new DisplayUserJobsAdapter(jobs,getActivity());
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -103,6 +109,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("LeJob",job);
                 intent.putExtras(bundle);
+                if(job.isAccepted()) {
+                    jobState = 1;
+                    intent.putExtra("ViewButton",jobState );
+                }
+                else{
+                    jobState =0;
+                    intent.putExtra("ViewButton",jobState);
+                }
                 startActivity(intent);
             }
         });

@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by christopherlynch on 27/03/2017.
@@ -20,11 +24,14 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
     TextView Title,ClientName,Address,Description,Status,Accepted;
     int jobState = 0;
     Button jobDoneButton;
+    Job job;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_job_description);
-        Job job = (Job)getIntent().getSerializableExtra("LeJob");
+        job = (Job)getIntent().getSerializableExtra("LeJob");
+        Bundle bundle = getIntent().getExtras();
+        jobState= bundle.getInt("ViewButton");
         String A = "Accepted";
         String Na = "Not Accepted";
         Title = (TextView) findViewById(R.id.activity_view_job_description_text_view_title);
@@ -48,10 +55,18 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
         }
         if (jobState == 0)
             jobDoneButton.setVisibility(View.GONE);
+        else if(jobState==1)
+            jobDoneButton.setVisibility(View.VISIBLE);
     }
 
     public void onClick(View view){
-        if (view.getId() == R.id.activity_view_job_description_button_job_done)
-            startActivity(new Intent(this, UserHomeActivity.class));
+        if (view.getId() == R.id.activity_view_job_description_button_job_done){
+            Intent intent = new Intent(ViewJobDescriptionActivity.this,RatingsPopUpWindow.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Job",job);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            jobDoneButton.setVisibility(View.GONE);
+        }
     }
 }
