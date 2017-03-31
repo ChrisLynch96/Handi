@@ -35,21 +35,19 @@ public class JobSelectionActivity extends AppCompatActivity {
     ImageView i;
     String profession;
     Intent intent;
+    View currentJobView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_selection);
+        overridePendingTransition(0,0);
         listView = (ListView) findViewById(R.id.activity_job_selection_ListView_handi_display);
 
         db = FirebaseDatabase.getInstance().getReference();
-//        helper = new HelperHandiMan(db);
-//        adapter = new DisplayingHandiAdapter(helper.retrieve(profession),this);
-//        listView.setAdapter(adapter);
         Bundle bundle = getIntent().getExtras();
         profession = bundle.getString("profession");
         Log.d("prof2",profession);
-        //displayList();
         helper = new HelperHandiMan(db);
         adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
         try {
@@ -74,11 +72,8 @@ public class JobSelectionActivity extends AppCompatActivity {
                     intent.putExtra("HandiProf",h.getProfession());
                     startActivity(intent);
                 }
-                //startActivity(new Intent(JobSelectionActivity.this,JobDescriptionActivity.class));
             }
         });
-        ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
-                (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
 
         //setJobImageHeights(images);
     }
