@@ -38,7 +38,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        if(view.getId()==R.id.activity_job_selection_relative_layout_cleaner){
+        if(view.getId()==R.id.activity_choose_handi_relative_layout_cleaner){
             profession = "Cleaner";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
@@ -47,7 +47,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             startActivity(intent);
             //imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.norm_pink));
         }
-        else if(view.getId()==R.id.activity_job_selection_relative_layout_electrician){
+        else if(view.getId()==R.id.activity_choose_handi_relative_layout_electrician){
             profession = "Electrician";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
@@ -55,7 +55,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
-        else if(view.getId()==R.id.activity_job_selection_LinearLayout_plumber){
+        else if(view.getId()==R.id.activity_choose_handi_LinearLayout_plumber){
             profession = "Plumber";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
@@ -63,7 +63,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
-        else if(view.getId()==R.id.activity_job_selection_relative_layout_painter){
+        else if(view.getId()==R.id.activity_choose_handi_relative_layout_painter){
             profession = "Painter";
             intent = new Intent(this,JobSelectionActivity.class);
             intent.putExtra("profession",profession);
