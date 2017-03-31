@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_plumber"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:tint="@color/dark_grey"
                 android:src="@drawable/ic_plumber"
                 tools:ignore="VectorDrawableCompat" />
@@ -39,7 +39,7 @@
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_electrician"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:src="@drawable/ic_electrician"
                 android:tint="@color/dark_grey"
                 tools:ignore="VectorDrawableCompat" />
@@ -54,7 +54,7 @@
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_painter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:tint="@color/dark_grey"
                 android:src="@drawable/ic_painter"
                 tools:ignore="VectorDrawableCompat" />
@@ -84,7 +84,7 @@
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_handiman"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="67dp"
                 android:tint="@color/dark_grey"
                 android:src="@drawable/ic_tradesman"
                 tools:ignore="VectorDrawableCompat" />

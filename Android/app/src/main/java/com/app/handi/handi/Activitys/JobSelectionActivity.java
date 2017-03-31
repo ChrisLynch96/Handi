@@ -80,7 +80,7 @@ public class JobSelectionActivity extends AppCompatActivity {
         ImageView[] images = {(ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner), (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician), (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman),
                 (ImageView) findViewById(R.id.activity_job_selection_image_view_painter), (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber)};
 
-        setJobImageHeights(images);
+        //setJobImageHeights(images);
     }
 
     public void onClick(View view) {
@@ -117,12 +117,12 @@ public class JobSelectionActivity extends AppCompatActivity {
         }
     }
 
-    public void setJobImageHeights(ImageView[] jobImageViews){
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x/5;
-        for (int i = 0; i < jobImageViews.length; i++)
-            jobImageViews[i].getLayoutParams().height = width;
-    }
+//    public void setJobImageHeights(ImageView[] jobImageViews){
+//        Display display = getWindowManager().getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        int width = size.x/5;
+//        for (int i = 0; i < jobImageViews.length; i++)
+//            jobImageViews[i].getLayoutParams().height = width;
+//    }
 }
