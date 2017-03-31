@@ -5,15 +5,19 @@ package com.app.handi.handi.Activitys;
  */
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.app.handi.handi.Adapters.DisplayingHandiAdapter;
@@ -32,10 +36,9 @@ public class JobSelectionActivity extends AppCompatActivity {
     DisplayingHandiAdapter adapter;
     ListView listView;
     ArrayList<HandimanData> data = new ArrayList<>();
-    ImageView i;
+    ImageView handiImage, handiBackground;
     String profession;
     Intent intent;
-    View currentJobView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class JobSelectionActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance().getReference();
         Bundle bundle = getIntent().getExtras();
         profession = bundle.getString("profession");
+        changeBackgroundColour();
         Log.d("prof2",profession);
         helper = new HelperHandiMan(db);
         adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
@@ -120,4 +124,31 @@ public class JobSelectionActivity extends AppCompatActivity {
 //        for (int i = 0; i < jobImageViews.length; i++)
 //            jobImageViews[i].getLayoutParams().height = width;
 //    }
+
+    public void changeBackgroundColour(){
+        switch (profession){
+            case "Cleaner":
+                handiBackground = (ImageView) findViewById(R.id.activity_job_selection_image_box_cleaner);
+                handiImage = (ImageView) findViewById(R.id.activity_job_selection_image_view_cleaner);
+                break;
+            case "Electrician":
+                handiBackground = (ImageView) findViewById(R.id.activity_job_selection_image_box_electrician);
+                handiImage = (ImageView) findViewById(R.id.activity_job_selection_image_view_electrician);
+                break;
+            case "Plumber":
+                handiBackground = (ImageView) findViewById(R.id.activity_job_selection_image_box_plumber);
+                handiImage = (ImageView) findViewById(R.id.activity_job_selection_image_view_plumber);
+                break;
+            case "Painter":
+                handiBackground = (ImageView) findViewById(R.id.activity_job_selection_image_box_painter);
+                handiImage = (ImageView) findViewById(R.id.activity_job_selection_image_view_painter);
+                break;
+            case "HandiMan":
+                handiBackground = (ImageView) findViewById(R.id.activity_job_selection_image_box_handiman);
+                handiImage = (ImageView) findViewById(R.id.activity_job_selection_image_view_handiman);
+                break;
+        }
+        handiImage.setColorFilter(ContextCompat.getColor(this,R.color.white));
+        handiBackground.setVisibility(View.VISIBLE);
+    }
 }

@@ -14,12 +14,21 @@
         android:orientation="horizontal"
         android:onClick="onClick">
 
-        <LinearLayout
+        <RelativeLayout
         android:id="@+id/activity_job_selection_LinearLayout_click_plumber"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:onClick="onClick"
         android:layout_weight="1">
+            <ImageView
+                android:id="@+id/activity_job_selection_image_box_plumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tint="@color/norm_pink"
+                android:src="@drawable/ic_box"
+                android:contentDescription="@null"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="gone"/>
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_plumber"
                 android:layout_width="match_parent"
@@ -27,9 +36,9 @@
                 android:tint="@color/dark_grey"
                 android:src="@drawable/ic_plumber"
                 tools:ignore="VectorDrawableCompat" />
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/activity_job_selection_LinearLayout_click_electrician"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,35 +46,69 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/activity_job_selection_image_box_electrician"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tint="@color/norm_pink"
+                android:src="@drawable/ic_box"
+                android:contentDescription="@null"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="gone"/>
+
+            <ImageView
                 android:id="@+id/activity_job_selection_image_view_electrician"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_electrician"
                 android:tint="@color/dark_grey"
                 tools:ignore="VectorDrawableCompat" />
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/activity_job_selection_LinearLayout_click_painter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="onClick"
             android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/activity_job_selection_image_box_painter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tint="@color/norm_pink"
+                android:src="@drawable/ic_box"
+                android:contentDescription="@null"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="gone"/>
+
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_painter"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_marginTop="5dp"
                 android:tint="@color/dark_grey"
                 android:src="@drawable/ic_painter"
                 tools:ignore="VectorDrawableCompat" />
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/activity_job_selection_LinearLayout_click_cleaner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="onClick"
             android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/activity_job_selection_image_box_cleaner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tint="@color/norm_pink"
+                android:src="@drawable/ic_box"
+                android:contentDescription="@null"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="gone"/>
+
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_cleaner"
                 android:layout_width="match_parent"
@@ -73,22 +116,35 @@
                 android:tint="@color/dark_grey"
                 android:src="@drawable/ic_cleaner"
                 tools:ignore="VectorDrawableCompat" />
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/activity_job_selection_LinearLayout_click_handiman"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="onClick"
             android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/activity_job_selection_image_box_handiman"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tint="@color/norm_pink"
+                android:src="@drawable/ic_box"
+                android:contentDescription="@null"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="gone"/>
+
             <ImageView
                 android:id="@+id/activity_job_selection_image_view_handiman"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:tint="@color/dark_grey"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
                 android:src="@drawable/ic_tradesman"
                 tools:ignore="VectorDrawableCompat" />
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <ListView
