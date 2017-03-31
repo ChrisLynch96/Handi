@@ -67,7 +67,6 @@ public class JobSelectionActivity extends AppCompatActivity {
                 if(h==null)
                     Log.d("m","notok");
                 else {
-                    Toast.makeText(getBaseContext(), h.getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(JobSelectionActivity.this, HandiProfileView.class);
                     intent.putExtra("HandiName", h.getName());
                     intent.putExtra("HandiPhone",h.getNumber());
