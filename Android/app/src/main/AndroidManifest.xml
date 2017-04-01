@@ -36,7 +36,8 @@
         <activity
             android:name=".Activitys.LoginOrSignupActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity
             android:name=".Activitys.HandiManSignupActivity"
             android:configChanges="orientation"
@@ -62,6 +63,7 @@
             android:name=".Activitys.UserHomeActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_user_home"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
