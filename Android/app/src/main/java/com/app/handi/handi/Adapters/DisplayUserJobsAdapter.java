@@ -49,19 +49,22 @@ public class DisplayUserJobsAdapter extends BaseAdapter{
 
         TextView title = (TextView) convertView.findViewById(R.id.list_item_text_view_job_title);
         TextView status = (TextView) convertView.findViewById(R.id.list_item_text_view_job_status);
-        TextView accepted = (TextView) convertView.findViewById(R.id.list_item_text_view_job_accepted);
+        TextView accepted = (TextView) convertView.findViewById(R.id.list_item_text_view_job_quote);
 
         final Job job = (Job) this.getItem(position);
-        final String a = "Accepted";
-        final String Na = "Not Accepted";
+        final String a = "Quote's recieved";
+        final String Na = "Awaiting quote";
+        final String q = "Quote Accepted";
 
         Log.d("t",job.getTitle());
         title.setText(job.getTitle());
         status.setText(job.getStatus());
-        if(job.isAccepted())
+        if(job.isAccepted()&&!job.getQuoteAccepted())
             accepted.setText(a);
-        else
+        else if (!job.isAccepted()&&!job.getQuoteAccepted())
             accepted.setText(Na);
+        else
+            accepted.setText(q);
         convertView.setTag(job);
         return convertView;
     }

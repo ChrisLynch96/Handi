@@ -47,15 +47,21 @@ public class DisplayHandiJobsAdapter extends BaseAdapter {
 
         TextView title = (TextView) convertView.findViewById(R.id.list_item_text_view_job_title);
         TextView status = (TextView) convertView.findViewById(R.id.list_item_text_view_job_status);
-        TextView accepted = (TextView) convertView.findViewById(R.id.list_item_text_view_job_accepted);
+        TextView accepted = (TextView) convertView.findViewById(R.id.list_item_text_view_job_quote);
 
         final Job job = (Job) this.getItem(position);
-        final String accept = "Accepted";
+        final String accept = "Quote Pending";
+        final String q = "Quote Accepted";
 
-        if (job.isAccepted()) {
+        if (job.isAccepted()&&!job.getQuoteAccepted()) {
             title.setText(job.getTitle());
             status.setText(job.getStatus());
             accepted.setText(accept);
+        }
+        else{
+            title.setText(job.getTitle());
+            status.setText(job.getStatus());
+            accepted.setText(q);
         }
         convertView.setTag(job);
         return convertView;

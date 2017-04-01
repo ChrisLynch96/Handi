@@ -48,16 +48,16 @@ public class DisplayHandiOffersAdapter extends BaseAdapter {
 
         TextView title = (TextView) convertView.findViewById(R.id.list_item_text_view_job_title);
         TextView status = (TextView) convertView.findViewById(R.id.list_item_text_view_job_status);
-        TextView accepted = (TextView) convertView.findViewById(R.id.list_item_text_view_job_accepted);
+        TextView quote = (TextView) convertView.findViewById(R.id.list_item_text_view_job_quote);
 
 
         final Job job = (Job) this.getItem(position);
-        final String notAccepted = "Not Accepted";
+        final String recieved = "Offer Recieved";
 
         if (!job.isAccepted()) {
             title.setText(job.getTitle());
             status.setText(job.getStatus());
-            accepted.setText(notAccepted);
+            quote.setText(recieved);
         }
         convertView.setTag(job);
         return convertView;

@@ -109,9 +109,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("LeJob",job);
                 intent.putExtras(bundle);
-                if(job.isAccepted()) {
-                    jobState = 1;
+                if(job.isAccepted()&&!job.getQuoteAccepted()) {
+                    jobState = 2;
                     intent.putExtra("ViewButton",jobState );
+                }
+                else if(job.isAccepted()&&job.getQuoteAccepted()){
+                    jobState=1;
+                    intent.putExtra("ViewButton",jobState);
                 }
                 else{
                     jobState =0;

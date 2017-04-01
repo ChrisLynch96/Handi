@@ -121,7 +121,7 @@
         android:layout_width="@dimen/stan_button_width"
         android:layout_height="@dimen/stan_button_height"
         android:background="@color/norm_pink"
-        android:text="Submit"
+        android:text="Request Quote"
         android:textSize="@dimen/stan_text_size"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"

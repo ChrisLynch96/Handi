@@ -58,18 +58,40 @@
         android:layout_below="@id/activity_accept_job_details_text_view_address"
         android:layout_marginLeft="@dimen/standard_margin_left"
         android:layout_marginTop="@dimen/standard_spacing"
-        android:text="Description"
+        android:text="Description: "
         android:textSize="@dimen/stan_header_text_size"
         android:textStyle="bold"/>
 
+    <TextView
+        android:id="@+id/activity_offer_quote_details_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quote "
+        android:textStyle="bold"
+        android:textSize="@dimen/stan_header_text_size"
+        android:layout_alignBaseline="@+id/editText_offer_quote"
+        android:layout_alignBottom="@+id/editText_offer_quote"
+        android:layout_toLeftOf="@+id/editText_offer_quote"
+        android:layout_toStartOf="@+id/editText_offer_quote" />
+
+    <EditText
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:imeOptions="actionNext"
+        android:layout_above="@+id/activity_offer_quote_details_button"
+        android:layout_centerHorizontal="true"
+        android:inputType="numberDecimal"
+        android:id="@+id/editText_offer_quote" />
+
     <Button
+        android:id="@+id/activity_offer_quote_details_button"
         android:layout_width="@dimen/stan_button_width"
         android:layout_height="@dimen/stan_button_height"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:background="@color/norm_pink"
-        android:text="Accept Job"
+        android:text="Offer Quote"
         android:textSize="@dimen/stan_header_text_size"
         android:textColor="@color/white"
         android:onClick="onClick"/>

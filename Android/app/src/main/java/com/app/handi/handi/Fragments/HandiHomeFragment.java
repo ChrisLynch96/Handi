@@ -9,20 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.app.handi.handi.Activitys.AcceptJobDescriptionActivity;
+import com.app.handi.handi.Activitys.OfferQuoteDescriptionActivity;
 import com.app.handi.handi.Activitys.ViewJobDescriptionActivity;
 import com.app.handi.handi.Adapters.DisplayHandiJobsAdapter;
 import com.app.handi.handi.Adapters.DisplayHandiOffersAdapter;
+import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.DataTypes.Job;
-import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -41,12 +36,14 @@ public class HandiHomeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     ListView listView;
     ListView list2;
+    int jobState;
     View view;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private static ArrayList<Job> job = new ArrayList<>();
+    private static HandimanData data;
     private ArrayList<Job> jobs = new ArrayList<>();
     private ArrayList<Job> jobs2 = new ArrayList<>();
     DisplayHandiJobsAdapter adapter;
@@ -67,12 +64,13 @@ public class HandiHomeFragment extends Fragment {
      * @return A new instance of fragment HandiHomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HandiHomeFragment newInstance(String param1, String param2, ArrayList<Job> jobs) {
+    public static HandiHomeFragment newInstance(String param1, String param2, ArrayList<Job> jobs, HandimanData handimanData) {
         HandiHomeFragment fragment = new HandiHomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         job=jobs;
+        data = handimanData;
         fragment.setArguments(args);
         return fragment;
     }
@@ -116,6 +114,8 @@ public class HandiHomeFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("LeJob",job);
                 intent.putExtras(bundle);
+                jobState =0;
+                intent.putExtra("ViewButton",jobState);
                 startActivity(intent);
             }
         });
@@ -123,9 +123,12 @@ public class HandiHomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Job job = (Job) view.getTag();
-                Intent intent = new Intent(getActivity(), AcceptJobDescriptionActivity.class);
+                Intent intent = new Intent(getActivity(), OfferQuoteDescriptionActivity.class);
                 Bundle bundle = new Bundle();
+                Bundle bundle1 = new Bundle();
                 bundle.putSerializable("LeJobOffer",job);
+                bundle.putSerializable("Handi",data);
+                intent.putExtras(bundle1);
                 intent.putExtras(bundle);
                 intent.putExtra("Jobs",jobs);
                 startActivity(intent);

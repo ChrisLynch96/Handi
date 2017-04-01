@@ -28,7 +28,7 @@
         android:layout_alignLeft="@+id/list_item_text_view_job_title"
         android:layout_alignStart="@+id/list_item_text_view_job_title" />
     <TextView
-        android:id="@+id/list_item_text_view_job_accepted"
+        android:id="@+id/list_item_text_view_job_quote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"

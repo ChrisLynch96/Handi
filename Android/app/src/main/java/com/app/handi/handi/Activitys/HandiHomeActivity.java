@@ -69,7 +69,7 @@ public class HandiHomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Log.d("size2",Integer.toString(job.size()));
-        HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("hello", "it's me",job);
+        HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("hello", "it's me",job,handimanData);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(
                 R.id.content_handi_home,
@@ -119,7 +119,7 @@ public class HandiHomeActivity extends AppCompatActivity
 
         if (id == R.id.activity_handi_home_drawer_item_home) {
             Log.d("size2",Integer.toString(job.size()));
-            HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("somebody", "once told me",job);
+            HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("somebody", "once told me",job,handimanData);
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.content_handi_home,

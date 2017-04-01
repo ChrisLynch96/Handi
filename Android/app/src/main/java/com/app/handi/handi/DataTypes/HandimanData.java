@@ -6,11 +6,13 @@ import android.widget.TextView;
 
 import com.app.handi.handi.Activitys.HandiManSignupActivity;
 
+import java.io.Serializable;
+
 /**
  * Created by christopherlynch on 27/02/2017.
  */
 
-public class HandimanData {
+public class HandimanData implements Serializable{
 
     public String name;
     public String email;

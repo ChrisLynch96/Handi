@@ -19,10 +19,11 @@ public class Job implements Serializable {
     private String id;
     private String userUid;
     private String HandiUid;
+    private Boolean quoteAccepted;
 
     public Job(){}
     public Job(String Description,String status,boolean isAccepted,String Title,String Address
-            ,String FirstName,String LastName,String id,String userUid,String HandiUid){
+            ,String FirstName,String LastName,String id,String userUid,String HandiUid,Boolean quoteAccepted){
         this.Title = Title;
         this.Address = Address;
         this.FirstName = FirstName;
@@ -33,6 +34,7 @@ public class Job implements Serializable {
         this.id = id;
         this.userUid = userUid;
         this.HandiUid = HandiUid;
+        this.quoteAccepted = quoteAccepted;
     }
 
 
@@ -48,12 +50,20 @@ public class Job implements Serializable {
     }
     public String getId() {return this.id;}
 
+    public Boolean getQuoteAccepted() {
+        return quoteAccepted;
+    }
+
     public String getHandiUid() {
         return HandiUid;
     }
 
     public String getUserUid() {
         return userUid;
+    }
+
+    public void setQuoteAccepted(Boolean quoteAccepted) {
+        this.quoteAccepted = quoteAccepted;
     }
 
     public void setAccepted(boolean accepted) {

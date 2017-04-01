@@ -92,4 +92,25 @@
         android:text="Job Complete"
         android:textColor="@color/white"
         android:onClick="onClick"/>
+    <ListView
+        android:id="@+id/activity_view_job_description_listview_quotes"
+        android:layout_width="@dimen/list_view_width_user_handi_home"
+        android:layout_height="220dp"
+        android:background="@color/android_standard_background"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp">
+    </ListView>
+    <TextView
+        android:id="@+id/activity_view_job_description_text_view_Quotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/stan_header_text_size"
+        android:textStyle="bold"
+        android:textColor="@color/dark_pink"
+        android:layout_above="@+id/activity_view_job_description_listview_quotes"
+        android:layout_alignLeft="@+id/activity_view_job_description_listview_quotes"
+        android:layout_alignStart="@+id/activity_view_job_description_listview_quotes" />
+
+
 </RelativeLayout>
