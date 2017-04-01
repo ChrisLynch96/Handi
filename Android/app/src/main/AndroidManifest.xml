@@ -94,7 +94,10 @@
         <activity
             android:name=".Activitys.RatingsPopUpWindow"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".Activitys.AcceptQuotePopUpWindow"
+        <activity
+            android:name=".Activitys.AcceptQuotePopUpWindow"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".Activitys.MoreQuotesPopUpWindow"
             android:theme="@style/AppTheme.CustomTheme"></activity>
     </application>
 

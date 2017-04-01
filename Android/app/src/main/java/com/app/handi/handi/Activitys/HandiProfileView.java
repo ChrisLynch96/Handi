@@ -7,16 +7,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.R;
 
 public class HandiProfileView extends AppCompatActivity {
     TextView title, Name, Number, Email;
     Button button;
+    Job job;
+    boolean moreQuotes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handi_profile_view);
-        Bundle bundle = getIntent().getExtras();
+        job = (Job)getIntent().getSerializableExtra("Job");
+        final Bundle bundle = getIntent().getExtras();
+        moreQuotes = bundle.getBoolean("moreQuotes");
         String name = bundle.getString("HandiName");
         String number = bundle.getString("HandiPhone");
         String email = bundle.getString("HandiEmail");
@@ -35,10 +40,20 @@ public class HandiProfileView extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HandiProfileView.this,JobDescriptionActivity.class);
-                intent.putExtra("HandiUid",uid);
-                intent.putExtra("HandiProf",prof);
-                startActivity(intent);
+                if(moreQuotes){
+                    Intent intent = new Intent(HandiProfileView.this,MoreQuotesPopUpWindow.class);
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putSerializable("Job",job);
+                    intent.putExtras(bundle1);
+                    intent.putExtra("HandiUid", uid);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(HandiProfileView.this, JobDescriptionActivity.class);
+                    intent.putExtra("HandiUid", uid);
+                    intent.putExtra("HandiProf", prof);
+                    startActivity(intent);
+                }
             }
         });
     }

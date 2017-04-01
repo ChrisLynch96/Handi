@@ -28,7 +28,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
 
     TextView Title,ClientName,Address,Description,Status,Accepted,Quotes;
     int jobState = 0;
-    Button jobDoneButton;
+    Button jobDoneButton,anotherQuote;
     Job job;
     ListView listView;
     DisplayQuotesAdapter displayQuotesAdapter;
@@ -55,6 +55,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
         Accepted = (TextView) findViewById(R.id.activity_view_job_description_text_view_accepted);
         Quotes = (TextView) findViewById(R.id.activity_view_job_description_text_view_Quotes);
         jobDoneButton = (Button) findViewById(R.id.activity_view_job_description_button_job_done);
+        anotherQuote = (Button) findViewById(R.id.activity_view_job_description_button_more_quotes);
         listView = (ListView) findViewById(R.id.activity_view_job_description_listview_quotes);
         helperQuote = new HelperQuote(db);
         if(job!=null) {
@@ -71,9 +72,15 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
         }
         else
             Log.d("nope","nope");
-        if (jobState == 0||jobState==2)
+        if (jobState == 0) {
             jobDoneButton.setVisibility(View.GONE);
-        else if(jobState==1)
+            anotherQuote.setVisibility(View.GONE);
+        }
+        else if(jobState==2) {
+            jobDoneButton.setVisibility(View.GONE);
+            anotherQuote.setVisibility(View.VISIBLE);
+        }
+        else
             jobDoneButton.setVisibility(View.VISIBLE);
         if(jobState==2){
             Quotes.setText(q);
@@ -105,6 +112,14 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
             intent.putExtras(bundle);
             startActivity(intent);
             jobDoneButton.setVisibility(View.GONE);
+        }
+        else if(view.getId()==R.id.activity_view_job_description_button_more_quotes){
+            Intent intent = new Intent(ViewJobDescriptionActivity.this,ChooseHandiTypeActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Job",job);
+            intent.putExtras(bundle);
+            intent.putExtra("moreQuotes",true);
+            startActivity(intent);
         }
     }
 }

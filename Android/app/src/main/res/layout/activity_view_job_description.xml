@@ -92,6 +92,18 @@
         android:text="Job Complete"
         android:textColor="@color/white"
         android:onClick="onClick"/>
+    <Button
+        android:id="@+id/activity_view_job_description_button_more_quotes"
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:background="@color/norm_pink"
+        android:text="Click to get another quote"
+        android:textSize="10dp"
+        android:textColor="@color/white"
+        android:onClick="onClick"
+        android:layout_above="@+id/activity_view_job_description_listview_quotes"
+        android:layout_alignRight="@+id/activity_view_job_description_listview_quotes"
+        android:layout_alignEnd="@+id/activity_view_job_description_listview_quotes" />
     <ListView
         android:id="@+id/activity_view_job_description_listview_quotes"
         android:layout_width="@dimen/list_view_width_user_handi_home"

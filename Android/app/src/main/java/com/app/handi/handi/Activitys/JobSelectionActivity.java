@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.app.handi.handi.Adapters.DisplayingHandiAdapter;
 import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.R;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +39,8 @@ public class JobSelectionActivity extends AppCompatActivity {
     ArrayList<HandimanData> data = new ArrayList<>();
     ImageView handiImage, handiBackground;
     String profession;
+    Job job;
+    boolean moreQuotes;
     Intent intent;
 
     @Override
@@ -46,10 +49,11 @@ public class JobSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_job_selection);
         overridePendingTransition(0,0);
         listView = (ListView) findViewById(R.id.activity_job_selection_ListView_handi_display);
-
         db = FirebaseDatabase.getInstance().getReference();
+        job = (Job)getIntent().getSerializableExtra("Job");
         Bundle bundle = getIntent().getExtras();
         profession = bundle.getString("profession");
+        moreQuotes = bundle.getBoolean("moreQuotes");
         changeBackgroundColour();
         Log.d("prof2",profession);
         helper = new HelperHandiMan(db);
@@ -68,6 +72,10 @@ public class JobSelectionActivity extends AppCompatActivity {
                     Log.d("m","notok");
                 else {
                     Intent intent = new Intent(JobSelectionActivity.this, HandiProfileView.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Job",job);
+                    intent.putExtras(bundle);
+                    intent.putExtra("moreQuotes",moreQuotes);
                     intent.putExtra("HandiName", h.getName());
                     intent.putExtra("HandiPhone",h.getNumber());
                     intent.putExtra("HandiEmail",h.getEmail());
