@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.Fragments.HandiHomeFragment;
@@ -22,8 +23,11 @@ import com.app.handi.handi.Fragments.HandiViewProfileFragment;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -33,6 +37,7 @@ public class HandiHomeActivity extends AppCompatActivity
     FirebaseUser user;
     HelperHandiMan helperHandiMan;
     ArrayList<Job> job = new ArrayList<>();
+    HandimanData handimanData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,17 @@ public class HandiHomeActivity extends AppCompatActivity
         user = FirebaseAuth.getInstance().getCurrentUser();
         helperHandiMan = new HelperHandiMan(db);
         job = helperHandiMan.retrieveJob(user);
+        db.child("HandiMen").child(user.getUid()).child("Info").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                handimanData = dataSnapshot.getValue(HandimanData.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         setContentView(R.layout.activity_handi_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -112,7 +128,7 @@ public class HandiHomeActivity extends AppCompatActivity
             ).commit();
         }
         else if (id == R.id.activity_handi_home_drawer_item_profile) {
-            HandiViewProfileFragment handiViewProfileFragment = new HandiViewProfileFragment();
+            HandiViewProfileFragment handiViewProfileFragment = HandiViewProfileFragment.newInstance("lol",handimanData);
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(
                     R.id.content_handi_home,
