@@ -106,6 +106,7 @@
             android:background="@color/norm_pink"
             android:text="@string/action_sign_in_short"
             android:textAllCaps="false"
+            android:textSize="@dimen/stan_header_text_size"
             android:textColor="@android:color/white" />
 
         <!-- Link to Login Screen -->
@@ -119,7 +120,7 @@
             android:text="@string/btn_link_to_login"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="@dimen/stan_header_text_size" />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

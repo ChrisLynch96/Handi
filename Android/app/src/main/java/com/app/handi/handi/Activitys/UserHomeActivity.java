@@ -116,15 +116,6 @@ public class UserHomeActivity extends AppCompatActivity
                     homeFragment.getTag()
             ).commit();
         }
-            else if (id == R.id.activity_user_home_drawer_item_past_jobs) {
-            PastJobsFragment pastJobsFragment = PastJobsFragment.newInstance("some1", "some2");
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(
-                    R.id.content_user_home,
-                    pastJobsFragment,
-                    pastJobsFragment .getTag()
-            ).commit();
-        }
         else if (id == R.id.activity_user_home_drawer_item_settings) {
             SettingsFragment settingsFragment = SettingsFragment.newInstance("settings1", "settings2"); //The arguments are data to be passed in if we so wish
             FragmentManager manager= getSupportFragmentManager();
