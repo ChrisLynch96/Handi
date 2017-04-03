@@ -57,7 +57,6 @@ public class UserHomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         HomeFragment homeFragment = HomeFragment.newInstance("somebody", "once told me",job);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(
@@ -65,7 +64,6 @@ public class UserHomeActivity extends AppCompatActivity
                 homeFragment,
                 homeFragment.getTag()
         ).commit();
-        Log.d("size2",Integer.toString(job.size()));
     }
     @Override
     public void onBackPressed() {

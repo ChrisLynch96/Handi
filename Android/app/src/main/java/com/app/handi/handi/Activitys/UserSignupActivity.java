@@ -98,7 +98,7 @@ public class UserSignupActivity extends AppCompatActivity {
                         .addOnCompleteListener(UserSignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(UserSignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserSignupActivity.this, "Account creation: " + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
@@ -114,12 +114,12 @@ public class UserSignupActivity extends AppCompatActivity {
                                     ref = FirebaseDatabase.getInstance().getReference();
                                     HelperUser db = new HelperUser(ref);
                                     saved = db.saveInfo(userdb,user);
-                                    if(saved){
-                                        Toast.makeText(UserSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
-                                    }
-                                    else{
-                                        Toast.makeText(UserSignupActivity.this,"Not Saved."+task.getException(),Toast.LENGTH_SHORT).show();
-                                    }
+//                                    if(saved){
+//                                        Toast.makeText(UserSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
+//                                    }
+//                                    else{
+//                                        Toast.makeText(UserSignupActivity.this,"Not Saved."+task.getException(),Toast.LENGTH_SHORT).show();
+//                                    }
                                     finish();
                                 }
                             }
