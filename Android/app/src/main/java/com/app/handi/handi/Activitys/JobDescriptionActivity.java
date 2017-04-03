@@ -32,7 +32,7 @@ public class JobDescriptionActivity extends AppCompatActivity {
     private EditText inputFirstName, inputLastName, inputTitle, inputDescription,inputAddress ;
     DatabaseReference db;
     FirebaseUser user;
-    ArrayList<User> users = new ArrayList<>();
+    ArrayList<Job> jobs = new ArrayList<>();
     String uid;
     String prof;
     public void onCreate(Bundle savedInstanceState) {
@@ -98,6 +98,11 @@ public class JobDescriptionActivity extends AppCompatActivity {
         HelperHandiMan helperHandiMan = new HelperHandiMan(db);
         helperUser.saveJob(job,user,job.getId());
         helperHandiMan.saveJob(job,uid,job.getId());
-        startActivity(new Intent(JobDescriptionActivity.this, UserHomeActivity.class));
+        jobs = helperUser.retrieve(user);
+        Intent intent = new Intent(JobDescriptionActivity.this,UserHomeActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Jobs",jobs);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

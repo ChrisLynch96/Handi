@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.DataTypes.Job;
+import com.app.handi.handi.Firebase.HelperHandiMan;
+import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +40,12 @@ public class LoginActivity extends AppCompatActivity {
     boolean isHandiMan = false;
     ArrayList<String> id = new ArrayList<>();
     DatabaseReference db;
+    HelperUser helperUser;
+    HelperHandiMan helperHandiMan;
+    HandimanData handimanData;
+    ArrayList<Job> job = new ArrayList<>();
+    ArrayList<Job> Hjobs = new ArrayList<>();
+
 
     //Todo Check if the login is a handi or user so the system knows which screen to go to
     @Override
@@ -92,6 +102,21 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             } else {
                                 user = auth.getCurrentUser();
+                                helperUser = new HelperUser(db);
+                                job = helperUser.retrieve(user);
+                                helperHandiMan = new HelperHandiMan(db);
+                                Hjobs = helperHandiMan.retrieveJob(user);
+                                db.child("HandiMen").child(user.getUid()).child("Info").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        handimanData = dataSnapshot.getValue(HandimanData.class);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
                                 db.child("HandiMen").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,10 +130,19 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                         progressBar.setVisibility(View.GONE);
                                         if (!isHandiMan) {
-                                            startActivity(new Intent(LoginActivity.this, UserHomeActivity.class));
+                                            Intent intent = new Intent(LoginActivity.this,UserHomeActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putSerializable("Jobs",job);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
                                         }
                                         else {
-                                            startActivity(new Intent(LoginActivity.this, HandiHomeActivity.class));
+                                            Intent intent = new Intent(LoginActivity.this,HandiHomeActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putSerializable("Jobs",Hjobs);
+                                            bundle.putSerializable("Handi",handimanData);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
                                         }
                                     }
 

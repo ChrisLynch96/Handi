@@ -43,19 +43,13 @@ public class HandiHomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         db = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        helperHandiMan = new HelperHandiMan(db);
-        job = helperHandiMan.retrieveJob(user);
-        db.child("HandiMen").child(user.getUid()).child("Info").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                handimanData = dataSnapshot.getValue(HandimanData.class);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        job = (ArrayList<Job>)getIntent().getSerializableExtra("Jobs");
+        handimanData = (HandimanData)getIntent().getSerializableExtra("Handi");
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         setContentView(R.layout.activity_handi_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -17,7 +17,13 @@ import com.app.handi.handi.Activitys.ChooseHandiTypeActivity;
 import com.app.handi.handi.Activitys.ViewJobDescriptionActivity;
 import com.app.handi.handi.Adapters.DisplayUserJobsAdapter;
 import com.app.handi.handi.DataTypes.Job;
+import com.app.handi.handi.DataTypes.Quote;
+import com.app.handi.handi.Firebase.HelperQuote;
 import com.app.handi.handi.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +41,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     View view;
     ListView list;
     int jobState;
+    DatabaseReference db;
+    FirebaseUser user;
+    HelperQuote helperQuote;
     android.support.design.widget.FloatingActionButton newJobButton;
 
     // TODO: Rename and change types of parameters
@@ -43,6 +52,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     DisplayUserJobsAdapter adapter;
     private static ArrayList<Job> job = new ArrayList<>();
     private ArrayList<Job> jobs = new ArrayList<>();
+    Job jobq;
+    ArrayList<Quote> quotes = new ArrayList<>();
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -80,12 +92,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        db = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         view = inflater.inflate(R.layout.fragment_home, container, false);
         list = (ListView) view.findViewById(R.id.fragment_home_list_view_user_jobs);
         for(int i=0;i<job.size();i++){
             if(job.get(i).getStatus().equals("Incomplete"))
                 jobs.add(job.get(i));
         }
+        helperQuote = new HelperQuote(db);
         newJobButton = (android.support.design.widget.FloatingActionButton) view.findViewById(R.id.fragment_home_floating_action_button_fab);
         newJobButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -104,16 +119,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Job job = (Job) view.getTag();
+                jobq = (Job) view.getTag();
+                quotes=helperQuote.retrieve(user,jobq);
                 Intent intent = new Intent(getActivity(), ViewJobDescriptionActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("LeJob",job);
+                bundle.putSerializable("LeJob",jobq);
+                bundle.putSerializable("Quotes",quotes);
                 intent.putExtras(bundle);
-                if(job.isAccepted()&&!job.getQuoteAccepted()) {
+                if(jobq.isAccepted()&&!jobq.getQuoteAccepted()) {
                     jobState = 2;
                     intent.putExtra("ViewButton",jobState );
                 }
-                else if(job.isAccepted()&&job.getQuoteAccepted()){
+                else if(jobq.isAccepted()&&jobq.getQuoteAccepted()){
                     jobState=1;
                     intent.putExtra("ViewButton",jobState);
                 }

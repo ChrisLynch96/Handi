@@ -41,13 +41,14 @@ public class UserHomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         db = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        helperUser = new HelperUser(db);
-        job = helperUser.retrieve(user);
-        Log.d("size2",Integer.toString(job.size()));
+//        helperUser = new HelperUser(db);
+//        job = helperUser.retrieve(user);
+//        Bundle bundle = getIntent().getExtras();
+        job = (ArrayList<Job>)getIntent().getSerializableExtra("Jobs");
+//        Log.d("size2",Integer.toString(job.size()));
         setContentView(R.layout.activity_user_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -57,6 +58,12 @@ public class UserHomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         HomeFragment homeFragment = HomeFragment.newInstance("somebody", "once told me",job);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(
@@ -64,6 +71,7 @@ public class UserHomeActivity extends AppCompatActivity
                 homeFragment,
                 homeFragment.getTag()
         ).commit();
+        Log.d("size2",Integer.toString(job.size()));
     }
     @Override
     public void onBackPressed() {
@@ -114,6 +122,15 @@ public class UserHomeActivity extends AppCompatActivity
                     homeFragment.getTag()
             ).commit();
         }
+//            else if (id == R.id.activity_user_home_drawer_item_past_jobs) {
+//            PastJobsFragment pastJobsFragment = PastJobsFragment.newInstance("some1", "some2");
+//            FragmentManager manager = getSupportFragmentManager();
+//            manager.beginTransaction().replace(
+//                    R.id.content_user_home,
+//                    pastJobsFragment,
+//                    pastJobsFragment .getTag()
+//            ).commit();
+//        }
         else if (id == R.id.activity_user_home_drawer_item_settings) {
             SettingsFragment settingsFragment = SettingsFragment.newInstance("settings1", "settings2"); //The arguments are data to be passed in if we so wish
             FragmentManager manager= getSupportFragmentManager();

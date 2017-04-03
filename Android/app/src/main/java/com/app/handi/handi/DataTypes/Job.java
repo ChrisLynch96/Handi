@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by Killian on 16/03/2017.
  */
 
-public class Job implements Serializable {
+public class Job implements Serializable  {
     private String Description;
     private String Status;
     private boolean isAccepted;

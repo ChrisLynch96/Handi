@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.DataTypes.Quote;
+import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.Firebase.HelperQuote;
 import com.app.handi.handi.Fragments.HandiHomeFragment;
 import com.app.handi.handi.R;
@@ -39,9 +40,14 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
     Job job;
     DatabaseReference reference;
     FirebaseUser user;
+    Intent intent;
     ArrayList<Job> jobs = new ArrayList<>();
     HelperQuote helperQuote;
     HandimanData handimanData;
+    ArrayList<Job> Hjobs = new ArrayList<>();
+    HelperHandiMan helperHandiMan;
+    String HandiName;
+
 
 
     public void onCreate(Bundle savedInstanceBundle){
@@ -50,12 +56,16 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
         reference = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
         job = (Job)getIntent().getSerializableExtra("LeJobOffer");
+        Bundle bundle = getIntent().getExtras();
+        HandiName = bundle.getString("HandiName");
         handimanData =(HandimanData)getIntent().getSerializableExtra("Handi");
         jobs = (ArrayList<Job>) getIntent().getSerializableExtra("Jobs");
         Title = (TextView) findViewById(R.id.activity_accept_job_details_text_view_title);
         ClientName = (TextView) findViewById(R.id.activity_accept_job_details_text_view_client_name);
         Address = (TextView) findViewById(R.id.activity_accept_job_details_text_view_address);
         Description = (TextView) findViewById(R.id.activity_accept_job_details_text_view_description);
+        helperHandiMan = new HelperHandiMan(reference);
+        Hjobs = helperHandiMan.retrieveJob(user);
         if(job!=null){
             Title.setText(job.getTitle());
             Address.setText(job.getAddress());
@@ -95,6 +105,10 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
                 }
             }
         });
+        intent = new Intent(OfferQuoteDescriptionActivity.this,HandiHomeActivity.class);
+        Bundle bundle1 = new Bundle();
+        bundle1.putSerializable("Jobs",Hjobs);
+        intent.putExtras(bundle1);
     }
 
     public void onClick(View view) {
@@ -103,7 +117,7 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
             Toast.makeText(getApplicationContext(), "Enter quote!", Toast.LENGTH_SHORT).show();
             return;
         }
-        Quote quote = new Quote(q,job.getUserUid(),user.getUid(),job.getId(),false,handimanData.getName());
+        Quote quote = new Quote(q,job.getUserUid(),user.getUid(),job.getId(),false,HandiName);
         helperQuote = new HelperQuote(reference);
         helperQuote.save(quote);
         job.setAccepted(true);
@@ -114,7 +128,7 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
                 jobs.remove(i);
         }
         jobs.clear();
-       startActivity(new Intent(OfferQuoteDescriptionActivity.this,HandiHomeActivity.class));
+        startActivity(intent);
     }
 
     @Override

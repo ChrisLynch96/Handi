@@ -128,6 +128,7 @@ public class HandiHomeFragment extends Fragment {
                 Bundle bundle1 = new Bundle();
                 bundle.putSerializable("LeJobOffer",job);
                 bundle.putSerializable("Handi",data);
+                intent.putExtra("HandiName",data.getName());
                 intent.putExtras(bundle1);
                 intent.putExtras(bundle);
                 intent.putExtra("Jobs",jobs);

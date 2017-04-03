@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 /**
  * Created by christopherlynch on 27/03/2017.
  */
@@ -35,6 +37,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
     DatabaseReference db;
     FirebaseUser user;
     HelperQuote helperQuote;
+    ArrayList<Quote> quotes = new ArrayList<>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
         job = (Job)getIntent().getSerializableExtra("LeJob");
+        quotes = (ArrayList<Quote>)getIntent().getSerializableExtra("Quotes");
         Bundle bundle = getIntent().getExtras();
         jobState= bundle.getInt("ViewButton");
         final String A = "Accepted";
@@ -84,7 +88,12 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
             jobDoneButton.setVisibility(View.VISIBLE);
         if(jobState==2){
             Quotes.setText(q);
-            displayQuotesAdapter = new DisplayQuotesAdapter(helperQuote.retrieve(user,job),this);
+            displayQuotesAdapter = new DisplayQuotesAdapter(quotes,this);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             listView.setAdapter(displayQuotesAdapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

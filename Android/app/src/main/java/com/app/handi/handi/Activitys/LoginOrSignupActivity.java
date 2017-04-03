@@ -13,7 +13,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 
 import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.Firebase.HelperHandiMan;
+import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +38,13 @@ public class LoginOrSignupActivity extends AppCompatActivity {
     ArrayList<HandimanData> HandiMen = new ArrayList<>();
     private ProgressBar progressBar;
     String profession;
+    HelperUser helperUser;
+    HelperHandiMan helperHandiMan;
+    ArrayList<Job> job = new ArrayList<>();
+    ArrayList<Job> Hjobs = new ArrayList<>();
+    HandimanData handimanData;
+
+
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -51,6 +60,21 @@ public class LoginOrSignupActivity extends AppCompatActivity {
 
         if (user != null) {
             progressBar.setVisibility(View.VISIBLE);
+            helperUser = new HelperUser(db);
+            job = helperUser.retrieve(user);
+            helperHandiMan = new HelperHandiMan(db);
+            Hjobs = helperHandiMan.retrieveJob(user);
+            db.child("HandiMen").child(user.getUid()).child("Info").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    handimanData = dataSnapshot.getValue(HandimanData.class);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
             db.child("HandiMen").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -63,10 +87,19 @@ public class LoginOrSignupActivity extends AppCompatActivity {
                         Log.d("String", Id);
                     }
                     if (!isHandiMan) {
-                        startActivity(new Intent(LoginOrSignupActivity.this, UserHomeActivity.class));
+                        Intent intent = new Intent(LoginOrSignupActivity.this,UserHomeActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Jobs",job);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                     else {
-                        startActivity(new Intent(LoginOrSignupActivity.this,HandiHomeActivity.class));
+                        Intent intent = new Intent(LoginOrSignupActivity.this,HandiHomeActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Jobs",Hjobs);
+                        bundle.putSerializable("Handi",handimanData);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                     finish();
                 }
