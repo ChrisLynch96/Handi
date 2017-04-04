@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_pink"
+    android:background="@color/light_pink"
     tools:context="com.app.handi.handi.Activitys.RatingsPopUpWindow">
 
     <TextView
@@ -16,16 +15,30 @@
         android:text="Rate Your Handi!"
         android:textStyle="bold"
         android:textSize="@dimen/stan_header_text_size"
+        android:textColor="@color/white"
         android:layout_marginTop="@dimen/image_header_top_margin"
         />
 
-    <Button
-        android:id="@+id/activity_ratings_pop_up_window_button"
+    <RatingBar
+        android:id="@+id/activity_ratings_pop_up_window_rating_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Push Me"
+        android:layout_marginBottom="200dp"
+        android:numStars="5"
+        />
+
+    <Button
+        android:id="@+id/activity_ratings_pop_up_window_button_rate_handi"
+        android:layout_width="@dimen/stan_button_width"
+        android:layout_height="@dimen/stan_button_height"
+        android:layout_marginBottom="@dimen/standard_margin_button_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/rate_handi"
+        android:textSize="@dimen/stan_text_size"
+        android:background="@color/android_standard_background"
         android:onClick="onClick"/>
 
 

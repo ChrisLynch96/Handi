@@ -58,7 +58,7 @@ public class AcceptQuotePopUpWindow extends AppCompatActivity {
             reference.child("Users").child(user.getUid()).child("Quotes").child(job.getId()).child(job.getHandiUid()).setValue(quote);
             Intent intent = new Intent(AcceptQuotePopUpWindow.this,UserHomeActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putSerializable("Jobs",job);
+            bundle.putSerializable("Jobs",jobs);
             intent.putExtras(bundle);
             startActivity(intent);
         }

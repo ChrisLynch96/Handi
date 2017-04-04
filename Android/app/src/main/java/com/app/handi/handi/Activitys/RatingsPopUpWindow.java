@@ -35,7 +35,7 @@ public class RatingsPopUpWindow extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
         job = (Job) getIntent().getSerializableExtra("Job");
-        ratingButton = (Button) findViewById(R.id.activity_ratings_pop_up_window_button);
+        ratingButton = (Button) findViewById(R.id.activity_ratings_pop_up_window_button_rate_handi);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
@@ -47,7 +47,7 @@ public class RatingsPopUpWindow extends AppCompatActivity {
         Hjobs = helperHandiMan.retrieveJob(user);
     }
     public void onClick(View view){
-        if(view.getId()==R.id.activity_ratings_pop_up_window_button){
+        if(view.getId()==R.id.activity_ratings_pop_up_window_button_rate_handi){
             job.setStatus("Complete");
             reference.child("HandiMen").child(job.getHandiUid()).child("Jobs").child(job.getId()).setValue(job);
             reference.child("Users").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
