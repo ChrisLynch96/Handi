@@ -6,6 +6,7 @@
     tools:context="com.app.handi.handi.Fragments.HomeFragment"
     android:gravity="center">
 
+    <!--This relative layout will act as a border around the list view-->
     <RelativeLayout
         android:id="@+id/fragment_home_linear_layout_user_pending_jobs_container"
         android:layout_width="@dimen/linear_layout_user_handi_home_border"

@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <!--using include allows the layouts of other XML docs to be used within this one-->
     <include
         layout="@layout/app_bar_user_home"
         android:layout_width="match_parent"

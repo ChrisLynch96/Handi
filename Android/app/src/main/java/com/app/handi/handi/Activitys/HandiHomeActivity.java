@@ -18,21 +18,17 @@ import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.Firebase.HelperHandiMan;
 import com.app.handi.handi.Fragments.HandiHomeFragment;
-import com.app.handi.handi.Fragments.HandiSettingsFragment;
 import com.app.handi.handi.Fragments.HandiViewProfileFragment;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class HandiHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, HandiHomeFragment.OnFragmentInteractionListener, HandiSettingsFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HandiHomeFragment.OnFragmentInteractionListener {
     DatabaseReference db;
     FirebaseUser user;
     HelperHandiMan helperHandiMan;
@@ -123,15 +119,6 @@ public class HandiHomeActivity extends AppCompatActivity
                     R.id.content_handi_home,
                     handiViewProfileFragment,
                     handiViewProfileFragment.getTag()
-            ).commit();
-        }
-        else if (id == R.id.activity_handi_home_drawer_item_settings) {
-            HandiSettingsFragment handiSettingsFragment = HandiSettingsFragment.newInstance("I ain't", "The sharpest tool");
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(
-                    R.id.content_handi_home,
-                    handiSettingsFragment,
-                    handiSettingsFragment.getTag()
             ).commit();
         }
         else if (id == R.id.activity_handi_home_drawer_item_logout) {

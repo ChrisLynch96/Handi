@@ -149,7 +149,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/standard_margin_button_bottom">
-        <!-- android:layout_toRightOf="@+id/date_container"> -->
 
         <Button
             android:id="@+id/ok_button"
