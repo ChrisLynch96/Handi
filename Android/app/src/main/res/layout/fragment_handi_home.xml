@@ -5,48 +5,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.app.handi.handi.Fragments.HandiHomeFragment">
 
-    <ListView
-        android:id="@+id/fragment_handi_home_list_view_jobs"
-        android:layout_width="wrap_content"
-        android:layout_height="204dp"
-        android:layout_marginBottom="60dp"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </ListView>
-
     <TextView
+        android:id="@+id/fragment_handi_home_text_view_jobs"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView_Jobs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Jobs"
         android:textSize="@dimen/stan_header_text_size"
         android:textColor="@color/dark_pink"
-        android:layout_alignParentTop="true"
         android:textAlignment="center"
-        android:layout_marginTop="37dp" />
+        android:layout_marginTop="10dp"/>
+
+    <RelativeLayout
+        android:id="@+id/fragment_handi_home_relative_layout_jobs_border"
+        android:layout_width="@dimen/linear_layout_user_handi_home_border"
+        android:layout_height="214dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/dark_grey"
+        android:layout_below="@id/fragment_handi_home_text_view_jobs">
+
+        <ListView
+            android:id="@+id/fragment_handi_home_list_view_jobs"
+            android:layout_width="@dimen/list_view_width_user_handi_home"
+            android:layout_height="204dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/android_standard_background"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+        </ListView>
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textview_Offers"
+        android:id="@+id/fragment_handi_home_text_view_job_offers"
         android:text="@string/Offers"
         android:textSize="@dimen/stan_header_text_size"
         android:textColor="@color/dark_pink"
-        android:layout_above="@+id/fragment_handi_home_list_view_jobs_offers"
+        android:layout_below="@id/fragment_handi_home_relative_layout_jobs_border"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"/>
 
-    <ListView
-        android:id="@+id/fragment_handi_home_list_view_jobs_offers"
-        android:layout_width="wrap_content"
-        android:layout_height="204dp"
-        android:layout_below="@+id/fragment_handi_home_list_view_jobs"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+    <RelativeLayout
+        android:id="@+id/fragment_handi_home_relative_layout_jobs_offers_borders"
+        android:layout_width="@dimen/linear_layout_user_handi_home_border"
+        android:layout_height="214dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/fragment_handi_home_text_view_job_offers"
+        android:background="@color/dark_grey">
 
-    </ListView>
+        <ListView
+            android:id="@+id/fragment_handi_home_list_view_jobs_offers"
+            android:layout_width="@dimen/list_view_width_user_handi_home"
+            android:layout_centerHorizontal="true"
+            android:layout_height="204dp"
+            android:background="@color/android_standard_background"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+        </ListView>
+    </RelativeLayout>
+
+
 </RelativeLayout>
