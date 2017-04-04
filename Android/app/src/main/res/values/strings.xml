@@ -14,13 +14,10 @@
     <string name="title_activity_login">Sign In</string>
     <string name="hint_firstName">First Name</string>
     <string name="hint_lastName">Last Name</string>
-    <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_name">Full Name</string>
-    <string name="btn_login">LOGIN</string>
     <string name="btn_link_to_register">Not a member? Get registered in Firebase now!</string>
     <string name="btn_link_to_login">Already registered? Login!</string>
-    <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Forgot your password?</string>
     <string name="btn_reset_password">Reset Password</string>
     <string name="hint_new_email">New Email</string>
@@ -28,7 +25,6 @@
     <string name="btn_send">Send</string>
     <string name="btn_remove">Remove</string>
     <string name="btn_sign_out">Sign Out</string>
-    <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">Enter your email below and we will send you reset instructions</string>
     <string name="handiman_name">Name</string>
     <string name="card_number">Card Number</string>
@@ -36,7 +32,7 @@
     <string name="job_escription">Job Description</string>
     <string name="client_name">Client name</string>
     <string name="address">Address</string>
-    <string name="Signup">Signup</string>
+    <string name="Signup">Sign up</string>
     <string name="Signup_text">Choose below to register as either a Handi or a User!</string>
     <string-array name="jobs_array">
         <item>Plumber</item>
@@ -52,20 +48,16 @@
         <item>Settings</item>
     </string-array>
     <string name="title_activity_user_home">User Home</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-    <string name="temporary_calendar">temporary_calendar_fragment</string>
-    <string name="temporary_settings_text">This will be the best settings screen. Its true, its true. They tell me "Hey Chris, you make the worst settings screens and I just go I know it's true</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="rate_handi">rate Handi</string>
     <string name="Pending_Jobs">Pending Jobs</string>
     <string name="Jobs">Jobs</string>
     <string name="Offers">Job Offers</string>
     <string name="put_job_description_here">Put job description here</string>
     <string name="title_activity_handi_home">Handi Home</string>
-    <string name="rate_handi">rate Handi</string>
+    <string name="home">Home</string>
+
 </resources>

@@ -45,11 +45,6 @@ public class HandiHomeActivity extends AppCompatActivity
         user = FirebaseAuth.getInstance().getCurrentUser();
         job = (ArrayList<Job>)getIntent().getSerializableExtra("Jobs");
         handimanData = (HandimanData)getIntent().getSerializableExtra("Handi");
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
         setContentView(R.layout.activity_handi_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
