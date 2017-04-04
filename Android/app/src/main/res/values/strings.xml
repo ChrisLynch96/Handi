@@ -59,5 +59,6 @@
     <string name="put_job_description_here">Put job description here</string>
     <string name="title_activity_handi_home">Handi Home</string>
     <string name="home">Home</string>
+    <string name="offer_job">Offer Job</string>
 
 </resources>

@@ -58,9 +58,9 @@
         android:layout_height="@dimen/stan_button_height"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="@dimen/standard_margin_button_bottom"
         android:background="@color/norm_pink"
-        android:text="Offer Job"
+        android:text="@string/offer_job"
         android:textColor="@color/white"
         android:textStyle="normal"
         android:textAllCaps="false" />
