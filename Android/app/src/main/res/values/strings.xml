@@ -60,5 +60,6 @@
     <string name="title_activity_handi_home">Handi Home</string>
     <string name="home">Home</string>
     <string name="offer_job">Offer Job</string>
+    <string name="get_another_quote">Click to get another quote</string>
 
 </resources>

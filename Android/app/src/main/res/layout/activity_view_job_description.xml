@@ -74,12 +74,13 @@
         android:id="@+id/activity_view_job_description_text_view_accepted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_view_job_description_text_view_status"
-        android:layout_marginLeft="@dimen/standard_margin_left"
-        android:layout_marginTop="@dimen/standard_spacing"
+        android:layout_marginTop="17dp"
         android:text="Accepted"
         android:textSize="@dimen/stan_header_text_size"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_below="@+id/activity_view_job_description_text_view_status"
+        android:layout_alignLeft="@+id/activity_view_job_description_text_view_status"
+        android:layout_alignStart="@+id/activity_view_job_description_text_view_status" />
 
     <Button
         android:id="@+id/activity_view_job_description_button_job_done"
@@ -92,27 +93,30 @@
         android:text="Job Complete"
         android:textColor="@color/white"
         android:onClick="onClick"/>
+
     <Button
         android:id="@+id/activity_view_job_description_button_more_quotes"
-        android:layout_width="@dimen/stan_button_width"
+        android:layout_width="200dp"
         android:layout_height="@dimen/stan_button_height"
         android:background="@color/norm_pink"
-        android:text="Click to get another quote"
-        android:textSize="10dp"
+        android:text="@string/get_another_quote"
+        android:textSize="15dp"
         android:textColor="@color/white"
         android:onClick="onClick"
-        android:layout_above="@+id/activity_view_job_description_listview_quotes"
-        android:layout_alignRight="@+id/activity_view_job_description_listview_quotes"
-        android:layout_alignEnd="@+id/activity_view_job_description_listview_quotes" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/activity_view_job_description_text_view_accepted"
+        android:layout_marginTop="@dimen/standard_margin_button_bottom"/>
+
     <ListView
         android:id="@+id/activity_view_job_description_listview_quotes"
         android:layout_width="@dimen/list_view_width_user_handi_home"
-        android:layout_height="220dp"
+        android:layout_height="100dp"
         android:background="@color/android_standard_background"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp">
     </ListView>
+
     <TextView
         android:id="@+id/activity_view_job_description_text_view_Quotes"
         android:layout_width="wrap_content"
