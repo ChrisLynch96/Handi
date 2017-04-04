@@ -142,7 +142,9 @@ public class HandiHomeActivity extends AppCompatActivity
         else if (id == R.id.activity_handi_home_drawer_item_logout) {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signOut();
-            startActivity(new Intent(HandiHomeActivity.this, LoginOrSignupActivity.class));
+            Intent i = new Intent(HandiHomeActivity.this, LoginOrSignupActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

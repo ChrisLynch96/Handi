@@ -142,7 +142,9 @@ public class UserHomeActivity extends AppCompatActivity
         } else if(id == R.id.activity_user_home_drawer_logout) {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signOut();
-            startActivity(new Intent(UserHomeActivity.this, LoginOrSignupActivity.class));
+            Intent i = new Intent(UserHomeActivity.this, LoginOrSignupActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
