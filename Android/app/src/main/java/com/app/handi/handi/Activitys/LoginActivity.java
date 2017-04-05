@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText inputEmail, inputPassword;
+    private EditText inputPassword;
     private FirebaseAuth auth;
     FirebaseUser user;
     private ProgressBar progressBar;
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onClick(View v){
         // set the view now
-        inputEmail = (EditText) findViewById(R.id.email);
+        EditText inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         if (v.getId() == R.id.btn_login) {
@@ -117,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
+                                //Checks if the user to be signed in is either user or Handi.
                                 db.child("HandiMen").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                                             Intent intent = new Intent(LoginActivity.this,UserHomeActivity.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putSerializable("Jobs",job);
+                                            bundle.putSerializable("Handi",handimanData);
                                             intent.putExtras(bundle);
                                             startActivity(intent);
                                         }
@@ -140,7 +142,6 @@ public class LoginActivity extends AppCompatActivity {
                                             Intent intent = new Intent(LoginActivity.this,HandiHomeActivity.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putSerializable("Jobs",Hjobs);
-                                            bundle.putSerializable("Handi",handimanData);
                                             intent.putExtras(bundle);
                                             startActivity(intent);
                                         }

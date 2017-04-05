@@ -32,12 +32,8 @@ import java.util.ArrayList;
 public class LoginOrSignupActivity extends AppCompatActivity {
     DatabaseReference db;
     FirebaseUser user;
-    HelperHandiMan helper;
     boolean isHandiMan = false;
     ArrayList<String> id = new ArrayList<>();
-    ArrayList<HandimanData> HandiMen = new ArrayList<>();
-    private ProgressBar progressBar;
-    String profession;
     HelperUser helperUser;
     HelperHandiMan helperHandiMan;
     ArrayList<Job> job = new ArrayList<>();
@@ -52,12 +48,11 @@ public class LoginOrSignupActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        progressBar = (ProgressBar) findViewById(R.id.activity_login_signup_progress_bar_pBar);
-
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.activity_login_signup_progress_bar_pBar);
         overridePendingTransition(0,0);
         View container = findViewById(R.id.buttons_container);
         container.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
-
+        //if User is already logged in checks if user is Handi or User.
         if (user != null) {
             progressBar.setVisibility(View.VISIBLE);
             helperUser = new HelperUser(db);

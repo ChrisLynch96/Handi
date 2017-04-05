@@ -1,23 +1,16 @@
 package com.app.handi.handi.Activitys;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Point;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.R;
-
-import java.util.Locale;
 
 public class ChooseHandiTypeActivity extends AppCompatActivity {
     String profession;
@@ -44,6 +37,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+        //Cleaner Button actions
         if(view.getId()==R.id.activity_choose_handi_relative_layout_cleaner){
             profession = "Cleaner";
             intent = new Intent(this,JobSelectionActivity.class);
@@ -55,8 +49,8 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             imageBackground = (ImageView) findViewById(R.id.activity_choose_handi_image_box_cleaner);
             imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
-            //imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.norm_pink));
         }
+        //Electrician Button actions
         else if(view.getId()==R.id.activity_choose_handi_relative_layout_electrician){
             profession = "Electrician";
             intent = new Intent(this,JobSelectionActivity.class);
@@ -69,6 +63,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
+        //Plumber button actions
         else if(view.getId()==R.id.activity_choose_handi_LinearLayout_plumber){
             profession = "Plumber";
             intent = new Intent(this,JobSelectionActivity.class);
@@ -81,6 +76,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
+        //Painter button actions
         else if(view.getId()==R.id.activity_choose_handi_relative_layout_painter){
             profession = "Painter";
             intent = new Intent(this,JobSelectionActivity.class);
@@ -93,6 +89,7 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
             imageBackground.setColorFilter(ContextCompat.getColor(this,R.color.dark_pink));
             startActivity(intent);
         }
+        //HandiMan button actions
         else {
             profession = "HandiMan";
             intent = new Intent(this,JobSelectionActivity.class);
@@ -109,7 +106,6 @@ public class ChooseHandiTypeActivity extends AppCompatActivity {
 
     //function that changes the an array of TextViews to a certian typeface
     public void setTypeFace(TextView[] texts, Typeface tf) {
-        for (int i = 0; i < texts.length; i++)
-            texts[i].setTypeface(tf);
+        for (TextView text : texts) text.setTypeface(tf);
     }
 }

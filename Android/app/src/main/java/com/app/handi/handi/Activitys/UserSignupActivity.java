@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.app.handi.handi.DataTypes.HandimanData;
+import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.DataTypes.User;
 import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
@@ -23,15 +24,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 
 public class UserSignupActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword, inputFirstName, inputLastName;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
     private FirebaseUser user;
     private DatabaseReference ref;
+    ArrayList<Job> job = new ArrayList<>();
     private User userdb;
     boolean saved = false;
 
@@ -43,8 +46,8 @@ public class UserSignupActivity extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        btnSignIn = (Button) findViewById(R.id.sign_in_button);
-        btnSignUp = (Button) findViewById(R.id.sign_up_button);
+        Button btnSignIn = (Button) findViewById(R.id.sign_in_button);
+        Button btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         inputFirstName = (EditText) findViewById(R.id.firstName);
@@ -107,19 +110,20 @@ public class UserSignupActivity extends AppCompatActivity {
                                     Toast.makeText(UserSignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(UserSignupActivity.this, UserHomeActivity.class));
                                     user = FirebaseAuth.getInstance().getCurrentUser();
-                                    assert user != null;
-                                    userdb = new User(firstName,lastName,email,user.getUid());
                                     ref = FirebaseDatabase.getInstance().getReference();
+                                    assert user != null;
+                                    //create new user
+                                    userdb = new User(firstName,lastName,email,user.getUid());
                                     HelperUser db = new HelperUser(ref);
+                                    job = db.retrieve(user);
+                                    //Saves the user to the database
                                     saved = db.saveInfo(userdb,user);
-//                                    if(saved){
-//                                        Toast.makeText(UserSignupActivity.this,"Data Saved."+task.getException(),Toast.LENGTH_SHORT).show();
-//                                    }
-//                                    else{
-//                                        Toast.makeText(UserSignupActivity.this,"Not Saved."+task.getException(),Toast.LENGTH_SHORT).show();
-//                                    }
+                                    Intent intent = new Intent(UserSignupActivity.this,UserHomeActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("Jobs",job);
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
                                     finish();
                                 }
                             }
@@ -128,10 +132,4 @@ public class UserSignupActivity extends AppCompatActivity {
             }
         });
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        progressBar.setVisibility(View.GONE);
-//    }
 }

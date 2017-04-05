@@ -21,6 +21,7 @@ import com.app.handi.handi.Fragments.HandiHomeFragment;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -66,6 +67,7 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
         Description = (TextView) findViewById(R.id.activity_accept_job_details_text_view_description);
         helperHandiMan = new HelperHandiMan(reference);
         Hjobs = helperHandiMan.retrieveJob(user);
+        //Set the job details texts
         if(job!=null){
             Title.setText(job.getTitle());
             Address.setText(job.getAddress());
@@ -119,10 +121,20 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
         }
         Quote quote = new Quote(q,job.getUserUid(),user.getUid(),job.getId(),false,HandiName);
         helperQuote = new HelperQuote(reference);
+        //Save the quote on the database
         helperQuote.save(quote);
         job.setAccepted(true);
-        reference.child("HandiMen").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
-        reference.child("Users").child(job.getUserUid()).child("Jobs").child(job.getId()).setValue(job);
+        //Updates the values of the job
+        if(job==null)
+            Toast.makeText(getApplicationContext(),"Error!",Toast.LENGTH_SHORT).show();
+        else {
+            try {
+                reference.child("HandiMen").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
+                reference.child("Users").child(job.getUserUid()).child("Jobs").child(job.getId()).setValue(job);
+            }catch(DatabaseException e){
+                e.printStackTrace();
+            }
+        }
         for(int i=0;i<jobs.size();i++){
             if(jobs.get(i).getId().equals(job.getId()))
                 jobs.remove(i);

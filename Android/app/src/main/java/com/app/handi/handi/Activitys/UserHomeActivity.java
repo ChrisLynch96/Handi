@@ -1,21 +1,20 @@
 package com.app.handi.handi.Activitys;
 
-import android.net.Uri;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.app.handi.handi.DataTypes.Job;
-import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.Fragments.HomeFragment;
 import com.app.handi.handi.Fragments.SettingsFragment;
 import com.app.handi.handi.R;
@@ -31,17 +30,12 @@ public class UserHomeActivity extends AppCompatActivity
     DatabaseReference db;
     FirebaseUser user;
     ArrayList<Job> job = new ArrayList<>();
-    HelperUser helperUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
-//        helperUser = new HelperUser(db);
-//        job = helperUser.retrieve(user);
-//        Bundle bundle = getIntent().getExtras();
         job = (ArrayList<Job>)getIntent().getSerializableExtra("Jobs");
-//        Log.d("size2",Integer.toString(job.size()));
         setContentView(R.layout.activity_user_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,25 +47,16 @@ public class UserHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-        HomeFragment homeFragment = HomeFragment.newInstance("somebody", "once told me",job);
+        HomeFragment homeFragment = HomeFragment.newInstance("", "",job);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(
                 R.id.content_user_home,
                 homeFragment,
                 homeFragment.getTag()
         ).commit();
-        Log.d("size2",Integer.toString(job.size()));
     }
     @Override
     public void onBackPressed() {
-//        Log.d("size2",Integer.toString(job.size()));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -109,7 +94,7 @@ public class UserHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.activity_user_home_drawer_item_home) {
-            HomeFragment homeFragment = HomeFragment.newInstance("somebody", "once told me",job);
+            HomeFragment homeFragment = HomeFragment.newInstance("", "",job);
             Log.d("size2",Integer.toString(job.size()));
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
@@ -118,17 +103,8 @@ public class UserHomeActivity extends AppCompatActivity
                     homeFragment.getTag()
             ).commit();
         }
-//            else if (id == R.id.activity_user_home_drawer_item_past_jobs) {
-//            PastJobsFragment pastJobsFragment = PastJobsFragment.newInstance("some1", "some2");
-//            FragmentManager manager = getSupportFragmentManager();
-//            manager.beginTransaction().replace(
-//                    R.id.content_user_home,
-//                    pastJobsFragment,
-//                    pastJobsFragment .getTag()
-//            ).commit();
-//        }
         else if (id == R.id.activity_user_home_drawer_item_settings) {
-            SettingsFragment settingsFragment = SettingsFragment.newInstance("settings1", "settings2"); //The arguments are data to be passed in if we so wish
+            SettingsFragment settingsFragment = SettingsFragment.newInstance("", ""); //The arguments are data to be passed in if we so wish
             FragmentManager manager= getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.content_user_home,
@@ -138,9 +114,7 @@ public class UserHomeActivity extends AppCompatActivity
         } else if(id == R.id.activity_user_home_drawer_logout) {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signOut();
-            Intent i = new Intent(UserHomeActivity.this, LoginOrSignupActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            startActivity(new Intent(UserHomeActivity.this, LoginOrSignupActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -3,7 +3,7 @@ package com.app.handi.handi.DataTypes;
 /**
  * Created by Killian on 20/03/2017.
  */
-
+//User data type
 public class User {
     private String FirstName;
     private String LastName;

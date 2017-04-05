@@ -36,7 +36,6 @@ public class JobSelectionActivity extends AppCompatActivity {
     HelperHandiMan helper;
     DisplayingHandiAdapter adapter;
     ListView listView;
-    ArrayList<HandimanData> data = new ArrayList<>();
     ImageView handiImage, handiBackground;
     String profession;
     Job job;
@@ -57,19 +56,21 @@ public class JobSelectionActivity extends AppCompatActivity {
         changeBackgroundColour();
         Log.d("prof2",profession);
         helper = new HelperHandiMan(db);
+        //Retrieving the Handi from the Database.
         adapter = new DisplayingHandiAdapter(helper.retrieve(profession), this);
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //Display The Handi with the sepcific profession.
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HandimanData h = (HandimanData) view.getTag();
                 if(h==null)
-                    Log.d("m","notok");
+                    Toast.makeText(getApplicationContext(),"Error!",Toast.LENGTH_SHORT).show();
                 else {
                     Intent intent = new Intent(JobSelectionActivity.this, HandiProfileView.class);
                     Bundle bundle = new Bundle();
@@ -88,7 +89,7 @@ public class JobSelectionActivity extends AppCompatActivity {
 
         //setJobImageHeights(images);
     }
-
+    //The Displays On the top of the screen to change profession.
     public void onClick(View view) {
         if (view.getId() == R.id.activity_job_selection_LinearLayout_click_cleaner) {
             profession = "Cleaner";
@@ -122,15 +123,6 @@ public class JobSelectionActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-//    public void setJobImageHeights(ImageView[] jobImageViews){
-//        Display display = getWindowManager().getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//        int width = size.x/5;
-//        for (int i = 0; i < jobImageViews.length; i++)
-//            jobImageViews[i].getLayoutParams().height = width;
-//    }
 
     public void changeBackgroundColour(){
         switch (profession){

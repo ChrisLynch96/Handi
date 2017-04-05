@@ -16,10 +16,10 @@ import java.util.ArrayList;
 /**
  * Created by Killian on 23/03/2017.
  */
-
+//Adapter for displaying User Jobs in a listview
 public class DisplayUserJobsAdapter extends BaseAdapter{
-    Context c;
-    ArrayList<Job> jobs;
+    private Context c;
+    private ArrayList<Job> jobs;
 
     public DisplayUserJobsAdapter(ArrayList<Job> jobs, Context c){
         this.c = c;

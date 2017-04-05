@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.handi.handi.Adapters.DisplayQuotesAdapter;
 import com.app.handi.handi.DataTypes.Job;
@@ -62,6 +63,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
         anotherQuote = (Button) findViewById(R.id.activity_view_job_description_button_more_quotes);
         listView = (ListView) findViewById(R.id.activity_view_job_description_listview_quotes);
         helperQuote = new HelperQuote(db);
+        //setting the textviews with job details
         if(job!=null) {
             Title.setText(job.getTitle());
             Address.setText(job.getAddress());
@@ -75,7 +77,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
                 Accepted.setText(Na);
         }
         else
-            Log.d("nope","nope");
+            Toast.makeText(getApplicationContext(),"Error!",Toast.LENGTH_SHORT).show();
         if (jobState == 0) {
             jobDoneButton.setVisibility(View.GONE);
             anotherQuote.setVisibility(View.GONE);
@@ -84,8 +86,10 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
             jobDoneButton.setVisibility(View.GONE);
             anotherQuote.setVisibility(View.VISIBLE);
         }
-        else
+        else {
+            anotherQuote.setVisibility(View.GONE);
             jobDoneButton.setVisibility(View.VISIBLE);
+        }
         if(jobState==2){
             Quotes.setText(q);
             displayQuotesAdapter = new DisplayQuotesAdapter(quotes,this);
@@ -94,6 +98,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            //Displaying the list of quotes
             listView.setAdapter(displayQuotesAdapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

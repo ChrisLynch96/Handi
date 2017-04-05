@@ -13,12 +13,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
+//Class to help retieve and save data Handi data
 public class HelperHandiMan {
-    DatabaseReference db;
-    Boolean saved;
-    ArrayList<HandimanData> HandiMen = new ArrayList<>();
-    ArrayList<Job> jobs = new ArrayList<>();
+    private DatabaseReference db;
+    private Boolean saved;
+    private ArrayList<HandimanData> HandiMen = new ArrayList<>();
+    private ArrayList<Job> jobs = new ArrayList<>();
 
     public HelperHandiMan(){}
     public HelperHandiMan(DatabaseReference db){

@@ -32,6 +32,7 @@ public class HandiProfileView extends AppCompatActivity {
         Number = (TextView) findViewById(R.id.handi_view_profile_number);
         Email = (TextView) findViewById(R.id.handi_view_profile_email);
         String set1 = name + "'s Profile";
+        //Set the texts to the Handi's details.
         title.setText(set1);
         Name.setText(name);
         Number.setText(number);

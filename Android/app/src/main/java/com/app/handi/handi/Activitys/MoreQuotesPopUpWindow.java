@@ -38,6 +38,7 @@ public class MoreQuotesPopUpWindow extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         uid = bundle.getString("HandiUid");
         ReqQuotesButton = (Button) findViewById(R.id.activity_more_quotes_pop_up_window_button);
+        //Sets the dimensions for the pop up window
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
@@ -57,6 +58,7 @@ public class MoreQuotesPopUpWindow extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putSerializable("Jobs",job);
             intent.putExtras(bundle);
-            startActivity(intent);        }
+            startActivity(intent);
+        }
     }
 }

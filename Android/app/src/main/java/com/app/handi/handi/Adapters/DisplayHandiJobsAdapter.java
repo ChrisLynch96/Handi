@@ -15,10 +15,10 @@ import java.util.ArrayList;
 /**
  * Created by Killian on 25/03/2017.
  */
-
+//Adapter for displaying Handi Jobs in a listview
 public class DisplayHandiJobsAdapter extends BaseAdapter {
-    Context c;
-    ArrayList<Job> jobs;
+    private Context c;
+    private ArrayList<Job> jobs;
 
     public DisplayHandiJobsAdapter(ArrayList<Job> jobs, Context c){
         this.c = c;

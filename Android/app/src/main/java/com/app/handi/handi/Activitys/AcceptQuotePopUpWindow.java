@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.DataTypes.Quote;
@@ -14,6 +15,7 @@ import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,6 +31,7 @@ public class AcceptQuotePopUpWindow extends AppCompatActivity {
     ArrayList<Job> jobs = new ArrayList<>();
     ArrayList<Job> Hjobs = new ArrayList<>();
     HelperHandiMan helperHandiMan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class AcceptQuotePopUpWindow extends AppCompatActivity {
         job = (Job) getIntent().getSerializableExtra("Job");
         quote  = (Quote) getIntent().getSerializableExtra("Quote");
         AcceptButton = (Button) findViewById(R.id.activity_accept_quote_pop_up_window_button);
+        //Setting the pop up windows dimensions.
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
@@ -52,10 +56,19 @@ public class AcceptQuotePopUpWindow extends AppCompatActivity {
         if(view.getId() == R.id.activity_accept_quote_pop_up_window_button){
             job.setQuoteAccepted(true);
             quote.setIsqAccepted(true);
-            reference.child("HandiMen").child(job.getHandiUid()).child("Jobs").child(job.getId()).setValue(job);
-            reference.child("Users").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
-            reference.child("HandiMen").child(job.getHandiUid()).child("Quotes").child(job.getId()).setValue(quote);
-            reference.child("Users").child(user.getUid()).child("Quotes").child(job.getId()).child(job.getHandiUid()).setValue(quote);
+            //Updating the job details and the quote details.
+            if(job==null&&quote==null)
+                Toast.makeText(getApplicationContext(),"Error!",Toast.LENGTH_SHORT).show();
+            else {
+                try {
+                    reference.child("HandiMen").child(job.getHandiUid()).child("Jobs").child(job.getId()).setValue(job);
+                    reference.child("Users").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
+                    reference.child("HandiMen").child(job.getHandiUid()).child("Quotes").child(job.getId()).setValue(quote);
+                    reference.child("Users").child(user.getUid()).child("Quotes").child(job.getId()).child(job.getHandiUid()).setValue(quote);
+                } catch (DatabaseException e){
+                    e.printStackTrace();
+                }
+            }
             Intent intent = new Intent(AcceptQuotePopUpWindow.this,UserHomeActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Jobs",jobs);

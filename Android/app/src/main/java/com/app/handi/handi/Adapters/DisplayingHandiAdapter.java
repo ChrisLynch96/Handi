@@ -23,10 +23,10 @@ import java.util.ArrayList;
 /**
  * Created by christopherlynch on 07/03/2017.
  */
-
+//Adapter for displaying Handi's in a listview
 public class DisplayingHandiAdapter extends BaseAdapter {
-    Context c;
-    ArrayList<HandimanData> HandiMen;
+    private Context c;
+    private ArrayList<HandimanData> HandiMen;
 
     public DisplayingHandiAdapter(ArrayList<HandimanData> handimen, Context c) {
         HandiMen = handimen;

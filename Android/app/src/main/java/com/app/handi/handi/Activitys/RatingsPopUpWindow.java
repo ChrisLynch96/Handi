@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.Firebase.HelperHandiMan;
@@ -13,6 +14,7 @@ import com.app.handi.handi.Firebase.HelperUser;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -49,11 +51,20 @@ public class RatingsPopUpWindow extends AppCompatActivity {
     public void onClick(View view){
         if(view.getId()==R.id.activity_ratings_pop_up_window_button_rate_handi){
             job.setStatus("Complete");
-            reference.child("HandiMen").child(job.getHandiUid()).child("Jobs").child(job.getId()).setValue(job);
-            reference.child("Users").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
+            //update the values of job on the database
+            if(job==null)
+                Toast.makeText(getApplicationContext(),"Error!",Toast.LENGTH_SHORT).show();
+            else {
+                try {
+                    reference.child("HandiMen").child(job.getHandiUid()).child("Jobs").child(job.getId()).setValue(job);
+                    reference.child("Users").child(user.getUid()).child("Jobs").child(job.getId()).setValue(job);
+                }catch(DatabaseException e){
+                    e.printStackTrace();
+                }
+            }
             Intent intent = new Intent(RatingsPopUpWindow.this,UserHomeActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putSerializable("Jobs",job);
+            bundle.putSerializable("Jobs",jobs);
             intent.putExtras(bundle);
             startActivity(intent);
         }

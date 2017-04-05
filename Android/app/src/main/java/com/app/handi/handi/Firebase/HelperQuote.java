@@ -17,17 +17,17 @@ import java.util.ArrayList;
 /**
  * Created by Killian on 01/04/2017.
  */
-
+//Class to help retrieve and save quote data
 public class HelperQuote {
-    DatabaseReference db;
-    Boolean saved;
-    ArrayList<Quote> quotes = new ArrayList<>();
+    private DatabaseReference db;
+    private ArrayList<Quote> quotes = new ArrayList<>();
 
     public HelperQuote(){}
     public HelperQuote(DatabaseReference db){
         this.db = db;
     }
     public Boolean save(Quote quote){
+        Boolean saved;
         if(quote==null)
             saved = false;
         else{
@@ -37,7 +37,7 @@ public class HelperQuote {
                 saved = true;
             }catch (DatabaseException e){
                 e.printStackTrace();
-                saved=false;
+                saved =false;
             }
         }
         return saved;

@@ -40,17 +40,19 @@ public class JobDescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_job_description);
         db = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        HelperUser ref = new HelperUser(db);
+        assert user != null;
         Log.d("id",user.getUid());
         Bundle bundle = getIntent().getExtras();
         uid = bundle.getString("HandiUid");
         prof = bundle.getString("HandiProf");
+        //initialise EditTexts
         inputFirstName = (EditText) findViewById(R.id.activity_job_description_edit_text_first_name);
         inputLastName = (EditText) findViewById(R.id.activity_job_description_edit_text_second_name);
         inputTitle = (EditText) findViewById(R.id.activity_job_description_edit_text_title);
         inputAddress = (EditText) findViewById(R.id.activity_job_description_edit_text_users_address);
         inputDescription = (EditText) findViewById(R.id.activity_job_description_edit_text_users_job_description);
     }
+    //method to generate a Job ID
     protected String getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
@@ -92,10 +94,11 @@ public class JobDescriptionActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter last name!", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        //Create job
         Job job = new Job(Description,"Incomplete",false,title,address,firstName,lastName,getSaltString(),user.getUid(),uid,false);
         HelperUser helperUser = new HelperUser(db);
         HelperHandiMan helperHandiMan = new HelperHandiMan(db);
+        //Save the job on to the database.
         helperUser.saveJob(job,user,job.getId());
         helperHandiMan.saveJob(job,uid,job.getId());
         jobs = helperUser.retrieve(user);

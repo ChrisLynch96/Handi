@@ -17,11 +17,11 @@ import java.util.ArrayList;
 /**
  * Created by Killian on 20/03/2017.
  */
-
+//Class to help retieve and save User data
 public class HelperUser {
-    DatabaseReference db;
-    Boolean saved;
-    ArrayList<Job> user = new ArrayList<>();
+    private DatabaseReference db;
+    private Boolean saved;
+    private ArrayList<Job> user = new ArrayList<>();
 
     public HelperUser(){}
     public HelperUser(DatabaseReference db){

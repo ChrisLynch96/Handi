@@ -1,23 +1,19 @@
 package com.app.handi.handi.DataTypes;
 
-import android.media.Image;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.app.handi.handi.Activitys.HandiManSignupActivity;
 
 import java.io.Serializable;
 
 /**
  * Created by christopherlynch on 27/02/2017.
  */
-
+//Handi data type
 public class HandimanData implements Serializable{
 
     public String name;
     public String email;
-    public String uid;
-    public String dateOfbirth;
+    private String uid;
+    private String dateOfbirth;
     private String number;
     private String profession;
     private ImageView profilePicture;

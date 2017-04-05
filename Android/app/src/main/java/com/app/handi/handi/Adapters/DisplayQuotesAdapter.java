@@ -1,8 +1,6 @@
 package com.app.handi.handi.Adapters;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +11,10 @@ import com.app.handi.handi.DataTypes.Quote;
 import com.app.handi.handi.R;
 
 import java.util.ArrayList;
-
+//Adapter for displaying Quotes in a listview
 public class DisplayQuotesAdapter extends BaseAdapter {
-    Context c;
-    ArrayList<Quote> quotes = new ArrayList<>();
+    private Context c;
+    private ArrayList<Quote> quotes = new ArrayList<>();
 
   public DisplayQuotesAdapter(ArrayList<Quote> quotes,Context c){
       this.quotes = quotes;

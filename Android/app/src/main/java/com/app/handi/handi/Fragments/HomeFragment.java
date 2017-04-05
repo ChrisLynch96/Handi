@@ -109,11 +109,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
         adapter = new DisplayUserJobsAdapter(jobs,getActivity());
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         //Log.d("size",Integer.toString(job.size()));
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Killian on 01/04/2017.
  */
-
+//Quote data type
 public class Quote implements Serializable{
 
     private String amount;
