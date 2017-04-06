@@ -108,6 +108,7 @@ public class LoginOrSignupActivity extends AppCompatActivity {
 
     }
     public void onClick(View v){
+        //Depending on which button is clicked take the user to the corresponding screen
         if (v.getId() == R.id.login_button)
             startActivity(new Intent(LoginOrSignupActivity.this, LoginActivity.class));
         else

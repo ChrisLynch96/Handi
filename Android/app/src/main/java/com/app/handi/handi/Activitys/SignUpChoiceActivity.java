@@ -17,6 +17,7 @@ public class SignUpChoiceActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
     public void onClick(View v){
+        //depending on which button clicked take the user to the corresponding screen
         if (v.getId() == R.id.activity_sign_up_choice_button_user)
             startActivity(new Intent(this, UserSignupActivity.class));
         else

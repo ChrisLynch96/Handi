@@ -17,9 +17,10 @@ public class HandimanData implements Serializable{
     private String number;
     private String profession;
     private ImageView profilePicture;
+    private float rating;
 
     public HandimanData(){}
-    public HandimanData(String name,String email, String dateOfbirth, String Number, String profession, ImageView profilePicture,String uid){
+    public HandimanData(String name,String email, String dateOfbirth, String Number, String profession, ImageView profilePicture,String uid,float rating){
         this.name = name;
         this.email = email;
         this.dateOfbirth = dateOfbirth;
@@ -27,6 +28,16 @@ public class HandimanData implements Serializable{
         this.profession = profession;
         this.profilePicture = profilePicture;
         this.uid = uid;
+        this.rating = rating;
+
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     public String getName(){

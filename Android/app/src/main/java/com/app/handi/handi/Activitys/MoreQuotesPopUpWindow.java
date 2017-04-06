@@ -53,6 +53,7 @@ public class MoreQuotesPopUpWindow extends AppCompatActivity {
         if(view.getId()==R.id.activity_more_quotes_pop_up_window_button){
             HelperHandiMan helperHandiMan = new HelperHandiMan(reference);
             job.setAccepted(false);
+            //Save the new job for the corresponding handi
             helperHandiMan.saveJob(job,uid,job.getId());
             Intent intent = new Intent(MoreQuotesPopUpWindow.this,UserHomeActivity.class);
             Bundle bundle = new Bundle();

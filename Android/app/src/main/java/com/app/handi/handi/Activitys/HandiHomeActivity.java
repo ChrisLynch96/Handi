@@ -70,6 +70,7 @@ public class HandiHomeActivity extends AppCompatActivity
         }
         if(handimanData==null)
             handimanData = (HandimanData)getIntent().getSerializableExtra("Handi");
+        //Create a new home screen instance on startup
         HandiHomeFragment handiHomeFragment = HandiHomeFragment.newInstance("","",job,handimanData);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(

@@ -107,7 +107,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
             final String name = handiName.getText().toString().trim();
             final String dateofbirth = handiDOB.getText().toString().trim();
             final String number = handiNo.getText().toString().trim();
-
+            //make sure fields aren't empty
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                 return;
@@ -165,7 +165,7 @@ public class HandiManSignupActivity extends AppCompatActivity implements Adapter
                                 user = FirebaseAuth.getInstance().getCurrentUser();
                                 assert user != null;
                                 //create new Handi
-                                data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic,user.getUid());
+                                data = new HandimanData(name,email,dateofbirth,number,spin,handiProfilePic,user.getUid(),0);
                                 ref = FirebaseDatabase.getInstance().getReference();
                                 ref.child("HandiMen").child(user.getUid()).child("Info").addValueEventListener(new ValueEventListener() {
                                     @Override

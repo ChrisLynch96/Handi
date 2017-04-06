@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         if (v.getId() == R.id.btn_login) {
             String email = inputEmail.getText().toString();
             final String password = inputPassword.getText().toString();
-
+            //Make sure fileds aren't left empty
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                 return;

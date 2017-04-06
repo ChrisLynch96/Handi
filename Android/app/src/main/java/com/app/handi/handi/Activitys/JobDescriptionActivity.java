@@ -70,6 +70,7 @@ public class JobDescriptionActivity extends AppCompatActivity {
         String title = inputTitle.getText().toString().trim();
         String address = inputAddress.getText().toString().trim();
         String Description = inputDescription.getText().toString().trim();
+        //make sure the fields aren't empty
         if (TextUtils.isEmpty(title)) {
             Toast.makeText(getApplicationContext(), "Enter title!", Toast.LENGTH_SHORT).show();
             return;

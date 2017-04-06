@@ -63,7 +63,7 @@ public class JobSelectionActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //Display The Handi with the sepcific profession.
+        //Display The Handi with the specific profession.
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,6 +82,7 @@ public class JobSelectionActivity extends AppCompatActivity {
                     intent.putExtra("HandiEmail",h.getEmail());
                     intent.putExtra("HandiUid",h.getUid());
                     intent.putExtra("HandiProf",h.getProfession());
+                    intent.putExtra("Rating",h.getRating());
                     startActivity(intent);
                 }
             }
@@ -123,7 +124,7 @@ public class JobSelectionActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
+    //Highlight whatever button was pressed
     public void changeBackgroundColour(){
         switch (profession){
             case "Cleaner":

@@ -75,6 +75,7 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
             String name = job.getFirstName() +" " +job.getLastName();
             ClientName.setText(name);
         }
+        //input formats for the quote
         inputValue = (EditText) findViewById(R.id.editText_offer_quote);
         inputValue.addTextChangedListener(new TextWatcher() {
             private String current = "";
@@ -114,11 +115,14 @@ public class OfferQuoteDescriptionActivity extends AppCompatActivity implements 
     }
 
     public void onClick(View view) {
+        //Get the entered value
         String q = inputValue.getText().toString().trim();
+        //Make sure the field wasnt left empty
         if(TextUtils.isEmpty(q)){
             Toast.makeText(getApplicationContext(), "Enter quote!", Toast.LENGTH_SHORT).show();
             return;
         }
+        //create new Quote
         Quote quote = new Quote(q,job.getUserUid(),user.getUid(),job.getId(),false,HandiName);
         helperQuote = new HelperQuote(reference);
         //Save the quote on the database

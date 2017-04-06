@@ -104,6 +104,7 @@ public class HandiHomeFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //Set the list of job offers and jobs
         listView.setAdapter(adapter);
         list2.setAdapter(adapter2);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

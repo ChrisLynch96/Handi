@@ -51,6 +51,24 @@
         android:text="Hello World"
         android:textSize="20sp"
         tools:text="@string/email" />
+    <TextView
+        android:id="@+id/handi_view_profile_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:textSize="20sp"
+        android:text="Rating:"
+        android:layout_below="@+id/handi_view_profile_email"
+        android:layout_alignLeft="@+id/handi_view_profile_email"
+        android:layout_alignStart="@+id/handi_view_profile_email" />
+    <RatingBar
+        android:id="@+id/hanid_view_profile_rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/handi_view_profile_email"
+        android:layout_toRightOf="@+id/handi_view_profile_rating"
+        android:layout_toEndOf="@+id/handi_view_profile_rating" />
 
     <Button
         android:id="@+id/handi_view_profile_button_offer_job"

@@ -69,7 +69,7 @@ public class UserSignupActivity extends AppCompatActivity {
                 String password = inputPassword.getText().toString().trim();
                 final String firstName = inputFirstName.getText().toString().trim();
                 final String lastName = inputLastName.getText().toString().trim();
-
+                //check if all fields are filled in
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;

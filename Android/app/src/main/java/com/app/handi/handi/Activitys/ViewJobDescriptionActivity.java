@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.handi.handi.Adapters.DisplayQuotesAdapter;
+import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.DataTypes.Quote;
 import com.app.handi.handi.Firebase.HelperQuote;
@@ -37,6 +38,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
     DisplayQuotesAdapter displayQuotesAdapter;
     DatabaseReference db;
     FirebaseUser user;
+    HandimanData handimanData;
     HelperQuote helperQuote;
     ArrayList<Quote> quotes = new ArrayList<>();
 
@@ -46,6 +48,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
         job = (Job)getIntent().getSerializableExtra("LeJob");
+        handimanData =(HandimanData)getIntent().getSerializableExtra("Handi");
         quotes = (ArrayList<Quote>)getIntent().getSerializableExtra("Quotes");
         Bundle bundle = getIntent().getExtras();
         jobState= bundle.getInt("ViewButton");
@@ -123,6 +126,7 @@ public class ViewJobDescriptionActivity extends AppCompatActivity {
             Intent intent = new Intent(ViewJobDescriptionActivity.this,RatingsPopUpWindow.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Job",job);
+            bundle.putSerializable("Handi",handimanData);
             intent.putExtras(bundle);
             startActivity(intent);
             jobDoneButton.setVisibility(View.GONE);

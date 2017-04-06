@@ -11,19 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.app.handi.handi.Activitys.ChooseHandiTypeActivity;
 import com.app.handi.handi.Activitys.ViewJobDescriptionActivity;
 import com.app.handi.handi.Adapters.DisplayUserJobsAdapter;
+import com.app.handi.handi.DataTypes.HandimanData;
 import com.app.handi.handi.DataTypes.Job;
 import com.app.handi.handi.DataTypes.Quote;
 import com.app.handi.handi.Firebase.HelperQuote;
 import com.app.handi.handi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +45,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM2 = "param2";
     View view;
     ListView list;
+    HandimanData handimanData;
+    private ProgressBar progressBar;
     int jobState;
     DatabaseReference db;
     FirebaseUser user;
@@ -95,12 +102,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         db = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        progressBar = (ProgressBar) view.findViewById(R.id.home_frag_progressBar);
         list = (ListView) view.findViewById(R.id.fragment_home_list_view_user_jobs);
         for(int i=0;i<job.size();i++){
             if(job.get(i).getStatus().equals("Incomplete"))
                 jobs.add(job.get(i));
         }
         helperQuote = new HelperQuote(db);
+        //Button for creating new job
         newJobButton = (android.support.design.widget.FloatingActionButton) view.findViewById(R.id.fragment_home_floating_action_button_fab);
         newJobButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -109,16 +118,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
         adapter = new DisplayUserJobsAdapter(jobs,getActivity());
-
-        //Log.d("size",Integer.toString(job.size()));
+        //set the list of user jobs
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                progressBar.setVisibility(View.VISIBLE);
                 jobq = (Job) view.getTag();
+                db.child("HandiMen").child(jobq.getHandiUid()).child("Info").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        handimanData = dataSnapshot.getValue(HandimanData.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 quotes=helperQuote.retrieve(user,jobq);
+                progressBar.setVisibility(View.GONE);
                 Intent intent = new Intent(getActivity(), ViewJobDescriptionActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putSerializable("Handi",handimanData);
                 bundle.putSerializable("LeJob",jobq);
                 bundle.putSerializable("Quotes",quotes);
                 intent.putExtras(bundle);

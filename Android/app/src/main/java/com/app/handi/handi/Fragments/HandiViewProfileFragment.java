@@ -54,6 +54,7 @@ public class HandiViewProfileFragment extends Fragment implements View.OnClickLi
         final String email = "Email: " + Handi.getEmail();
         Number = (TextView) view.findViewById(R.id.fragment_handi_view_profile_text_view_mobile);
         final String num = "Number: " + Handi.getNumber();
+        //Set all the texts to the Handi's details
         Name.setText(name);
         dateOfBirth.setText(dob);
         Email.setText(email);
