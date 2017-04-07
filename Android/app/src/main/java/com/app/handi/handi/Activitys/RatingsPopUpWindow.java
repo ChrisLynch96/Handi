@@ -60,7 +60,12 @@ public class RatingsPopUpWindow extends AppCompatActivity {
             //update the job status
             job.setStatus("Complete");
             float rating = ratingBar.getRating();
-            rating = rating + handimanData.getRating();
+            if(handimanData.getRating()==0){
+                rating = rating + handimanData.getRating();
+            }
+            else{
+                rating = ((rating + handimanData.getRating())/2);
+            }
             //Update the Handi rating
             handimanData.setRating(rating);
             //update the values of job and Handi on the database
